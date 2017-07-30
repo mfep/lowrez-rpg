@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CameraMovement.cs" />
     <Compile Include="CorePlugin.cs" />
     <Compile Include="Decision.cs" />
     <Compile Include="DiscreteTransform.cs" />

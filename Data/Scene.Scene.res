@@ -163,8 +163,16 @@
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, AllFlags" value="3221225471" />
                 </item>
+                <item dataType="Struct" type="LowResRoguelike.CameraMovement" id="3577894245">
+                  <_x003C_DisplayedTiles_x003E_k__BackingField dataType="Struct" type="Duality.Point2">
+                    <X dataType="Int">14</X>
+                    <Y dataType="Int">14</Y>
+                  </_x003C_DisplayedTiles_x003E_k__BackingField>
+                  <active dataType="Bool">true</active>
+                  <gameobj dataType="ObjectRef">3710758478</gameobj>
+                </item>
               </_items>
-              <_size dataType="Int">2</_size>
+              <_size dataType="Int">3</_size>
             </compList>
             <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2322258250" surrogate="true">
               <header />
@@ -172,10 +180,12 @@
                 <keys dataType="Array" type="System.Object[]" id="590600424">
                   <item dataType="ObjectRef">2782640592</item>
                   <item dataType="Type" id="29714988" value="Duality.Components.Camera" />
+                  <item dataType="Type" id="2829958070" value="LowResRoguelike.CameraMovement" />
                 </keys>
                 <values dataType="Array" type="System.Object[]" id="1446090014">
                   <item dataType="ObjectRef">1776106114</item>
                   <item dataType="ObjectRef">4248034285</item>
+                  <item dataType="ObjectRef">3577894245</item>
                 </values>
               </body>
             </compMap>
