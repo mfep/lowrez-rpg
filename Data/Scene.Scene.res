@@ -393,13 +393,13 @@
             <_x003C_MaxRoomSize_x003E_k__BackingField dataType="Int">6</_x003C_MaxRoomSize_x003E_k__BackingField>
             <_x003C_MinCorrdidorLength_x003E_k__BackingField dataType="Int">3</_x003C_MinCorrdidorLength_x003E_k__BackingField>
             <_x003C_MinRoomSize_x003E_k__BackingField dataType="Int">3</_x003C_MinRoomSize_x003E_k__BackingField>
-            <_x003C_RequiredNumberOfFeatures_x003E_k__BackingField dataType="Int">10</_x003C_RequiredNumberOfFeatures_x003E_k__BackingField>
+            <_x003C_RequiredNumberOfFeatures_x003E_k__BackingField dataType="Int">30</_x003C_RequiredNumberOfFeatures_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
-            <_x003C_MapHeight_x003E_k__BackingField dataType="Int">12</_x003C_MapHeight_x003E_k__BackingField>
-            <_x003C_MapWidth_x003E_k__BackingField dataType="Int">16</_x003C_MapWidth_x003E_k__BackingField>
+            <_x003C_MapHeight_x003E_k__BackingField dataType="Int">20</_x003C_MapHeight_x003E_k__BackingField>
+            <_x003C_MapWidth_x003E_k__BackingField dataType="Int">20</_x003C_MapWidth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
