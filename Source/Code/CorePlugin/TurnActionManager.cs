@@ -28,25 +28,7 @@ namespace LowResRoguelike
 			}
 
 			var decision = objToMove.MakeDecision ();
-			var dirVector = Point2.Zero;
-			switch (decision) {
-				case Decision.LeftMove:
-					dirVector = new Point2 (-1, 0);
-					break;
-				case Decision.UpMove:
-					dirVector = new Point2 (0, -1);
-					break;
-				case Decision.RightMove:
-					dirVector = new Point2 (1, 0);;
-					break;
-				case Decision.DownMove:
-					dirVector = new Point2 (0, 1);
-					break;
-				case Decision.NoMove:
-					break;
-				case Decision.NotDecided:
-					return;
-			}
+			var dirVector = decision.ToDirection ();
 
 			var moveComp = objToMove as Component;
 			moveComp.GameObj.GetComponent<DiscreteTransform> ().MoveBy (dirVector);

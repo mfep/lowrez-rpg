@@ -3,26 +3,34 @@ using Duality.Input;
 
 namespace LowResRoguelike
 {
+	[RequiredComponent(typeof(DiscreteTransform))]
 	public class PlayerMovement : Component, ICmpTurnAction
 	{
 		public int Initiative => 10;
 
 		public Decision MakeDecision ()
 		{
+			var decision = Decision.NotDecided;
 			if (DualityApp.Keyboard.KeyHit (Key.Left)) {
-				return Decision.LeftMove;
+				decision = Decision.LeftMove;
 			}
 			if (DualityApp.Keyboard.KeyHit (Key.Up)) {
-				return Decision.UpMove;
+				decision = Decision.UpMove;
 			}
 			if (DualityApp.Keyboard.KeyHit (Key.Right)) {
-				return Decision.RightMove;
+				decision = Decision.RightMove;
 			}
 			if (DualityApp.Keyboard.KeyHit (Key.Down)) {
-				return Decision.DownMove;
+				decision = Decision.DownMove;
 			}
 
-			return Decision.NotDecided;
+			var dir = decision.ToDirection ();
+			var discretePos = GameObj.GetComponent<DiscreteTransform> ().Position;
+			if (DiscreteTransform.IsBlocked (dir + discretePos)) {
+				return Decision.NotDecided;
+			}
+
+			return decision;
 		}
 	}
 }

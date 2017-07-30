@@ -1,5 +1,7 @@
+using System.Linq;
 using Duality;
 using Duality.Components;
+using Duality.Resources;
 
 namespace LowResRoguelike
 {
@@ -42,6 +44,15 @@ namespace LowResRoguelike
 		private void UpdatePosition ()
 		{
 			GameObj.Transform.MoveToAbs (new Vector2 (position.X * Grid, position.Y * Grid));
+		}
+
+		public static bool IsBlocked (Point2 coord)
+		{
+			var map = Scene.Current.FindComponent<MapGenerator> ().GeneratedMap;
+			if (map.At (coord) == TileType.Solid) {
+				return true;
+			}
+			return Scene.Current.FindComponents<DiscreteTransform> ().Any (discreteTransform => discreteTransform.Position == coord);
 		}
 	}
 }

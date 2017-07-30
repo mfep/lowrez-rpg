@@ -35,17 +35,17 @@ namespace LowResRoguelike
 			}
 		}
 
-		public static bool On (this Grid<TileType> map, Point2 coord)
+		public static bool On (this IReadOnlyGrid<TileType> map, Point2 coord)
 		{
 			return coord.X >= 0 && coord.X < map.Width && coord.Y >= 0 && coord.Y < map.Height;
 		}
 
-		public static TileType At (this Grid<TileType> map, int x, int y)
+		public static TileType At (this IReadOnlyGrid<TileType> map, int x, int y)
 		{
 			return map.At (new Point2 (x, y));
 		}
 
-		public static TileType At (this Grid<TileType> map, Point2 coord)
+		public static TileType At (this IReadOnlyGrid<TileType> map, Point2 coord)
 		{
 			if (map.On (coord)) {
 				return map[coord.X, coord.Y];

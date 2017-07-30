@@ -1,4 +1,6 @@
-﻿using Duality;
+﻿using System.Linq;
+using System.Runtime.CompilerServices;
+using Duality;
 using Duality.Drawing;
 
 namespace LowResRoguelike
@@ -18,6 +20,13 @@ namespace LowResRoguelike
 				var mapGenerator = GameObj.GetComponent<MapGenerator> ();
 				mapGenerator.GenerateMap (MapWidth, MapHeight);
 				map = mapGenerator.GeneratedMap;
+
+				map.MapForeach ((x, y, type) =>
+				{
+					if (type == TileType.Empty) {
+						GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (new Point2 (x, y));
+					}
+				});
 			}
 		}
 
