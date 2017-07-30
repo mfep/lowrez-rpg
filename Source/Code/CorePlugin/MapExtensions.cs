@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Duality;
 
 namespace LowResRoguelike
@@ -51,6 +52,17 @@ namespace LowResRoguelike
 				return map[coord.X, coord.Y];
 			}
 			return TileType.Solid;
+		}
+
+		public static IEnumerable<Point2> TilesOfType (this IReadOnlyGrid<TileType> map, TileType type)
+		{
+			for (int y = 0; y < map.Height; y++) {
+				for (int x = 0; x < map.Width; x++) {
+					if (map[x, y] == type) {
+						yield return new Point2 (x, y);
+					}
+				}
+			}
 		}
 	}
 }

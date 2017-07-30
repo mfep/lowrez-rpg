@@ -386,7 +386,7 @@
       <active dataType="Bool">true</active>
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3871237299">
-        <_items dataType="Array" type="Duality.Component[]" id="3652507686" length="4">
+        <_items dataType="Array" type="Duality.Component[]" id="3652507686">
           <item dataType="Struct" type="LowResRoguelike.MapGenerator" id="568466665">
             <_x003C_MaxCorrdidorLength_x003E_k__BackingField dataType="Int">8</_x003C_MaxCorrdidorLength_x003E_k__BackingField>
             <_x003C_MaxInterations_x003E_k__BackingField dataType="Int">1000</_x003C_MaxInterations_x003E_k__BackingField>
@@ -397,9 +397,13 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
-          <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
+          <item dataType="Struct" type="LowResRoguelike.LevelManager" id="742727207">
             <_x003C_MapHeight_x003E_k__BackingField dataType="Int">20</_x003C_MapHeight_x003E_k__BackingField>
             <_x003C_MapWidth_x003E_k__BackingField dataType="Int">20</_x003C_MapWidth_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3838638929</gameobj>
+          </item>
+          <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
@@ -408,7 +412,7 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">3</_size>
+        <_size dataType="Int">4</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1756076728" surrogate="true">
         <header />
@@ -417,11 +421,13 @@
             <item dataType="Type" id="4073166286" value="LowResRoguelike.TurnActionManager" />
             <item dataType="Type" id="1531620682" value="LowResRoguelike.MapGenerator" />
             <item dataType="Type" id="2379130238" value="LowResRoguelike.MapRenderer" />
+            <item dataType="Type" id="4237188954" value="LowResRoguelike.LevelManager" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="4119922176">
             <item dataType="ObjectRef">618444706</item>
             <item dataType="ObjectRef">568466665</item>
             <item dataType="ObjectRef">1717016093</item>
+            <item dataType="ObjectRef">742727207</item>
           </values>
         </body>
       </compMap>

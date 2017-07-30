@@ -1,38 +1,12 @@
-﻿using System.Linq;
-using System.Runtime.CompilerServices;
-using Duality;
+﻿using Duality;
 using Duality.Drawing;
 
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(MapGenerator))]
-	public class MapRenderer : Component, ICmpInitializable, ICmpRenderer
+	public class MapRenderer : Component, ICmpRenderer
 	{
-		public int MapWidth { get; set; }
-		public int MapHeight { get; set; }
-
-		[DontSerialize] private IReadOnlyGrid<TileType> map;
 		[DontSerialize] private readonly CanvasBuffer canvasBuffer = new CanvasBuffer ();
-
-		public void OnInit (InitContext context)
-		{
-			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				var mapGenerator = GameObj.GetComponent<MapGenerator> ();
-				mapGenerator.GenerateMap (MapWidth, MapHeight);
-				map = mapGenerator.GeneratedMap;
-
-				map.MapForeach ((x, y, type) =>
-				{
-					if (type == TileType.Empty) {
-						GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (new Point2 (x, y));
-					}
-				});
-			}
-		}
-
-		public void OnShutdown (ShutdownContext context)
-		{
-		}
 
 		public bool IsVisible (IDrawDevice device)
 		{
@@ -43,19 +17,21 @@ namespace LowResRoguelike
 
 		public void Draw (IDrawDevice device)
 		{
-			if (map != null) {
-				var canvas = new Canvas (device, canvasBuffer);
-				RenderMap (canvas);
+			var map = GameObj.GetComponent<MapGenerator> ().GeneratedMap;
+			if (map == null) {
+				return;
 			}
+			var canvas = new Canvas (device, canvasBuffer);
+			RenderMap (map, canvas);
 		}
 
-		private void RenderMap (Canvas canvas)
+		private void RenderMap (IReadOnlyGrid<TileType> map, Canvas canvas)
 		{
 			map.MapForeach ((x, y, type) =>
 			{
 				var tileColor = type == TileType.Solid ? ColorRgba.Black : ColorRgba.White;
 				canvas.State.ColorTint = tileColor;
-				var grid = DiscreteTransform.Grid;
+				const float grid = DiscreteTransform.Grid;
 				canvas.FillRect (x * grid, y * grid, grid, grid);
 			});
 		}

@@ -48,7 +48,10 @@ namespace LowResRoguelike
 
 		public static bool IsBlocked (Point2 coord)
 		{
-			var map = Scene.Current.FindComponent<MapGenerator> ().GeneratedMap;
+			var map = Scene.Current.FindComponent<MapGenerator> ()?.GeneratedMap;
+			if (map == null) {
+				return false;
+			}
 			if (map.At (coord) == TileType.Solid) {
 				return true;
 			}
