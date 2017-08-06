@@ -9,7 +9,7 @@
       <active dataType="Bool">true</active>
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="2232037444">
-        <_items dataType="Array" type="Duality.Component[]" id="1323988548">
+        <_items dataType="Array" type="Duality.Component[]" id="1323988548" length="8">
           <item dataType="Struct" type="Duality.Components.Transform" id="3930149454">
             <active dataType="Bool">true</active>
             <angle dataType="Float">0</angle>
@@ -61,8 +61,17 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
+          <item dataType="Struct" type="LowResRoguelike.PlayerStatus" id="2885989514">
+            <_x003C_Attack_x003E_k__BackingField dataType="Int">0</_x003C_Attack_x003E_k__BackingField>
+            <_x003C_CurrentHealth_x003E_k__BackingField dataType="Int">7</_x003C_CurrentHealth_x003E_k__BackingField>
+            <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_DamageReduction_x003E_k__BackingField>
+            <_x003C_Defense_x003E_k__BackingField dataType="Int">0</_x003C_Defense_x003E_k__BackingField>
+            <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1569834522</gameobj>
+          </item>
         </_items>
-        <_size dataType="Int">4</_size>
+        <_size dataType="Int">5</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="863291030" surrogate="true">
         <header />
@@ -72,12 +81,14 @@
             <item dataType="Type" id="2267836014" value="Duality.Components.Renderers.SpriteRenderer" />
             <item dataType="Type" id="989606316" value="LowResRoguelike.PlayerMovement" />
             <item dataType="Type" id="231734802" value="LowResRoguelike.DiscreteTransform" />
+            <item dataType="Type" id="275985288" value="LowResRoguelike.PlayerStatus" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="329231690">
             <item dataType="ObjectRef">3930149454</item>
             <item dataType="ObjectRef">3212001090</item>
             <item dataType="ObjectRef">2210990147</item>
             <item dataType="ObjectRef">2847693510</item>
+            <item dataType="ObjectRef">2885989514</item>
           </values>
         </body>
       </compMap>
@@ -99,9 +110,12 @@
         <_items dataType="Array" type="Duality.GameObject[]" id="2123980406" length="4">
           <item dataType="Struct" type="Duality.GameObject" id="3710758478">
             <active dataType="Bool">true</active>
-            <children />
-            <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="344018674">
-              <_items dataType="Array" type="Duality.Component[]" id="824169936" length="4">
+            <children dataType="Struct" type="System.Collections.Generic.List`1[[Duality.GameObject]]" id="344018674">
+              <_items dataType="Array" type="Duality.GameObject[]" id="824169936" length="4" />
+              <_size dataType="Int">0</_size>
+            </children>
+            <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="2322258250">
+              <_items dataType="Array" type="Duality.Component[]" id="590600424" length="4">
                 <item dataType="Struct" type="Duality.Components.Transform" id="1776106114">
                   <active dataType="Bool">true</active>
                   <angle dataType="Float">0</angle>
@@ -113,13 +127,13 @@
                   <ignoreParent dataType="Bool">false</ignoreParent>
                   <parentTransform />
                   <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">32</X>
-                    <Y dataType="Float">32</Y>
+                    <X dataType="Float">0</X>
+                    <Y dataType="Float">0</Y>
                     <Z dataType="Float">-500</Z>
                   </pos>
                   <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">32</X>
-                    <Y dataType="Float">32</Y>
+                    <X dataType="Float">0</X>
+                    <Y dataType="Float">0</Y>
                     <Z dataType="Float">-500</Z>
                   </posAbs>
                   <scale dataType="Float">1</scale>
@@ -133,9 +147,9 @@
                   <focusDist dataType="Float">500</focusDist>
                   <gameobj dataType="ObjectRef">3710758478</gameobj>
                   <nearZ dataType="Float">0</nearZ>
-                  <passes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Camera+Pass]]" id="3887646265">
-                    <_items dataType="Array" type="Duality.Components.Camera+Pass[]" id="1391747278" length="4">
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="4222627792">
+                  <passes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Camera+Pass]]" id="3130363721">
+                    <_items dataType="Array" type="Duality.Components.Camera+Pass[]" id="1808581518" length="4">
+                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="1710699728">
                         <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
                         <clearDepth dataType="Float">1</clearDepth>
                         <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="All" value="3" />
@@ -146,7 +160,7 @@
                         </output>
                         <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="AllGroups" value="2147483647" />
                       </item>
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="727859822">
+                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="935334510">
                         <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
                         <clearDepth dataType="Float">1</clearDepth>
                         <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="None" value="0" />
@@ -174,15 +188,15 @@
               </_items>
               <_size dataType="Int">3</_size>
             </compList>
-            <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2322258250" surrogate="true">
+            <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1289394626" surrogate="true">
               <header />
               <body>
-                <keys dataType="Array" type="System.Object[]" id="590600424">
+                <keys dataType="Array" type="System.Object[]" id="1813609760">
                   <item dataType="ObjectRef">2782640592</item>
-                  <item dataType="Type" id="29714988" value="Duality.Components.Camera" />
-                  <item dataType="Type" id="2829958070" value="LowResRoguelike.CameraMovement" />
+                  <item dataType="Type" id="1973372892" value="Duality.Components.Camera" />
+                  <item dataType="Type" id="1435142422" value="LowResRoguelike.CameraMovement" />
                 </keys>
-                <values dataType="Array" type="System.Object[]" id="1446090014">
+                <values dataType="Array" type="System.Object[]" id="3677200270">
                   <item dataType="ObjectRef">1776106114</item>
                   <item dataType="ObjectRef">4248034285</item>
                   <item dataType="ObjectRef">3577894245</item>
@@ -192,7 +206,7 @@
             <compTransform dataType="ObjectRef">1776106114</compTransform>
             <identifier dataType="Struct" type="System.Guid" surrogate="true">
               <header>
-                <data dataType="Array" type="System.Byte[]" id="1006976596">zOom2AumSUSjS6MVkF9Ryw==</data>
+                <data dataType="Array" type="System.Byte[]" id="178033724">zOom2AumSUSjS6MVkF9Ryw==</data>
               </header>
               <body />
             </identifier>
@@ -262,7 +276,7 @@
               <body>
                 <keys dataType="Array" type="System.Object[]" id="4254466353">
                   <item dataType="ObjectRef">2782640592</item>
-                  <item dataType="ObjectRef">29714988</item>
+                  <item dataType="ObjectRef">1973372892</item>
                 </keys>
                 <values dataType="Array" type="System.Object[]" id="970826336">
                   <item dataType="ObjectRef">787636831</item>
@@ -413,9 +427,54 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.UiRenderer" id="3713685027">
+            <_x003C_ArmorTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">199</B>
+              <G dataType="Byte">195</G>
+              <R dataType="Byte">194</R>
+            </_x003C_ArmorTextColor_x003E_k__BackingField>
+            <_x003C_AttackTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">156</B>
+              <G dataType="Byte">118</G>
+              <R dataType="Byte">131</R>
+            </_x003C_AttackTextColor_x003E_k__BackingField>
+            <_x003C_DefenseTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">0</B>
+              <G dataType="Byte">163</G>
+              <R dataType="Byte">255</R>
+            </_x003C_DefenseTextColor_x003E_k__BackingField>
+            <_x003C_MaxHealthTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">77</B>
+              <G dataType="Byte">0</G>
+              <R dataType="Byte">255</R>
+            </_x003C_MaxHealthTextColor_x003E_k__BackingField>
+            <_x003C_PlayerHealthBackgroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">83</B>
+              <G dataType="Byte">37</G>
+              <R dataType="Byte">126</R>
+            </_x003C_PlayerHealthBackgroundColor_x003E_k__BackingField>
+            <_x003C_PlayerHealthColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">77</B>
+              <G dataType="Byte">0</G>
+              <R dataType="Byte">255</R>
+            </_x003C_PlayerHealthColor_x003E_k__BackingField>
+            <_x003C_UiBackgroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">185</A>
+              <B dataType="Byte">84</B>
+              <G dataType="Byte">84</G>
+              <R dataType="Byte">84</R>
+            </_x003C_UiBackgroundColor_x003E_k__BackingField>
             <_x003C_UiFont_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Font]]">
               <contentPath dataType="String">Data\Fonts\PICO-8 mono upper.Font.res</contentPath>
             </_x003C_UiFont_x003E_k__BackingField>
+            <_x003C_UiMat_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+              <contentPath dataType="String">Data\Spritesheet\ui_sprites.Material.res</contentPath>
+            </_x003C_UiMat_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
