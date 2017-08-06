@@ -31,9 +31,9 @@
             <active dataType="Bool">true</active>
             <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
-              <B dataType="Byte">50</B>
-              <G dataType="Byte">50</G>
-              <R dataType="Byte">187</R>
+              <B dataType="Byte">168</B>
+              <G dataType="Byte">119</G>
+              <R dataType="Byte">255</R>
             </colorTint>
             <customMat />
             <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
@@ -248,17 +248,8 @@
                         <output dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]" />
                         <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="AllGroups" value="2147483647" />
                       </item>
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="3469065110">
-                        <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
-                        <clearDepth dataType="Float">1</clearDepth>
-                        <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="None" value="0" />
-                        <input />
-                        <matrixMode dataType="Enum" type="Duality.Drawing.RenderMatrix" name="OrthoScreen" value="1" />
-                        <output dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]" />
-                        <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="All" value="4294967295" />
-                      </item>
                     </_items>
-                    <_size dataType="Int">2</_size>
+                    <_size dataType="Int">1</_size>
                   </passes>
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
@@ -396,7 +387,7 @@
       <active dataType="Bool">true</active>
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3871237299">
-        <_items dataType="Array" type="Duality.Component[]" id="3652507686">
+        <_items dataType="Array" type="Duality.Component[]" id="3652507686" length="8">
           <item dataType="Struct" type="LowResRoguelike.MapGenerator" id="568466665">
             <_x003C_MaxCorrdidorLength_x003E_k__BackingField dataType="Int">8</_x003C_MaxCorrdidorLength_x003E_k__BackingField>
             <_x003C_MaxInterations_x003E_k__BackingField dataType="Int">1000</_x003C_MaxInterations_x003E_k__BackingField>
@@ -408,8 +399,8 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.LevelManager" id="742727207">
-            <_x003C_MapHeight_x003E_k__BackingField dataType="Int">20</_x003C_MapHeight_x003E_k__BackingField>
-            <_x003C_MapWidth_x003E_k__BackingField dataType="Int">20</_x003C_MapWidth_x003E_k__BackingField>
+            <_x003C_MapHeight_x003E_k__BackingField dataType="Int">28</_x003C_MapHeight_x003E_k__BackingField>
+            <_x003C_MapWidth_x003E_k__BackingField dataType="Int">28</_x003C_MapWidth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
@@ -421,8 +412,15 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
+          <item dataType="Struct" type="LowResRoguelike.UiRenderer" id="3713685027">
+            <_x003C_UiFont_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Font]]">
+              <contentPath dataType="String">Data\Fonts\PICO-8 mono upper.Font.res</contentPath>
+            </_x003C_UiFont_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3838638929</gameobj>
+          </item>
         </_items>
-        <_size dataType="Int">4</_size>
+        <_size dataType="Int">5</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1756076728" surrogate="true">
         <header />
@@ -432,12 +430,14 @@
             <item dataType="Type" id="1531620682" value="LowResRoguelike.MapGenerator" />
             <item dataType="Type" id="2379130238" value="LowResRoguelike.MapRenderer" />
             <item dataType="Type" id="4237188954" value="LowResRoguelike.LevelManager" />
+            <item dataType="Type" id="3059329198" value="LowResRoguelike.UiRenderer" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="4119922176">
             <item dataType="ObjectRef">618444706</item>
             <item dataType="ObjectRef">568466665</item>
             <item dataType="ObjectRef">1717016093</item>
             <item dataType="ObjectRef">742727207</item>
+            <item dataType="ObjectRef">3713685027</item>
           </values>
         </body>
       </compMap>
