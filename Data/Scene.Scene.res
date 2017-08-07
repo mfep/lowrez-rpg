@@ -464,10 +464,10 @@
               <R dataType="Byte">255</R>
             </_x003C_PlayerHealthColor_x003E_k__BackingField>
             <_x003C_UiBackgroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
-              <A dataType="Byte">185</A>
-              <B dataType="Byte">84</B>
-              <G dataType="Byte">84</G>
-              <R dataType="Byte">84</R>
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">0</B>
+              <G dataType="Byte">0</G>
+              <R dataType="Byte">0</R>
             </_x003C_UiBackgroundColor_x003E_k__BackingField>
             <_x003C_UiFont_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Font]]">
               <contentPath dataType="String">Data\Fonts\PICO-8 mono upper.Font.res</contentPath>

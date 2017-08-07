@@ -16,7 +16,6 @@ namespace LowResRoguelike
 		public ColorRgba MaxHealthTextColor { get; set; }
 		public ColorRgba UiBackgroundColor { get; set; }
 
-
 		[DontSerialize] private readonly CanvasBuffer buffer = new CanvasBuffer();
 
 		public bool IsVisible (IDrawDevice device)
@@ -45,6 +44,7 @@ namespace LowResRoguelike
 			canvas.FillRect (0, 59, 64, 5);
 
 			// player health bar
+			canvas.State.SetMaterial (null as BatchInfo);
 			var playerHealthPixels = MathF.RoundToInt ((float)stats.CurrentHealth / stats.MaxHealth * 64);
 			canvas.State.ColorTint = PlayerHealthBackgroundColor;
 			canvas.DrawRect (0, 0, 1, 64);

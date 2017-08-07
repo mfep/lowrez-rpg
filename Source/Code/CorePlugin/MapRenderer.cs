@@ -1,4 +1,5 @@
-﻿using Duality;
+﻿using System.Collections.Generic;
+using Duality;
 using Duality.Drawing;
 
 namespace LowResRoguelike
@@ -7,6 +8,7 @@ namespace LowResRoguelike
 	public class MapRenderer : Component, ICmpRenderer
 	{
 		[DontSerialize] private readonly CanvasBuffer canvasBuffer = new CanvasBuffer ();
+		[DontSerialize] private readonly HashSet<Point2> visitedPoints = new HashSet<Point2> ();
 
 		public bool IsVisible (IDrawDevice device)
 		{
@@ -27,13 +29,21 @@ namespace LowResRoguelike
 
 		private void RenderMap (IReadOnlyGrid<TileType> map, Canvas canvas)
 		{
+			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
 			map.MapForeach ((x, y, type) =>
 			{
-				var tileColor = type == TileType.Solid ? ColorRgba.Black : ColorRgba.White;
+				var p = new Point2 (x, y);
+				if (map.IsVisible (playerPos, p)) {
+					visitedPoints.Add (p);
+				}
+				
+			});
+			foreach (var visitedPoint in visitedPoints) {
+				var tileColor = map[visitedPoint.X, visitedPoint.Y] == TileType.Solid ? ColorRgba.DarkGrey : ColorRgba.White;
 				canvas.State.ColorTint = tileColor;
 				const float grid = DiscreteTransform.Grid;
-				canvas.FillRect (x * grid, y * grid, grid, grid);
-			});
+				canvas.FillRect (visitedPoint.X * grid, visitedPoint.Y * grid, grid, grid);
+			}
 		}
 
 		public float BoundRadius => 0.0f;
