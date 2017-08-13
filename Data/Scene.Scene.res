@@ -423,6 +423,15 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
+            <_x003C_GroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">83</B>
+              <G dataType="Byte">43</G>
+              <R dataType="Byte">29</R>
+            </_x003C_GroundColor_x003E_k__BackingField>
+            <_x003C_WallMaterial_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
+              <contentPath dataType="String">Data\Spritesheet\tileBG.Material.res</contentPath>
+            </_x003C_WallMaterial_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
