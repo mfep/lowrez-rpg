@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Duality;
+using Duality.Resources;
 
 namespace LowResRoguelike
 {
@@ -122,6 +123,16 @@ namespace LowResRoguelike
 				}
 			}
 			return true;
+		}
+
+		public static bool IsVisible (Point2 p1, Point2 p2)
+		{
+			return Scene.Current.FindComponent<MapGenerator> ().GeneratedMap.IsVisible (p1, p2);
+		}
+
+		public static int Manhattan (this Point2 p1, Point2 p2)
+		{
+			return Math.Abs (p1.X - p2.X) + Math.Abs (p1.Y - p2.Y);
 		}
 	}
 }
