@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Duality;
 using Duality.Drawing;
 using Duality.Resources;
@@ -6,7 +7,7 @@ using Duality.Resources;
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(MapGenerator))]
-	public class MapRenderer : Component, ICmpRenderer
+	public class MapRenderer : Component, ICmpRenderer, ICmpInitializable
 	{
 		public ContentRef<Material> WallMaterial { get; set; }
 		public ColorRgba GroundColor { get; set; }
@@ -33,15 +34,6 @@ namespace LowResRoguelike
 
 		private void RenderMap (IReadOnlyGrid<TileType> map, Canvas canvas)
 		{
-			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
-			map.MapForeach ((x, y, type) =>
-			{
-				var p = new Point2 (x, y);
-				if (map.IsVisible (playerPos, p)) {
-					visitedPoints.Add (p);
-				}
-				
-			});
 			foreach (var visitedPoint in visitedPoints) {
 				if (map[visitedPoint.X, visitedPoint.Y] == TileType.Solid) {
 					RenderWallTile (canvas, visitedPoint);
@@ -72,5 +64,38 @@ namespace LowResRoguelike
 		}
 
 		public float BoundRadius => 0.0f;
+
+		public void OnInit (InitContext context)
+		{
+			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
+				TurnActionManager.PlayerMoved += PlayerMovedCallback;
+				UpdateMapVisibility ();
+			}
+		}
+
+		private void PlayerMovedCallback ()
+		{
+			UpdateMapVisibility ();
+		}
+
+		private void UpdateMapVisibility ()
+		{
+			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
+			var map = GameObj.GetComponent<MapGenerator>().GeneratedMap;
+			map.MapForeach((x, y, type) =>
+			{
+				var p = new Point2(x, y);
+				if (map.IsVisible(playerPos, p))
+				{
+					visitedPoints.Add(p);
+				}
+
+			});
+		}
+
+		public void OnShutdown (ShutdownContext context)
+		{
+			TurnActionManager.PlayerMoved -= PlayerMovedCallback;
+		}
 	}
 }

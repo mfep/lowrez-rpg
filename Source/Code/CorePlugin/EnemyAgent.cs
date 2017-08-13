@@ -1,10 +1,13 @@
+using System;
+using System.Runtime.InteropServices.ComTypes;
 using Duality;
+using Duality.Components.Renderers;
 
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(DiscreteTransform))]
 	[RequiredComponent(typeof(CombatStats))]
-	public class EnemyAgent : Component, ICmpTurnAction
+	public class EnemyAgent : Component, ICmpTurnAction, ICmpInitializable
 	{
 		public int WatchDistanceSqr { get; set; }
 		public int Damage { get; set; }
@@ -60,6 +63,22 @@ namespace LowResRoguelike
 				return false;
 			}
 			return MapExtensions.IsVisible (currentPos, playerPos);
+		}
+
+		public void OnInit (InitContext context)
+		{
+			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
+				TurnActionManager.PlayerMoved += PlayerMovedCallback;
+			}
+		}
+
+		private void PlayerMovedCallback ()
+		{
+			GameObj.GetComponent<SpriteRenderer> ().Active = IsPlayerVisible (out int _, out int _);
+		}
+
+		public void OnShutdown (ShutdownContext context)
+		{
 		}
 	}
 }

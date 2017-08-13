@@ -8,6 +8,7 @@ namespace LowResRoguelike
 	public class TurnActionManager : Component, ICmpUpdatable
 	{
 		public static event Action NewTurn;
+		public static event Action PlayerMoved; 
 		[DontSerialize] private HashSet<ICmpTurnAction> notMovedSet = new HashSet<ICmpTurnAction> ();
 
 		public void OnUpdate ()
@@ -40,6 +41,9 @@ namespace LowResRoguelike
 				moveComp.GameObj.GetComponent<DiscreteTransform> ().MoveBy (dirVector);
 				if (decision != Decision.NotDecided) {
 					notMovedSet.Remove (objToMove);
+				}
+				if (moveComp.GameObj.GetComponent<PlayerMovement> () != null) {
+					PlayerMoved?.Invoke ();
 				}
 			}
 		}
