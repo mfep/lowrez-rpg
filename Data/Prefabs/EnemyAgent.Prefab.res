@@ -8,7 +8,7 @@
     <active dataType="Bool">true</active>
     <children />
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1081506804">
-      <_items dataType="Array" type="Duality.Component[]" id="4238650532">
+      <_items dataType="Array" type="Duality.Component[]" id="4238650532" length="8">
         <item dataType="Struct" type="Duality.Components.Transform" id="2673925507">
           <active dataType="Bool">true</active>
           <angle dataType="Float">0</angle>
@@ -59,6 +59,15 @@
           </sharedMat>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
+        <item dataType="Struct" type="LowResRoguelike.CombatStats" id="2002491185">
+          <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
+          <_x003C_Damage_x003E_k__BackingField dataType="Int">7</_x003C_Damage_x003E_k__BackingField>
+          <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">2</_x003C_DamageReduction_x003E_k__BackingField>
+          <_x003C_Defense_x003E_k__BackingField dataType="Int">7</_x003C_Defense_x003E_k__BackingField>
+          <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
+          <active dataType="Bool">true</active>
+          <gameobj dataType="ObjectRef">313610575</gameobj>
+        </item>
         <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="1591469563">
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">313610575</gameobj>
@@ -68,12 +77,13 @@
           </position>
         </item>
         <item dataType="Struct" type="LowResRoguelike.EnemyAgent" id="1083998481">
+          <_x003C_Damage_x003E_k__BackingField dataType="Int">0</_x003C_Damage_x003E_k__BackingField>
           <_x003C_WatchDistanceSqr_x003E_k__BackingField dataType="Int">10000</_x003C_WatchDistanceSqr_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">313610575</gameobj>
         </item>
       </_items>
-      <_size dataType="Int">4</_size>
+      <_size dataType="Int">5</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="3661331190" surrogate="true">
       <header />
@@ -83,12 +93,14 @@
           <item dataType="Type" id="2874130670" value="LowResRoguelike.DiscreteTransform" />
           <item dataType="Type" id="2729374188" value="LowResRoguelike.EnemyAgent" />
           <item dataType="Type" id="392245778" value="Duality.Components.Renderers.SpriteRenderer" />
+          <item dataType="Type" id="2606491336" value="LowResRoguelike.CombatStats" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="2494621962">
           <item dataType="ObjectRef">2673925507</item>
           <item dataType="ObjectRef">1591469563</item>
           <item dataType="ObjectRef">1083998481</item>
           <item dataType="ObjectRef">1955777143</item>
+          <item dataType="ObjectRef">2002491185</item>
         </values>
       </body>
     </compMap>

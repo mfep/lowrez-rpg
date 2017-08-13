@@ -32,7 +32,7 @@ namespace LowResRoguelike
 
 		private void DrawUi (Canvas canvas)
 		{
-			var stats = GameObj.ParentScene.FindComponent<PlayerStatus> ();
+			var stats = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ();
 			if (stats == null) {
 				return;
 			}

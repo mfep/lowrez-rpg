@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Duality;
 
@@ -6,6 +7,7 @@ namespace LowResRoguelike
 {
 	public class TurnActionManager : Component, ICmpUpdatable
 	{
+		public static event Action NewTurn;
 		[DontSerialize] private HashSet<ICmpTurnAction> notMovedSet = new HashSet<ICmpTurnAction> ();
 
 		public void OnUpdate ()
@@ -39,6 +41,7 @@ namespace LowResRoguelike
 
 		private void NextTurn ()
 		{
+			NewTurn?.Invoke ();
 			notMovedSet = new HashSet<ICmpTurnAction> (GameObj.ParentScene.FindComponents<ICmpTurnAction> ());
 		}
 	}

@@ -52,21 +52,21 @@
             </sharedMat>
             <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
           </item>
+          <item dataType="Struct" type="LowResRoguelike.CombatStats" id="3258715132">
+            <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
+            <_x003C_Damage_x003E_k__BackingField dataType="Int">1</_x003C_Damage_x003E_k__BackingField>
+            <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">2</_x003C_DamageReduction_x003E_k__BackingField>
+            <_x003C_Defense_x003E_k__BackingField dataType="Int">7</_x003C_Defense_x003E_k__BackingField>
+            <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1569834522</gameobj>
+          </item>
           <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
             <position dataType="Struct" type="Duality.Point2" />
           </item>
           <item dataType="Struct" type="LowResRoguelike.PlayerMovement" id="2210990147">
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1569834522</gameobj>
-          </item>
-          <item dataType="Struct" type="LowResRoguelike.PlayerStatus" id="2885989514">
-            <_x003C_Attack_x003E_k__BackingField dataType="Int">0</_x003C_Attack_x003E_k__BackingField>
-            <_x003C_CurrentHealth_x003E_k__BackingField dataType="Int">7</_x003C_CurrentHealth_x003E_k__BackingField>
-            <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_DamageReduction_x003E_k__BackingField>
-            <_x003C_Defense_x003E_k__BackingField dataType="Int">0</_x003C_Defense_x003E_k__BackingField>
-            <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
@@ -81,14 +81,14 @@
             <item dataType="Type" id="2267836014" value="Duality.Components.Renderers.SpriteRenderer" />
             <item dataType="Type" id="989606316" value="LowResRoguelike.PlayerMovement" />
             <item dataType="Type" id="231734802" value="LowResRoguelike.DiscreteTransform" />
-            <item dataType="Type" id="275985288" value="LowResRoguelike.PlayerStatus" />
+            <item dataType="Type" id="275985288" value="LowResRoguelike.CombatStats" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="329231690">
             <item dataType="ObjectRef">3930149454</item>
             <item dataType="ObjectRef">3212001090</item>
             <item dataType="ObjectRef">2210990147</item>
             <item dataType="ObjectRef">2847693510</item>
-            <item dataType="ObjectRef">2885989514</item>
+            <item dataType="ObjectRef">3258715132</item>
           </values>
         </body>
       </compMap>

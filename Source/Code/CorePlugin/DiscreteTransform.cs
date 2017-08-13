@@ -6,7 +6,7 @@ using Duality.Resources;
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(Transform))]
-	public class DiscreteTransform : Component, ICmpInitializable
+	public partial class DiscreteTransform : Component, ICmpInitializable
 	{
 		public const float Grid = 4.0f;
 
@@ -55,7 +55,26 @@ namespace LowResRoguelike
 			if (map.At (coord) == TileType.Solid) {
 				return true;
 			}
-			return Scene.Current.FindComponents<DiscreteTransform> ().Any (discreteTransform => discreteTransform.Position == coord);
+			return Scene.Current.FindComponents<DiscreteTransform> ().Any (discreteTransform => discreteTransform.position == coord);
+		}
+
+		public static bool IsBlocked (Point2 coord, ref GameObject blockerObject)
+		{
+			var map = Scene.Current.FindComponent<MapGenerator> ()?.GeneratedMap;
+			if (map == null) {
+				return false;
+			}
+			if (map.At (coord) == TileType.Solid) {
+				return true;
+			}
+			GameObject go = null;
+			var result = Scene.Current.FindComponents<DiscreteTransform> ().Any (discreteTransform =>
+			{
+				go = discreteTransform.GameObj;
+				return discreteTransform.position == coord;
+			});
+			blockerObject = go;
+			return result;
 		}
 	}
 }

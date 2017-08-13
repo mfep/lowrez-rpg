@@ -4,6 +4,7 @@ using Duality.Input;
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(DiscreteTransform))]
+	[RequiredComponent(typeof(CombatStats))]
 	public class PlayerMovement : Component, ICmpTurnAction
 	{
 		public int Initiative => 10;
@@ -26,7 +27,13 @@ namespace LowResRoguelike
 
 			var dir = decision.ToDirection ();
 			var discretePos = GameObj.GetComponent<DiscreteTransform> ().Position;
-			if (DiscreteTransform.IsBlocked (dir + discretePos)) {
+			GameObject blocker = null;
+			if (decision != Decision.NotDecided && DiscreteTransform.IsBlocked (dir + discretePos, ref blocker)) {
+				var enemy = blocker?.GetComponent<CombatStats> ();
+				if (enemy != null) {
+					GameObj.GetComponent<CombatStats> ().FightWith (enemy);
+					return Decision.NoMove;
+				}
 				return Decision.NotDecided;
 			}
 

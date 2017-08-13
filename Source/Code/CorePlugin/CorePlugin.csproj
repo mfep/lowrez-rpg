@@ -62,13 +62,13 @@
     <Compile Include="Decision.cs" />
     <Compile Include="DiscreteTransform.cs" />
     <Compile Include="EnemyAgent.cs" />
+    <Compile Include="CombatStats.cs" />
     <Compile Include="ICmpTurnAction.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="MapExtensions.cs" />
     <Compile Include="MapGenerator.cs" />
     <Compile Include="MapRenderer.cs" />
     <Compile Include="PlayerMovement.cs" />
-    <Compile Include="PlayerStatus.cs" />
     <Compile Include="Test\RaytracingTest.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="TurnActionManager.cs" />
