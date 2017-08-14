@@ -1,4 +1,6 @@
-﻿using Duality;
+﻿using System;
+using Duality;
+using Duality.Resources;
 
 namespace LowResRoguelike
 {
@@ -40,11 +42,10 @@ namespace LowResRoguelike
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
-			if (attackScore <= defender.Defense) {
-				return;
-			}
-			defender.ChangeHealth (-attacker.Damage);
+			var damage = attackScore > defender.Defense ? attacker.Damage : 0;
+			defender.ChangeHealth (Math.Max(0, -damage + defender.DamageReduction));
 			Log.Game.Write($"{attacker.GameObj.Name} (score: {attackScore}) attacks {defender.GameObj.Name} (score: {defender.Defense}) and damages {attacker.Damage}");
+			Scene.Current.FindComponent<UiRenderer>().RequestCombatUi(new CombatUiData(attacker.GameObj.GetComponent<PlayerMovement>() != null, attackScore, defender.Defense, damage, defender.MaxHealth, defender.currentHealth));
 		}
 	}
 }

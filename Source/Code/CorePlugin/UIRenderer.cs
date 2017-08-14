@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Duality;
 using Duality.Drawing;
 using Duality.Resources;
@@ -8,7 +9,7 @@ namespace LowResRoguelike
 	public class UiRenderer : Component, ICmpRenderer
 	{
 		[DontSerialize] private readonly CanvasBuffer buffer = new CanvasBuffer ();
-		[DontSerialize] private readonly CombatUiData combatUiData = new CombatUiData (true, 15, 2, 3, 10, 7);
+		[DontSerialize] private CombatUiData combatUiData;
 		public ContentRef<Font> UiFont { get; set; }
 		public ContentRef<Material> UiMat { get; set; }
 		public ColorRgba PlayerHealthColor { get; set; }
@@ -38,6 +39,20 @@ namespace LowResRoguelike
 		}
 
 		public float BoundRadius => 0f;
+
+		public void RequestCombatUi (CombatUiData uiData)
+		{
+			combatUiData = uiData;
+			FreezeGame ();
+		}
+
+		private async void FreezeGame ()
+		{
+			Time.Freeze ();
+			await Task.Delay (TimeSpan.FromSeconds (1));
+			Time.Resume ();
+			combatUiData = null;
+		}
 
 		private void DrawStatsUi (Canvas canvas)
 		{
@@ -105,7 +120,9 @@ namespace LowResRoguelike
 		private void DrawCombatUi (Canvas canvas)
 		{
 			canvas.State.SetMaterial (null as BatchInfo);
+			var playerAttacks = combatUiData.PlayerAttacks;
 
+			// enemy health bar
 			if (combatUiData.PlayerAttacks) {
 				canvas.State.ColorTint = EnemyHealthBackgroundColor;
 				canvas.FillRect (63, 0, 1, 64);
@@ -114,34 +131,46 @@ namespace LowResRoguelike
 				canvas.FillRect (63, 64 - enemyHealthPixels, 1, enemyHealthPixels);
 			}
 
+			// background line
 			var isHit = combatUiData.AttackScore > combatUiData.DefenseScore;
 			canvas.State.ColorTint = isHit ? AttackTextColor : DefenseTextColor;
 			canvas.FillRect (0, 59, 64, 5);
 			canvas.State.SetMaterial (UiMat);
+
+			// background icon/text
 			canvas.State.ColorTint = ColorRgba.White;
 			SetTextureRect (canvas, isHit ? 0 : 1);
-			canvas.FillRect (51, 59, 5, 5);
+			var x = playerAttacks ? 51 : 0;
+			canvas.FillRect (x, 59, 5, 5);
 			var behindText = isHit ? $"{combatUiData.AttackScore:D2}" : $"{combatUiData.DefenseScore:D2}";
-			canvas.DrawText (behindText, 57, 59);
+			canvas.DrawText (behindText, x + 6, 59);
 
+			// foreground line
 			var forwardX = MathF.RoundToInt (64f * (isHit ? combatUiData.DefenseScore : combatUiData.AttackScore) /
 			                                 (isHit ? combatUiData.AttackScore : combatUiData.DefenseScore));
 			canvas.State.SetMaterial (null as BatchInfo);
 			canvas.State.ColorTint = isHit ? DefenseTextColor : AttackTextColor;
-			canvas.FillRect (0, 59, forwardX, 5);
+			x = playerAttacks ? 0 : 64 - forwardX;
+			canvas.FillRect (x, 59, forwardX, 5);
 
+			// foreground icon/text
 			canvas.State.SetMaterial (UiMat);
 			canvas.State.ColorTint = ColorRgba.White;
 			SetTextureRect (canvas, isHit ? 1 : 0);
-			canvas.FillRect (Math.Max (forwardX - 13, 0), 59, 5, 5);
+			x = playerAttacks ? Math.Max (forwardX - 13, 0) : Math.Min (64 - forwardX, 51);
+			canvas.FillRect (x, 59, 5, 5);
 			var forwardText = isHit ? $"{combatUiData.DefenseScore:D2}" : $"{combatUiData.AttackScore:D2}";
-			canvas.DrawText (forwardText, Math.Max (forwardX - 7, 6), 59);
+			x = playerAttacks ? Math.Max (forwardX - 7, 6) : Math.Min (70 - forwardX, 57);
+			canvas.DrawText (forwardText, x, 59);
 
+			// damage icon/text
 			canvas.State.ColorTint = DamageTextColor;
 			SetTextureRect (canvas, 4);
-			canvas.FillRect (51, 51, 5, 5);
+			x = playerAttacks ? 51 : 4;
+			canvas.FillRect (x, 51, 5, 5);
 			var damageText = $"{combatUiData.Damage:D1}";
-			canvas.DrawText(damageText, 57, 51);
+			x = playerAttacks ? 57 : 10;
+			canvas.DrawText(damageText, x, 51);
 		}
 
 		private void SetTextureRect (Canvas canvas, int index)
