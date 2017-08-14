@@ -464,6 +464,18 @@
               <G dataType="Byte">163</G>
               <R dataType="Byte">255</R>
             </_x003C_DefenseTextColor_x003E_k__BackingField>
+            <_x003C_EnemyHealthBackgroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">81</B>
+              <G dataType="Byte">135</G>
+              <R dataType="Byte">0</R>
+            </_x003C_EnemyHealthBackgroundColor_x003E_k__BackingField>
+            <_x003C_EnemyHealthColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">54</B>
+              <G dataType="Byte">228</G>
+              <R dataType="Byte">0</R>
+            </_x003C_EnemyHealthColor_x003E_k__BackingField>
             <_x003C_MaxHealthTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
               <B dataType="Byte">77</B>
