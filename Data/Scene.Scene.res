@@ -31,8 +31,8 @@
             <active dataType="Bool">true</active>
             <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
-              <B dataType="Byte">168</B>
-              <G dataType="Byte">119</G>
+              <B dataType="Byte">255</B>
+              <G dataType="Byte">255</G>
               <R dataType="Byte">255</R>
             </colorTint>
             <customMat />
@@ -48,7 +48,7 @@
             </rect>
             <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
             <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-              <contentPath dataType="String">Default:Material:SolidWhite</contentPath>
+              <contentPath dataType="String">Data\Spritesheet\player.Material.res</contentPath>
             </sharedMat>
             <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
           </item>
@@ -452,6 +452,12 @@
               <G dataType="Byte">118</G>
               <R dataType="Byte">131</R>
             </_x003C_AttackTextColor_x003E_k__BackingField>
+            <_x003C_DamageTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">39</B>
+              <G dataType="Byte">236</G>
+              <R dataType="Byte">255</R>
+            </_x003C_DamageTextColor_x003E_k__BackingField>
             <_x003C_DefenseTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
               <B dataType="Byte">0</B>

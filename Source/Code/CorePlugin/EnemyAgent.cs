@@ -1,5 +1,3 @@
-using System;
-using System.Runtime.InteropServices.ComTypes;
 using Duality;
 using Duality.Components.Renderers;
 

@@ -12,20 +12,16 @@ namespace LowResRoguelike
 		public int CurrentHealth => currentHealth;
 
 		[DontSerialize] private int currentHealth;
-		[DontSerialize] private bool attackedInTurn;
 
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
 				currentHealth = MaxHealth;
-				attackedInTurn = false;
-				TurnActionManager.NewTurn += NewTurn;
 			}
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
-			TurnActionManager.NewTurn -= NewTurn;
 		}
 
 		public void FightWith (CombatStats other)
@@ -36,11 +32,6 @@ namespace LowResRoguelike
 			}
 		}
 
-		public void NewTurn ()
-		{
-			attackedInTurn = false;
-		}
-
 		private void ChangeHealth (int amount)
 		{
 			currentHealth += amount;
@@ -48,10 +39,6 @@ namespace LowResRoguelike
 
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
-			if (attacker.attackedInTurn) {
-				return;
-			}
-			attacker.attackedInTurn = true;
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
 			if (attackScore <= defender.Defense) {
 				return;

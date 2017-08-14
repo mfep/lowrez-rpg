@@ -116,7 +116,7 @@
         <body>
           <version dataType="Int">4</version>
           <formatId dataType="String">image/png</formatId>
-          <pixelData dataType="Array" type="System.Byte[]" id="2753792580">iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVChTY/j//z8YN5fNgeH//xcDhRYzMCDTd7fmMxw6fPw/EIPpa03zGP4z+AJ1gjGcjWwQ2LAT/a4wg1Aw1DAUjGQgHIMNgRkGos9OtKPYQGRDQYbBMNywbytkGC7ungrzMhifWr2D4Z1FAbK3QZgBw4XgMEU1FMwGGoJiIIgPMgCKwYb9Z/BlAADKP+nGGLlqWQAAAABJRU5ErkJggg==</pixelData>
+          <pixelData dataType="Array" type="System.Byte[]" id="2753792580">iVBORw0KGgoAAAANSUhEUgAAABkAAAAFCAYAAACw/UeDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABCSURBVChTpY1BCgAgEAL7/6cNoQGzQ1ADpsm2DUktIN/cZDbbjI+UwV/p96MX238/Ocil5Ozgq6NIT5m+Q/edl0sTlPDCTNkSdcwAAAAASUVORK5CYII=</pixelData>
         </body>
       </item>
     </_items>

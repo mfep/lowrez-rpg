@@ -11,6 +11,7 @@ namespace LowResRoguelike
 		public ColorRgba PlayerHealthColor { get; set; }
 		public ColorRgba PlayerHealthBackgroundColor { get; set; }
 		public ColorRgba AttackTextColor { get; set; }
+		public ColorRgba DamageTextColor { get; set; }
 		public ColorRgba DefenseTextColor { get; set; }
 		public ColorRgba ArmorTextColor { get; set; }
 		public ColorRgba MaxHealthTextColor { get; set; }
@@ -58,40 +59,45 @@ namespace LowResRoguelike
 			var originalTextureRect = canvas.State.TextureCoordinateRect;
 
 			// attack
-			canvas.State.TextureCoordinateRect = new Rect (0, 0, originalTextureRect.W / 4, originalTextureRect.H);
+			canvas.State.ColorTint = AttackTextColor;
+			canvas.State.TextureCoordinateRect = new Rect (0, 0, originalTextureRect.W / 5, originalTextureRect.H);
 			canvas.FillRect (1, 59, 5, 5);
 			var attackText = $"{stats.Attack:D2}";
 			canvas.State.SetMaterial (null as BatchInfo);
 			canvas.State.TextFont = UiFont;
-			canvas.State.ColorTint = AttackTextColor;
 			canvas.DrawText(attackText, 7, 59);
 
-			// defense
-			canvas.State.ColorTint = ColorRgba.White;
+			// damage
+			canvas.State.ColorTint = DamageTextColor;
 			canvas.State.SetMaterial (UiMat);
-			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 4, 0, originalTextureRect.W / 4, originalTextureRect.H);
+			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W * 4 / 5, 0, originalTextureRect.W / 5, originalTextureRect.H);
 			canvas.FillRect (15, 59, 5, 5);
-			var defenseText = $"{stats.Defense:D2}";
+			var damageText = $"{stats.Damage:D1}";
+			canvas.DrawText (damageText, 21, 59);
+
+			// defense
 			canvas.State.ColorTint = DefenseTextColor;
-			canvas.DrawText (defenseText, 21, 59);
+			canvas.State.SetMaterial (UiMat);
+			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 5, 0, originalTextureRect.W / 5, originalTextureRect.H);
+			canvas.FillRect (25, 59, 5, 5);
+			var defenseText = $"{stats.Defense:D2}";
+			canvas.DrawText (defenseText, 31, 59);
 
 			// armor
-			canvas.State.ColorTint = ColorRgba.White;
-			canvas.State.SetMaterial (UiMat);
-			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 4 * 2, 0, originalTextureRect.W / 4, originalTextureRect.H);
-			canvas.FillRect (29, 59, 5, 5);
-			var armorText = $"{stats.DamageReduction:D1}";
 			canvas.State.ColorTint = ArmorTextColor;
-			canvas.DrawText (armorText, 35, 59);
+			canvas.State.SetMaterial (UiMat);
+			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 5 * 2, 0, originalTextureRect.W / 5, originalTextureRect.H);
+			canvas.FillRect (39, 59, 5, 5);
+			var armorText = $"{stats.DamageReduction:D1}";
+			canvas.DrawText (armorText, 45, 59);
 
 			// maxHealth
-			canvas.State.ColorTint = ColorRgba.White;
-			canvas.State.SetMaterial (UiMat);
-			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 4 * 3, 0, originalTextureRect.W / 4, originalTextureRect.H);
-			canvas.FillRect (39, 59, 5, 5);
-			var maxHealthText = $"{stats.MaxHealth:D2}";
 			canvas.State.ColorTint = MaxHealthTextColor;
-			canvas.DrawText (maxHealthText, 45, 59);
+			canvas.State.SetMaterial (UiMat);
+			canvas.State.TextureCoordinateRect = new Rect (originalTextureRect.W / 5 * 3, 0, originalTextureRect.W / 5, originalTextureRect.H);
+			canvas.FillRect (49, 59, 5, 5);
+			var maxHealthText = $"{stats.MaxHealth:D2}";
+			canvas.DrawText (maxHealthText, 55, 59);
 		}
 
 
