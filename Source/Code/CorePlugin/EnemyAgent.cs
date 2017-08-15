@@ -13,6 +13,9 @@ namespace LowResRoguelike
 
 		public Decision MakeDecision ()
 		{
+			if (GameObj.Disposed) {
+				return Decision.NoMove;
+			}
 			Decision decision;
 			var pos = GameObj.GetComponent<DiscreteTransform> ().Position;
 			var playerObject = GameObj.ParentScene.FindGameObject<PlayerMovement> ();
@@ -53,6 +56,11 @@ namespace LowResRoguelike
 
 		private bool IsPlayerVisible (out int dx, out int dy)
 		{
+			if (GameObj.Disposed) {
+				dx = 0;
+				dy = 0;
+				return false;
+			}
 			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
 			var currentPos = GameObj.GetComponent<DiscreteTransform> ().Position;
 			dx = playerPos.X - currentPos.X;
@@ -68,7 +76,13 @@ namespace LowResRoguelike
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
 				TurnActionManager.PlayerMoved += PlayerMovedCallback;
+				GameObj.GetComponent<CombatStats> ().Death += OnDeath;
 			}
+		}
+
+		private void OnDeath ()
+		{
+			GameObj.Dispose ();
 		}
 
 		private void PlayerMovedCallback ()

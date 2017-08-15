@@ -6,6 +6,8 @@ namespace LowResRoguelike
 {
 	public class CombatStats : Component, ICmpInitializable
 	{
+		public event Action Death;
+
 		public int Attack { get; set; }
 		public int Defense { get; set; }
 		public int Damage { get; set; }
@@ -34,18 +36,21 @@ namespace LowResRoguelike
 		private void ChangeHealth (int amount)
 		{
 			currentHealth += amount;
+			currentHealth = Math.Max (0, currentHealth);
+			if (currentHealth == 0) {
+				Death?.Invoke ();
+			}
 		}
 
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
-			const int CritMargin = 5;
+			const int critMargin = 5;
 
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
 			var result = AttackResult.Defended;
-			var isCrit = false;
-			int damage = 0;
+			var damage = 0;
 			if (attackScore > defender.Defense) {
-				isCrit = attackScore - defender.Defense > CritMargin;
+				var isCrit = attackScore - defender.Defense > critMargin;
 				result = AttackResult.Hit;
 
 				const int DiceSides = 6;
