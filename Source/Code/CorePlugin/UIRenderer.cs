@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Duality;
 using Duality.Drawing;
 using Duality.Resources;

@@ -32,6 +32,7 @@ namespace LowResRoguelike
 				var enemy = blocker?.GetComponent<CombatStats> ();
 				if (enemy != null) {
 					GameObj.GetComponent<CombatStats> ().FightWith (enemy);
+					GameObj.GetComponent<DiscreteTransform> ().AttackCurve (dir);
 					return Decision.Fight;
 				}
 				return Decision.NotDecided;

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Duality;
 using Duality.Components;
@@ -6,9 +7,14 @@ using Duality.Resources;
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(Transform))]
-	public partial class DiscreteTransform : Component, ICmpInitializable
+	public class DiscreteTransform : Component, ICmpInitializable, ICmpUpdatable
 	{
 		public const float Grid = 4.0f;
+		private const float AttackTime = 0.3f;
+
+		[DontSerialize] private bool isAttacking;
+		[DontSerialize] private float attackStartTime;
+		[DontSerialize] private Point2 attackDir;
 
 		public Point2 Position
 		{
@@ -34,11 +40,37 @@ namespace LowResRoguelike
 		public void MoveTo (Point2 pos)
 		{
 			Position = pos;
+			isAttacking = false;
 		}
 
 		public void MoveBy (Point2 delta)
 		{
 			Position += delta;
+			isAttacking = false;
+		}
+
+		public void OnUpdate ()
+		{
+			if (isAttacking) {
+				var currentTime = (float)Time.GameTimer.TotalSeconds;
+				var t = (currentTime - attackStartTime) / AttackTime;
+				if (t >= 1f) {
+					isAttacking = false;
+					UpdatePosition ();
+					return;
+				}
+				var dirVect = new Vector2 (attackDir.X, attackDir.Y).Normalized;
+				var originalPos = new Vector2 (position.X * Grid, position.Y * Grid);
+
+				GameObj.Transform.MoveToAbs (originalPos + dirVect * MathF.Sin (t * MathF.Pi) * Grid * 0.5f);
+			}
+		}
+
+		public void AttackCurve (Point2 dir)
+		{
+			isAttacking = true;
+			attackDir = dir;
+			attackStartTime = (float)Time.GameTimer.TotalSeconds;
 		}
 
 		private void UpdatePosition ()

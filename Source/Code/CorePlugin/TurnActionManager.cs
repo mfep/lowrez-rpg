@@ -46,7 +46,9 @@ namespace LowResRoguelike
 				var dirVector = decision.ToDirection ();
 
 				var moveComp = objToMove as Component;
-				moveComp.GameObj.GetComponent<DiscreteTransform> ().MoveBy (dirVector);
+				if (dirVector != Point2.Zero) {
+					moveComp.GameObj.GetComponent<DiscreteTransform> ().MoveBy (dirVector);
+				}
 				if (decision != Decision.NotDecided) {
 					notMovedSet.Remove (objToMove);
 					if (decision == Decision.Fight) {

@@ -436,7 +436,8 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.TurnActionManager" id="618444706">
-            <_x003C_FightWaitTime_x003E_k__BackingField dataType="Float">1</_x003C_FightWaitTime_x003E_k__BackingField>
+            <_x003C_FightWaitTime_x003E_k__BackingField dataType="Float">0.7</_x003C_FightWaitTime_x003E_k__BackingField>
+            <_x003C_IsInCombat_x003E_k__BackingField dataType="Bool">false</_x003C_IsInCombat_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
