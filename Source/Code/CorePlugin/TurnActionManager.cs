@@ -7,13 +7,20 @@ namespace LowResRoguelike
 {
 	public class TurnActionManager : Component, ICmpUpdatable
 	{
+		public float FightWaitTime { get; set; }
+		public bool IsInCombat { get; private set; }
+
 		public static event Action NewTurn;
-		public static event Action PlayerMoved; 
+		public static event Action PlayerMoved;
 		[DontSerialize] private HashSet<ICmpTurnAction> notMovedSet = new HashSet<ICmpTurnAction> ();
+		[DontSerialize] private TimeSpan nextMovementQuery = TimeSpan.Zero;
 
 		public void OnUpdate ()
 		{
-			DoMovement ();
+			if (Time.GameTimer > nextMovementQuery) {
+				IsInCombat = false;
+				DoMovement ();
+			}
 		}
 
 		private void DoMovement ()
@@ -35,12 +42,18 @@ namespace LowResRoguelike
 				if (decision == Decision.NotDecided) {
 					break;
 				}
+	
 				var dirVector = decision.ToDirection ();
 
 				var moveComp = objToMove as Component;
 				moveComp.GameObj.GetComponent<DiscreteTransform> ().MoveBy (dirVector);
 				if (decision != Decision.NotDecided) {
 					notMovedSet.Remove (objToMove);
+					if (decision == Decision.Fight) {
+						IsInCombat = true;
+						nextMovementQuery = Time.GameTimer + TimeSpan.FromSeconds (FightWaitTime);
+						break;
+					}
 				}
 				if (moveComp.GameObj.GetComponent<PlayerMovement> () != null) {
 					PlayerMoved?.Invoke ();

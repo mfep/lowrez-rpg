@@ -8,8 +8,6 @@ namespace LowResRoguelike
 {
 	public class UiRenderer : Component, ICmpRenderer
 	{
-		[DontSerialize] private readonly CanvasBuffer buffer = new CanvasBuffer ();
-		[DontSerialize] private CombatUiData combatUiData;
 		public ContentRef<Font> UiFont { get; set; }
 		public ContentRef<Material> UiMat { get; set; }
 		public ColorRgba PlayerHealthColor { get; set; }
@@ -23,6 +21,9 @@ namespace LowResRoguelike
 		public ColorRgba EnemyHealthColor { get; set; }
 		public ColorRgba EnemyHealthBackgroundColor { get; set; }
 
+		[DontSerialize] private readonly CanvasBuffer buffer = new CanvasBuffer ();
+		[DontSerialize] private CombatUiData combatUiData;
+
 		public bool IsVisible (IDrawDevice device)
 		{
 			var screenOverlayFlag = (device.VisibilityMask & VisibilityFlag.ScreenOverlay) != VisibilityFlag.None;
@@ -33,7 +34,7 @@ namespace LowResRoguelike
 		{
 			var canvas = new Canvas (device, buffer);
 			DrawStatsUi (canvas);
-			if (combatUiData != null) {
+			if (GameObj.ParentScene.FindComponent<TurnActionManager> ().IsInCombat) {
 				DrawCombatUi (canvas);
 			}
 		}
@@ -43,15 +44,6 @@ namespace LowResRoguelike
 		public void RequestCombatUi (CombatUiData uiData)
 		{
 			combatUiData = uiData;
-			FreezeGame ();
-		}
-
-		private async void FreezeGame ()
-		{
-			Time.Freeze ();
-			await Task.Delay (TimeSpan.FromSeconds (1));
-			Time.Resume ();
-			combatUiData = null;
 		}
 
 		private void DrawStatsUi (Canvas canvas)
@@ -164,8 +156,9 @@ namespace LowResRoguelike
 			canvas.DrawText (forwardText, x, 59);
 
 			// damage icon/text
-			canvas.State.ColorTint = DamageTextColor;
-			SetTextureRect (canvas, 4);
+			var result = combatUiData.AttackResult;
+			canvas.State.ColorTint = result == AttackResult.Defended ? DefenseTextColor : (result == AttackResult.ArmorZeroed ? ArmorTextColor : DamageTextColor);
+			SetTextureRect (canvas, result == AttackResult.Defended ? 1 : (result == AttackResult.ArmorZeroed ? 2 : 4));
 			x = playerAttacks ? 51 : 4;
 			canvas.FillRect (x, 51, 5, 5);
 			var damageText = $"{combatUiData.Damage:D1}";
@@ -178,25 +171,5 @@ namespace LowResRoguelike
 			var ratio = UiMat.Res.MainTexture.Res.UVRatio;
 			canvas.State.TextureCoordinateRect = new Rect (ratio.X / 5 * index, 0, ratio.X / 5, ratio.Y);
 		}
-	}
-
-	public class CombatUiData
-	{
-		public CombatUiData (bool playerAttacks, int attackScore, int defenseScore, int damage, int maxHealth, int remainingHealth)
-		{
-			PlayerAttacks = playerAttacks;
-			AttackScore = attackScore;
-			DefenseScore = defenseScore;
-			Damage = damage;
-			MaxHealth = maxHealth;
-			RemainingHealth = remainingHealth;
-		}
-
-		public bool PlayerAttacks { get; }
-		public int AttackScore { get; }
-		public int DefenseScore { get; }
-		public int Damage { get; }
-		public int MaxHealth { get; }
-		public int RemainingHealth { get; }
 	}
 }

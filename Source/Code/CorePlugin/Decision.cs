@@ -9,7 +9,8 @@ namespace LowResRoguelike
 		RightMove,
 		DownMove,
 		NoMove,
-		NotDecided
+		NotDecided,
+		Fight
 	}
 
 	public static class DecisionExtensions

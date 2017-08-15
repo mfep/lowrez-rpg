@@ -29,9 +29,6 @@ namespace LowResRoguelike
 		public void FightWith (CombatStats other)
 		{
 			CombatTurn (this, other);
-			if (other.currentHealth > 0) {
-				CombatTurn (other, this);
-			}
 		}
 
 		private void ChangeHealth (int amount)
@@ -42,10 +39,23 @@ namespace LowResRoguelike
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
-			var damage = attackScore > defender.Defense ? attacker.Damage : 0;
-			defender.ChangeHealth (Math.Max(0, -damage + defender.DamageReduction));
-			Log.Game.Write($"{attacker.GameObj.Name} (score: {attackScore}) attacks {defender.GameObj.Name} (score: {defender.Defense}) and damages {attacker.Damage}");
-			Scene.Current.FindComponent<UiRenderer>().RequestCombatUi(new CombatUiData(attacker.GameObj.GetComponent<PlayerMovement>() != null, attackScore, defender.Defense, damage, defender.MaxHealth, defender.currentHealth));
+			var result = AttackResult.Defended;
+			int damage = 0;
+			if (attackScore > defender.Defense) {
+				result = AttackResult.Hit;
+
+				const int DiceSides = 6;
+				for (int i = 0; i < attacker.Damage; i++) {
+					damage += MathF.Rnd.Next (1, DiceSides + 1);
+				}
+				damage = Math.Max (damage - defender.DamageReduction, 0);
+				if (damage == 0) {
+					result = AttackResult.ArmorZeroed;
+				}
+			}
+			defender.ChangeHealth (-damage);
+			Log.Game.Write($"{attacker.GameObj.Name} (score: {attackScore}) attacks {defender.GameObj.Name} (score: {defender.Defense}) and damages {damage}");
+			Scene.Current.FindComponent<UiRenderer>().RequestCombatUi(new CombatUiData(attacker.GameObj.GetComponent<PlayerMovement>() != null, attackScore, defender.Defense, damage, defender.MaxHealth, defender.currentHealth, result));
 		}
 	}
 }

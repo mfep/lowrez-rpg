@@ -21,7 +21,7 @@ namespace LowResRoguelike
 			if (IsPlayerVisible (out int dx, out int dy)) {
 				if (pos.Manhattan (playerPos) == 1) {
 					GameObj.GetComponent<CombatStats> ().FightWith (playerObject.GetComponent<CombatStats> ());
-					return Decision.NoMove;
+					return Decision.Fight;
 				}
 				if (dx != 0 && dy != 0) {
 					if (MathF.Rnd.NextBool ()) {

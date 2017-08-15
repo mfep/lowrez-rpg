@@ -32,7 +32,7 @@ namespace LowResRoguelike
 				var enemy = blocker?.GetComponent<CombatStats> ();
 				if (enemy != null) {
 					GameObj.GetComponent<CombatStats> ().FightWith (enemy);
-					return Decision.NoMove;
+					return Decision.Fight;
 				}
 				return Decision.NotDecided;
 			}
