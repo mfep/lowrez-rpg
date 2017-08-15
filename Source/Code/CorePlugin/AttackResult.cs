@@ -4,6 +4,7 @@ namespace LowResRoguelike
 	{
 		Defended,
 		Hit,
+		CriticalHit,
 		ArmorZeroed
 	}
 }

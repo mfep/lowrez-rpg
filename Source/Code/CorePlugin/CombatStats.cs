@@ -38,15 +38,23 @@ namespace LowResRoguelike
 
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
+			const int CritMargin = 5;
+
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
 			var result = AttackResult.Defended;
+			var isCrit = false;
 			int damage = 0;
 			if (attackScore > defender.Defense) {
+				isCrit = attackScore - defender.Defense > CritMargin;
 				result = AttackResult.Hit;
 
 				const int DiceSides = 6;
 				for (int i = 0; i < attacker.Damage; i++) {
 					damage += MathF.Rnd.Next (1, DiceSides + 1);
+				}
+				if (isCrit) {
+					damage *= 2;
+					result = AttackResult.CriticalHit;
 				}
 				damage = Math.Max (damage - defender.DamageReduction, 0);
 				if (damage == 0) {

@@ -64,6 +64,7 @@ namespace LowResRoguelike
 
 				GameObj.Transform.MoveToAbs (originalPos + dirVect * MathF.Sin (t * MathF.Pi) * Grid * 0.5f);
 			}
+			GameObj.Transform.Pos = new Vector3(GameObj.Transform.Pos.X, GameObj.Transform.Pos.Y, isAttacking ? -1f : 0f);
 		}
 
 		public void AttackCurve (Point2 dir)
