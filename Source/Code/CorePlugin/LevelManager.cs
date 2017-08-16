@@ -6,7 +6,6 @@ using LowResRoguelike.ItemSystem;
 
 namespace LowResRoguelike
 {
-	[RequiredComponent(typeof(MapGenerator))]
 	public class LevelManager : Component, ICmpInitializable
 	{
 		public class PrefabCount
@@ -24,6 +23,7 @@ namespace LowResRoguelike
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
+				LoadGameScene ();
 				StartLevel ();
 			}
 		}
@@ -37,16 +37,23 @@ namespace LowResRoguelike
 			return ItemGenerator.Generate (MinMaterialLevel, MaxMaterialLevel);
 		}
 
+		private void LoadGameScene ()
+		{
+			var gameScene = ContentProvider.RequestContent<Scene> (@"DATA\GameScene.Scene.res");
+			Scene.Current.Consume (gameScene);
+		}
+
 		private void StartLevel ()
 		{
-			var generator = GameObj.GetComponent<MapGenerator> ();
+			var generator = GameObj.ParentScene.FindComponent<MapGenerator> ();
 			generator.GenerateMap (MapWidth, MapHeight);
 
-			var emptyTiles = GameObj.ParentScene.FindComponent<MapGenerator> ().GeneratedMap.TilesOfType (TileType.Empty).ToList ();
+			var emptyTiles = generator.GeneratedMap.TilesOfType (TileType.Empty).ToList ();
 
 			var playerStartPos = generator.GeneratedMap.TilesOfType (TileType.Empty).First ();
 			emptyTiles.Remove (playerStartPos);
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (playerStartPos);
+			GameObj.ParentScene.FindComponent<MapRenderer> ().UpdateMapVisibility ();
 
 			InstantiatePrefabs (emptyTiles);
 		}

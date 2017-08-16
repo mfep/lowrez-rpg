@@ -72,16 +72,11 @@ namespace LowResRoguelike
 			}
 		}
 
-		private void PlayerMovedCallback ()
-		{
-			UpdateMapVisibility ();
-		}
-
-		private void UpdateMapVisibility ()
+		public void UpdateMapVisibility ()
 		{
 			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
 			var map = GameObj.GetComponent<MapGenerator>().GeneratedMap;
-			map.MapForeach((x, y, type) =>
+			map?.MapForeach((x, y, type) =>
 			{
 				var p = new Point2(x, y);
 				if (map.IsVisible(playerPos, p))
@@ -95,6 +90,11 @@ namespace LowResRoguelike
 		public void OnShutdown (ShutdownContext context)
 		{
 			TurnActionManager.PlayerMoved -= PlayerMovedCallback;
+		}
+
+		private void PlayerMovedCallback ()
+		{
+			UpdateMapVisibility ();
 		}
 	}
 }

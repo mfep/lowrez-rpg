@@ -430,34 +430,6 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
-          <item dataType="Struct" type="LowResRoguelike.LevelManager" id="742727207">
-            <_x003C_MapHeight_x003E_k__BackingField dataType="Int">28</_x003C_MapHeight_x003E_k__BackingField>
-            <_x003C_MapWidth_x003E_k__BackingField dataType="Int">28</_x003C_MapWidth_x003E_k__BackingField>
-            <_x003C_MaxMaterialLevel_x003E_k__BackingField dataType="Int">6</_x003C_MaxMaterialLevel_x003E_k__BackingField>
-            <_x003C_MinMaterialLevel_x003E_k__BackingField dataType="Int">1</_x003C_MinMaterialLevel_x003E_k__BackingField>
-            <_x003C_PrefabCounts_x003E_k__BackingField dataType="Array" type="LowResRoguelike.LevelManager+PrefabCount[]" id="790275367">
-              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="1236567502">
-                <_x003C_Count_x003E_k__BackingField dataType="Int">5</_x003C_Count_x003E_k__BackingField>
-                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-                  <contentPath dataType="String">Data\Prefabs\EnemyAgent.Prefab.res</contentPath>
-                </_x003C_Prefab_x003E_k__BackingField>
-              </item>
-              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="1131670858">
-                <_x003C_Count_x003E_k__BackingField dataType="Int">5</_x003C_Count_x003E_k__BackingField>
-                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-                  <contentPath dataType="String">Data\Prefabs\HealthPotionPickup.Prefab.res</contentPath>
-                </_x003C_Prefab_x003E_k__BackingField>
-              </item>
-              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="3172095358">
-                <_x003C_Count_x003E_k__BackingField dataType="Int">3</_x003C_Count_x003E_k__BackingField>
-                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-                  <contentPath dataType="String">Data\Prefabs\ItemPickup.Prefab.res</contentPath>
-                </_x003C_Prefab_x003E_k__BackingField>
-              </item>
-            </_x003C_PrefabCounts_x003E_k__BackingField>
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">3838638929</gameobj>
-          </item>
           <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
             <_x003C_GroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
@@ -548,7 +520,7 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">5</_size>
+        <_size dataType="Int">4</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1756076728" surrogate="true">
         <header />
@@ -557,14 +529,12 @@
             <item dataType="Type" id="4073166286" value="LowResRoguelike.TurnActionManager" />
             <item dataType="Type" id="1531620682" value="LowResRoguelike.MapGenerator" />
             <item dataType="Type" id="2379130238" value="LowResRoguelike.MapRenderer" />
-            <item dataType="Type" id="4237188954" value="LowResRoguelike.LevelManager" />
-            <item dataType="Type" id="3059329198" value="LowResRoguelike.UiRenderer" />
+            <item dataType="Type" id="4237188954" value="LowResRoguelike.UiRenderer" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="4119922176">
             <item dataType="ObjectRef">618444706</item>
             <item dataType="ObjectRef">568466665</item>
             <item dataType="ObjectRef">1717016093</item>
-            <item dataType="ObjectRef">742727207</item>
             <item dataType="ObjectRef">3713685027</item>
           </values>
         </body>
