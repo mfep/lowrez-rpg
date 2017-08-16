@@ -67,6 +67,7 @@
     <Compile Include="EnemyAgent.cs" />
     <Compile Include="CombatStats.cs" />
     <Compile Include="ICmpTurnAction.cs" />
+    <Compile Include="ItemSystem\PlayerStats.cs" />
     <Compile Include="LevelManager.cs" />
     <Compile Include="MapExtensions.cs" />
     <Compile Include="MapGenerator.cs" />

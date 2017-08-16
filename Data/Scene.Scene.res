@@ -53,12 +53,13 @@
             <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
           </item>
           <item dataType="Struct" type="LowResRoguelike.CombatStats" id="3258715132">
-            <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
-            <_x003C_Damage_x003E_k__BackingField dataType="Int">1</_x003C_Damage_x003E_k__BackingField>
-            <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">2</_x003C_DamageReduction_x003E_k__BackingField>
-            <_x003C_Defense_x003E_k__BackingField dataType="Int">7</_x003C_Defense_x003E_k__BackingField>
-            <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
+            <_x003C_Attack_x003E_k__BackingField dataType="Int">0</_x003C_Attack_x003E_k__BackingField>
+            <_x003C_Damage_x003E_k__BackingField dataType="Int">0</_x003C_Damage_x003E_k__BackingField>
+            <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_DamageReduction_x003E_k__BackingField>
+            <_x003C_Defense_x003E_k__BackingField dataType="Int">0</_x003C_Defense_x003E_k__BackingField>
+            <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">0</_x003C_MaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
+            <Death />
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
@@ -70,8 +71,17 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
+          <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
+            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">0</_x003C_BaseAttack_x003E_k__BackingField>
+            <_x003C_BaseDamage_x003E_k__BackingField dataType="Int">0</_x003C_BaseDamage_x003E_k__BackingField>
+            <_x003C_BaseDamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_BaseDamageReduction_x003E_k__BackingField>
+            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">0</_x003C_BaseDefense_x003E_k__BackingField>
+            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">0</_x003C_BaseMaxHealth_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1569834522</gameobj>
+          </item>
         </_items>
-        <_size dataType="Int">5</_size>
+        <_size dataType="Int">6</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="863291030" surrogate="true">
         <header />
@@ -82,6 +92,7 @@
             <item dataType="Type" id="989606316" value="LowResRoguelike.PlayerMovement" />
             <item dataType="Type" id="231734802" value="LowResRoguelike.DiscreteTransform" />
             <item dataType="Type" id="275985288" value="LowResRoguelike.CombatStats" />
+            <item dataType="Type" id="4018006886" value="LowResRoguelike.ItemSystem.PlayerStats" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="329231690">
             <item dataType="ObjectRef">3930149454</item>
@@ -89,6 +100,7 @@
             <item dataType="ObjectRef">2210990147</item>
             <item dataType="ObjectRef">2847693510</item>
             <item dataType="ObjectRef">3258715132</item>
+            <item dataType="ObjectRef">2158168919</item>
           </values>
         </body>
       </compMap>

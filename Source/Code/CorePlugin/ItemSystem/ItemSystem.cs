@@ -1,4 +1,5 @@
 ﻿using System;
+using Duality;
 
 namespace LowResRoguelike.ItemSystem
 {
@@ -39,6 +40,9 @@ namespace LowResRoguelike.ItemSystem
 		{
 			ItemSlot = itemSlot;
 			Material = material;
+			if (itemSlot == ItemSlot.Weapon) {
+				throw new Exception ();
+			}
 		}
 
 		public ItemInstance (ItemSlot itemSlot, Material material, WeaponType weaponType)
@@ -54,8 +58,17 @@ namespace LowResRoguelike.ItemSystem
 
 		public int AttackModifier => CalculateAttackModifier ();
 		public int DefenseModifier => CalculateDefenseModifier ();
+		public int DamageModifier => CalculateDamageModifier ();
 		public int DamageReductionModifier => CalculateDamageReductionModifier ();
 		public int MaxHealthModifier => CalculateMaxHealthModifier ();
+
+		public override string ToString ()
+		{
+			if (ItemSlot != ItemSlot.Weapon) {
+				return $"{Material} {ItemSlot}";
+			}
+			return $"{Material} {WeaponType}";
+		}
 
 		private int CalculateAttackModifier ()
 		{
@@ -120,6 +133,34 @@ namespace LowResRoguelike.ItemSystem
 			return defenseBase * (int)Material;
 		}
 
+		private int CalculateDamageModifier ()
+		{
+			if (ItemSlot != ItemSlot.Weapon) {
+				return 0;
+			}
+			int damageBase;
+			switch (WeaponType) {
+				case WeaponType.ShortSword:
+					damageBase = 2;
+					break;
+				case WeaponType.LongSword:
+					damageBase = 2;
+					break;
+				case WeaponType.Axe:
+					damageBase = 3;
+					break;
+				case WeaponType.Mace:
+					damageBase = 4;
+					break;
+				case WeaponType.BattleStaff:
+					damageBase = 1;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException ();
+			}
+			return damageBase * (int)Material;
+		}
+
 		private int CalculateDamageReductionModifier ()
 		{
 			if (ItemSlot != ItemSlot.Armor) {
@@ -134,6 +175,20 @@ namespace LowResRoguelike.ItemSystem
 				return 0;
 			}
 			return  2 * (int)Material;
+		}
+	}
+
+	public static class ItemGenerator
+	{
+		public static ItemInstance Generate (int lowestMaterial, int highestMaterial)
+		{
+			var slot = (ItemSlot)MathF.Rnd.Next (0, (int)ItemSlot.Last + 1);
+			WeaponType weaponType = 0;
+			if (slot == ItemSlot.Weapon) {
+				weaponType = (WeaponType)MathF.Rnd.Next (0, (int)WeaponType.Last + 1);
+			}
+			var material = (Material)MathF.Rnd.Next (lowestMaterial, highestMaterial + 1);
+			return new ItemInstance(slot, material, weaponType);
 		}
 	}
 }
