@@ -106,7 +106,7 @@ namespace LowResRoguelike.ItemSystem
 
 		protected override void PickupAction (GameObject playerObject)
 		{
-			LevelManager.NextLevel ();
+			GameObj.ParentScene.FindComponent<LevelManager> ().NextLevel ();
 		}
 	}
 }

@@ -1,0 +1,64 @@
+---
+enemies:
+    # blob
+    - sprite:           5
+      attack:           0
+      defense:          5
+      damageReduction:  0
+      maxHealth:        5
+      damage:
+          diceCount:    1
+          additional:   0
+
+    # skeleton
+    - sprite:           2
+      attack:           5
+      defense:          8
+      damageReduction:  0
+      maxHealth:        8
+      damage:
+          diceCount:    1
+          additional:   1
+
+    # big skeleton
+    - sprite:           6
+      attack:           10
+      defense:          15
+      damageReduction:  1
+      maxHealth:        15
+      damage:
+          diceCount:    2
+          additional:   2
+
+levels:
+    - width:            28
+      height:           28
+      minMaterial:      1
+      maxMaterial:      3
+      potionCount:      3
+      itemCount:        2
+      enemies:
+          - index:      0
+            count:      6
+
+    - width:            28
+      height:           28
+      minMaterial:      1
+      maxMaterial:      3
+      potionCount:      3
+      itemCount:        2
+      enemies:
+          - index:      0
+            count:      4
+          - index:      1
+            count:      3
+
+    - width:            28
+      height:           28
+      minMaterial:      2
+      maxMaterial:      3
+      potionCount:      3
+      itemCount:        2
+      enemies:
+          - index:      2
+            count:      3

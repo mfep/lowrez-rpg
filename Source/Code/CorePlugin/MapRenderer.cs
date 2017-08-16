@@ -14,6 +14,11 @@ namespace LowResRoguelike
 		[DontSerialize] private readonly CanvasBuffer canvasBuffer = new CanvasBuffer ();
 		[DontSerialize] private readonly HashSet<Point2> visitedPoints = new HashSet<Point2> ();
 
+		public void Clear ()
+		{
+			visitedPoints.Clear ();
+		}
+
 		public bool IsVisible (IDrawDevice device)
 		{
 			var group0Flag = (device.VisibilityMask & VisibilityFlag.Group0) != VisibilityFlag.None;

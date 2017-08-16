@@ -47,7 +47,7 @@ namespace LowResRoguelike
 
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
-			const int critMargin = 5;
+			const int critMargin = 10;
 
 			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
 			var result = AttackResult.Defended;

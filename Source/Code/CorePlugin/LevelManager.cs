@@ -2,31 +2,27 @@ using System.Collections.Generic;
 using System.Linq;
 using Duality;
 using Duality.Resources;
+using LowResRoguelike.GamePrefs;
 using LowResRoguelike.ItemSystem;
 
 namespace LowResRoguelike
 {
 	public class LevelManager : Component, ICmpInitializable
 	{
-		public class PrefabCount
-		{
-			public ContentRef<Prefab> Prefab { get; set; }
-			public int Count { get; set; }
-		}
+		public int LevelIndex { get;set; }
 
-		public int MapWidth { get; set; }
-		public int MapHeight { get; set; }
-		public PrefabCount[] PrefabCounts { get; set; }
-		public int MinMaterialLevel { get; set; }
-		public int MaxMaterialLevel { get; set; }
+		public ContentRef<Prefab> EnemyPrefab { get; set; }
+		public ContentRef<Prefab> ItemPrefab { get; set; }
+		public ContentRef<Prefab> PotionPrefab { get;set; }
+		public ContentRef<Prefab> ExitPrefab { get; set; }
 
-		[DontSerialize] private static int levelIndex = 0;
+		[DontSerialize] private LevelPref prefs;
 
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				LoadGameScene ();
-				StartLevel ();
+				PrefLoader.LoadYamlDocument ();
+				NextLevel ();
 			}
 		}
 
@@ -36,29 +32,26 @@ namespace LowResRoguelike
 
 		public ItemInstance GenerateItem ()
 		{
-			return ItemGenerator.Generate (MinMaterialLevel, MaxMaterialLevel);
+			return ItemGenerator.Generate (prefs.MinMaterial, prefs.MaxMaterial);
 		}
 
-		public static void NextLevel ()
+		public void NextLevel ()
 		{
-			var scenePath = $"DATA//Scenes//Level{++levelIndex}.Scene.res";
-			var scene = ContentProvider.RequestContent<Scene> (scenePath);
-			if (scene.Res == null) {
+			if (LevelIndex >= PrefLoader.Levels.Count) {
 				return;
 			}
-			Scene.SwitchTo (scene);
-		}
-
-		private void LoadGameScene ()
-		{
-			var gameScene = ContentProvider.RequestContent<Scene> (@"DATA\Scenes\GameScene.Scene.res");
-			Scene.Current.Consume (gameScene);
+			foreach (var gameObject in GameObj.ChildrenDeep) {
+				gameObject.DisposeLater ();
+			}
+			prefs = PrefLoader.Levels[LevelIndex++];
+			StartLevel ();
 		}
 
 		private void StartLevel ()
 		{
+			GameObj.ParentScene.FindComponent<MapRenderer> ().Clear ();
 			var generator = GameObj.ParentScene.FindComponent<MapGenerator> ();
-			generator.GenerateMap (MapWidth, MapHeight);
+			generator.GenerateMap (prefs.Width, prefs.Height);
 
 			var emptyTiles = generator.GeneratedMap.TilesOfType (TileType.Empty).ToList ();
 
@@ -72,13 +65,20 @@ namespace LowResRoguelike
 
 		private void InstantiatePrefabs (List<Point2> emptyTiles)
 		{
-			foreach (var prefabCount in PrefabCounts) {
-				InstantiateGameObjects (emptyTiles, prefabCount.Prefab, prefabCount.Count);
+			InstantiateGameObjects (emptyTiles, PotionPrefab, prefs.PotionCount);
+			InstantiateGameObjects (emptyTiles, ItemPrefab, prefs.ItemCount);
+			InstantiateGameObjects (emptyTiles, ExitPrefab, 1);
+
+			foreach (var enemyRef in prefs.Enemies) {
+				foreach (var enemyObject in InstantiateGameObjects(emptyTiles, EnemyPrefab, enemyRef.Count)) {
+					PrefLoader.Enemies[enemyRef.Index].Apply (enemyObject);
+				}
 			}
 		}
 
-		private void InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
+		List<GameObject> InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
 		{
+			List<GameObject> objects = new List <GameObject> (count);
 			for (var i = 0; i < count; i++) {
 				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
 				var pos = emptyTiles[tileIndex];
@@ -86,7 +86,9 @@ namespace LowResRoguelike
 				var gameObject = prefab.Res.Instantiate ();
 				gameObject.Parent = GameObj;
 				gameObject.GetComponent<DiscreteTransform> ().Position = pos;
+				objects.Add (gameObject);
 			}
+			return objects;
 		}
 	}
 }

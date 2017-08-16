@@ -60,6 +60,7 @@
         </item>
         <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2647837587">
           <_x003C_Blocker_x003E_k__BackingField dataType="Bool">false</_x003C_Blocker_x003E_k__BackingField>
+          <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">true</_x003C_RemainsSeen_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1369978599</gameobj>
           <position dataType="Struct" type="Duality.Point2" />
@@ -71,6 +72,7 @@
             <G dataType="Byte">255</G>
             <R dataType="Byte">255</R>
           </_x003C_DisplayColor_x003E_k__BackingField>
+          <_x003C_DisplayText2_x003E_k__BackingField />
           <_x003C_Item_x003E_k__BackingField />
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1369978599</gameobj>

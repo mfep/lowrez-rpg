@@ -11,6 +11,7 @@ namespace LowResRoguelike
 	public class DiscreteTransform : Component, ICmpInitializable, ICmpUpdatable
 	{
 		public bool Blocker { get; set; }
+		public bool RemainsSeen { get; set; }
 
 		public const float Grid = 4.0f;
 		private const float AttackTime = 0.3f;
@@ -153,7 +154,11 @@ namespace LowResRoguelike
 
 		private void ControlVisibility ()
 		{
-			GameObj.GetComponent<SpriteRenderer> ().Active = IsPlayerVisible (256, out int _, out int _);
+			var spriteRenderer = GameObj.GetComponent<SpriteRenderer> ();
+			if (RemainsSeen && spriteRenderer.Active) {
+				return;
+			}
+			spriteRenderer.Active = IsPlayerVisible (256, out int _, out int _);
 		}
 	}
 }

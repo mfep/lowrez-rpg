@@ -29,8 +29,8 @@ namespace LowResRoguelike.ItemSystem
 		LongSword, // attack 0, defense +, damage 0
 		Axe, // attack +, defense -, damage +
 		Mace, // attack 0, defense -, damage ++
-		BattleStaff, // attack 0, defense ++, damage -
-		Last = BattleStaff
+		Staff, // attack 0, defense ++, damage -
+		Last = Staff
 	}
 
 	public class ItemInstance
@@ -88,12 +88,12 @@ namespace LowResRoguelike.ItemSystem
 					weaponAttackBase = 2;
 					break;
 				case WeaponType.Axe:
-					weaponAttackBase = 2;
+					weaponAttackBase = 3;
 					break;
 				case WeaponType.Mace:
-					weaponAttackBase = 1;
+					weaponAttackBase = 2;
 					break;
-				case WeaponType.BattleStaff:
+				case WeaponType.Staff:
 					weaponAttackBase = 1;
 					break;
 				default:
@@ -109,7 +109,7 @@ namespace LowResRoguelike.ItemSystem
 				case ItemSlot.Weapon:
 					switch (WeaponType) {
 						case WeaponType.ShortSword:
-							defenseBase = 0;
+							defenseBase = 1;
 							break;
 						case WeaponType.LongSword:
 							defenseBase = 2;
@@ -120,7 +120,7 @@ namespace LowResRoguelike.ItemSystem
 						case WeaponType.Mace:
 							defenseBase = 0;
 							break;
-						case WeaponType.BattleStaff:
+						case WeaponType.Staff:
 							defenseBase = 3;
 							break;
 						default:
@@ -145,24 +145,24 @@ namespace LowResRoguelike.ItemSystem
 			int numDices;
 			switch (WeaponType) {
 				case WeaponType.ShortSword:
-					numDices = 2;
+					numDices = 1;
 					break;
 				case WeaponType.LongSword:
-					numDices = 2;
+					numDices = 1;
 					break;
 				case WeaponType.Axe:
-					numDices = 3;
+					numDices = 2;
 					break;
 				case WeaponType.Mace:
-					numDices = 4;
+					numDices = 3;
 					break;
-				case WeaponType.BattleStaff:
+				case WeaponType.Staff:
 					numDices = 1;
 					break;
 				default:
 					throw new ArgumentOutOfRangeException ();
 			}
-			return new WeaponDamage(numDices, (int)Material);
+			return new WeaponDamage(numDices, (int)Material - 1);
 		}
 
 		private int CalculateDamageReductionModifier ()
@@ -178,7 +178,7 @@ namespace LowResRoguelike.ItemSystem
 			if (ItemSlot != ItemSlot.Helmet) {
 				return 0;
 			}
-			return  2 * (int)Material;
+			return  4 * (int)Material;
 		}
 	}
 }

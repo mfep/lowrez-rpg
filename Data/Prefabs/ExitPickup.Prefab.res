@@ -27,7 +27,7 @@
           <velAbs dataType="Struct" type="Duality.Vector3" />
         </item>
         <item dataType="Struct" type="Duality.Components.Renderers.AnimSpriteRenderer" id="1424597594">
-          <active dataType="Bool">true</active>
+          <active dataType="Bool">false</active>
           <animDuration dataType="Float">5</animDuration>
           <animFirstFrame dataType="Int">4</animFirstFrame>
           <animFrameCount dataType="Int">1</animFrameCount>
@@ -60,6 +60,7 @@
         </item>
         <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2995021201">
           <_x003C_Blocker_x003E_k__BackingField dataType="Bool">false</_x003C_Blocker_x003E_k__BackingField>
+          <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">true</_x003C_RemainsSeen_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1717162213</gameobj>
           <position dataType="Struct" type="Duality.Point2" />

@@ -61,14 +61,15 @@
           </item>
           <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
             <_x003C_Blocker_x003E_k__BackingField dataType="Bool">true</_x003C_Blocker_x003E_k__BackingField>
+            <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">false</_x003C_RemainsSeen_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
             <position dataType="Struct" type="Duality.Point2" />
           </item>
           <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
-            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">5</_x003C_BaseAttack_x003E_k__BackingField>
-            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">5</_x003C_BaseDefense_x003E_k__BackingField>
-            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_BaseMaxHealth_x003E_k__BackingField>
+            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">0</_x003C_BaseAttack_x003E_k__BackingField>
+            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">7</_x003C_BaseDefense_x003E_k__BackingField>
+            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">20</_x003C_BaseMaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
@@ -548,6 +549,54 @@
       </identifier>
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">SCRIPTS</name>
+      <parent />
+      <prefabLink />
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="3284567775">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="61049373">
+        <_items dataType="Array" type="Duality.Component[]" id="3039640806" length="4">
+          <item dataType="Struct" type="LowResRoguelike.LevelManager" id="188656053">
+            <_x003C_EnemyPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\EnemyAgent.Prefab.res</contentPath>
+            </_x003C_EnemyPrefab_x003E_k__BackingField>
+            <_x003C_ExitPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\ExitPickup.Prefab.res</contentPath>
+            </_x003C_ExitPrefab_x003E_k__BackingField>
+            <_x003C_ItemPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\ItemPickup.Prefab.res</contentPath>
+            </_x003C_ItemPrefab_x003E_k__BackingField>
+            <_x003C_LevelIndex_x003E_k__BackingField dataType="Int">0</_x003C_LevelIndex_x003E_k__BackingField>
+            <_x003C_PotionPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\HealthPotionPickup.Prefab.res</contentPath>
+            </_x003C_PotionPrefab_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3284567775</gameobj>
+          </item>
+        </_items>
+        <_size dataType="Int">1</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1996724984" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="4195667319">
+            <item dataType="Type" id="3627820942" value="LowResRoguelike.LevelManager" />
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="1624164160">
+            <item dataType="ObjectRef">188656053</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform />
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="2871693269">482yTXQxgUuK178FRuJfvQ==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">LevelManager</name>
       <parent />
       <prefabLink />
     </item>

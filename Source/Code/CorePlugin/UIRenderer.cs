@@ -195,6 +195,9 @@ namespace LowResRoguelike
 			if (line2 != null) {
 				canvas.DrawText (line2, 32 - StringWidth(line2) / 2, 20);
 			}
+			if (pickupToShow.GameObj.Disposed) {
+				pickupToShow = null;
+			}
 		}
 
 		private int StringWidth (string str)

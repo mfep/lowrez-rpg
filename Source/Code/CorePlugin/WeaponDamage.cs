@@ -8,34 +8,34 @@ namespace LowResRoguelike
 		{
 		}
 
-		public WeaponDamage (int numDices, int additionalDamage)
+		public WeaponDamage (int diceCount, int additional)
 		{
-			NumDices = numDices;
-			AdditionalDamage = additionalDamage;
+			DiceCount = diceCount;
+			Additional = additional;
 		}
 
 		public const int DiceSides = 4;
-		public int NumDices { get; set; }
-		public int AdditionalDamage { get; set; }
+		public int DiceCount { get; set; }
+		public int Additional { get; set; }
 
 		public int Roll ()
 		{
 			var damage = 0;
-			for (var i = 0; i < NumDices; i++) {
+			for (var i = 0; i < DiceCount; i++) {
 				damage += MathF.Rnd.Next (1, DiceSides + 1);
 			}
-			damage += AdditionalDamage;
+			damage += Additional;
 			return damage;
 		}
 
 		public override string ToString ()
 		{
-			if (NumDices == 0) {
+			if (DiceCount == 0) {
 				return "0";
 			}
-			var str = $"{NumDices}d{DiceSides}";
-			if (AdditionalDamage != 0) {
-				str = $"{str}+{AdditionalDamage}";
+			var str = $"{DiceCount}d{DiceSides}";
+			if (Additional != 0) {
+				str = $"{str}+{Additional}";
 			}
 			return str;
 		}
