@@ -16,6 +16,7 @@ namespace LowResRoguelike
 		public ContentRef<Prefab> ItemPrefab { get; set; }
 		public ContentRef<Prefab> PotionPrefab { get;set; }
 		public ContentRef<Prefab> ExitPrefab { get; set; }
+		public ContentRef<Scene> GameOverScene { get; set; }
 
 		[DontSerialize] private LevelPref prefs;
 
@@ -24,11 +25,18 @@ namespace LowResRoguelike
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
 				PrefLoader.LoadYamlDocument ();
 				NextLevel ();
+				GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ().Death += OnPlayerDied;
 			}
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
+			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ().Death -= OnPlayerDied;
+		}
+
+		private void OnPlayerDied ()
+		{
+			Scene.SwitchTo (GameOverScene);
 		}
 
 		public ItemInstance GenerateItem ()
@@ -77,7 +85,7 @@ namespace LowResRoguelike
 			}
 		}
 
-		List<GameObject> InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
+		private List<GameObject> InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
 		{
 			List<GameObject> objects = new List <GameObject> (count);
 			for (var i = 0; i < count; i++) {

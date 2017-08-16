@@ -80,6 +80,7 @@
     <Compile Include="MapGenerator.cs" />
     <Compile Include="MapRenderer.cs" />
     <Compile Include="PlayerMovement.cs" />
+    <Compile Include="SceneLoader.cs" />
     <Compile Include="Test\RaytracingTest.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="TurnActionManager.cs" />
