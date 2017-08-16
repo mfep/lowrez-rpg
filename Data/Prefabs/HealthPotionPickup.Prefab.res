@@ -4,19 +4,19 @@
     <importerId />
     <sourceFileHint />
   </assetInfo>
-  <objTree dataType="Struct" type="Duality.GameObject" id="1339327032">
+  <objTree dataType="Struct" type="Duality.GameObject" id="2014011887">
     <active dataType="Bool">true</active>
     <children />
-    <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3903441583">
-      <_items dataType="Array" type="Duality.Component[]" id="3680914414">
-        <item dataType="Struct" type="Duality.Components.Transform" id="3699641964">
+    <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1233907092">
+      <_items dataType="Array" type="Duality.Component[]" id="3213435748">
+        <item dataType="Struct" type="Duality.Components.Transform" id="79359523">
           <active dataType="Bool">true</active>
           <angle dataType="Float">0</angle>
           <angleAbs dataType="Float">0</angleAbs>
           <angleVel dataType="Float">0</angleVel>
           <angleVelAbs dataType="Float">0</angleVelAbs>
           <deriveAngle dataType="Bool">true</deriveAngle>
-          <gameobj dataType="ObjectRef">1339327032</gameobj>
+          <gameobj dataType="ObjectRef">2014011887</gameobj>
           <ignoreParent dataType="Bool">false</ignoreParent>
           <parentTransform />
           <pos dataType="Struct" type="Duality.Vector3" />
@@ -26,17 +26,24 @@
           <vel dataType="Struct" type="Duality.Vector3" />
           <velAbs dataType="Struct" type="Duality.Vector3" />
         </item>
-        <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="2981493600">
+        <item dataType="Struct" type="Duality.Components.Renderers.AnimSpriteRenderer" id="1721447268">
           <active dataType="Bool">false</active>
+          <animDuration dataType="Float">5</animDuration>
+          <animFirstFrame dataType="Int">1</animFirstFrame>
+          <animFrameCount dataType="Int">1</animFrameCount>
+          <animLoopMode dataType="Enum" type="Duality.Components.Renderers.AnimSpriteRenderer+LoopMode" name="FixedSingle" value="4" />
+          <animPaused dataType="Bool">false</animPaused>
+          <animTime dataType="Float">0</animTime>
           <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
             <A dataType="Byte">255</A>
-            <B dataType="Byte">51</B>
-            <G dataType="Byte">119</G>
-            <R dataType="Byte">72</R>
+            <B dataType="Byte">255</B>
+            <G dataType="Byte">255</G>
+            <R dataType="Byte">255</R>
           </colorTint>
+          <customFrameSequence />
           <customMat />
           <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
-          <gameobj dataType="ObjectRef">1339327032</gameobj>
+          <gameobj dataType="ObjectRef">2014011887</gameobj>
           <offset dataType="Int">-1</offset>
           <pixelGrid dataType="Bool">false</pixelGrid>
           <rect dataType="Struct" type="Duality.Rect">
@@ -47,17 +54,17 @@
           </rect>
           <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
           <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-            <contentPath dataType="String">Default:Material:Checkerboard</contentPath>
+            <contentPath dataType="String">Data\Spritesheet\spritesheet.Material.res</contentPath>
           </sharedMat>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
-        <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2617186020">
+        <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="3291870875">
           <_x003C_Blocker_x003E_k__BackingField dataType="Bool">false</_x003C_Blocker_x003E_k__BackingField>
           <active dataType="Bool">true</active>
-          <gameobj dataType="ObjectRef">1339327032</gameobj>
+          <gameobj dataType="ObjectRef">2014011887</gameobj>
           <position dataType="Struct" type="Duality.Point2" />
         </item>
-        <item dataType="Struct" type="LowResRoguelike.ItemSystem.HealthPotionPickup" id="3265763240">
+        <item dataType="Struct" type="LowResRoguelike.ItemSystem.HealthPotionPickup" id="3940448095">
           <_x003C_DisplayColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
             <A dataType="Byte">255</A>
             <B dataType="Byte">77</B>
@@ -66,32 +73,32 @@
           </_x003C_DisplayColor_x003E_k__BackingField>
           <_x003C_HealthRestored_x003E_k__BackingField dataType="Int">5</_x003C_HealthRestored_x003E_k__BackingField>
           <active dataType="Bool">true</active>
-          <gameobj dataType="ObjectRef">1339327032</gameobj>
+          <gameobj dataType="ObjectRef">2014011887</gameobj>
         </item>
       </_items>
       <_size dataType="Int">4</_size>
     </compList>
-    <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2308463776" surrogate="true">
+    <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="2917503030" surrogate="true">
       <header />
       <body>
-        <keys dataType="Array" type="System.Object[]" id="1959353733">
-          <item dataType="Type" id="690254166" value="Duality.Components.Transform" />
-          <item dataType="Type" id="1385038042" value="LowResRoguelike.DiscreteTransform" />
-          <item dataType="Type" id="3615203702" value="LowResRoguelike.ItemSystem.HealthPotionPickup" />
-          <item dataType="Type" id="550551162" value="Duality.Components.Renderers.SpriteRenderer" />
+        <keys dataType="Array" type="System.Object[]" id="1413134398">
+          <item dataType="Type" id="1711801872" value="Duality.Components.Transform" />
+          <item dataType="Type" id="3147147502" value="LowResRoguelike.DiscreteTransform" />
+          <item dataType="Type" id="1839517932" value="LowResRoguelike.ItemSystem.HealthPotionPickup" />
+          <item dataType="Type" id="2776681490" value="Duality.Components.Renderers.AnimSpriteRenderer" />
         </keys>
-        <values dataType="Array" type="System.Object[]" id="1915230888">
-          <item dataType="ObjectRef">3699641964</item>
-          <item dataType="ObjectRef">2617186020</item>
-          <item dataType="ObjectRef">3265763240</item>
-          <item dataType="ObjectRef">2981493600</item>
+        <values dataType="Array" type="System.Object[]" id="3985409546">
+          <item dataType="ObjectRef">79359523</item>
+          <item dataType="ObjectRef">3291870875</item>
+          <item dataType="ObjectRef">3940448095</item>
+          <item dataType="ObjectRef">1721447268</item>
         </values>
       </body>
     </compMap>
-    <compTransform dataType="ObjectRef">3699641964</compTransform>
+    <compTransform dataType="ObjectRef">79359523</compTransform>
     <identifier dataType="Struct" type="System.Guid" surrogate="true">
       <header>
-        <data dataType="Array" type="System.Byte[]" id="3744970383">OM26DG7l6E+jzKbTpedt6A==</data>
+        <data dataType="Array" type="System.Byte[]" id="3881436494">8iaHmYyHY0eEEWYFPPaffg==</data>
       </header>
       <body />
     </identifier>

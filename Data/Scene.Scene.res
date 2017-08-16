@@ -27,14 +27,21 @@
             <vel dataType="Struct" type="Duality.Vector3" />
             <velAbs dataType="Struct" type="Duality.Vector3" />
           </item>
-          <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="3212001090">
+          <item dataType="Struct" type="Duality.Components.Renderers.AnimSpriteRenderer" id="1277269903">
             <active dataType="Bool">true</active>
+            <animDuration dataType="Float">5</animDuration>
+            <animFirstFrame dataType="Int">0</animFirstFrame>
+            <animFrameCount dataType="Int">1</animFrameCount>
+            <animLoopMode dataType="Enum" type="Duality.Components.Renderers.AnimSpriteRenderer+LoopMode" name="FixedSingle" value="4" />
+            <animPaused dataType="Bool">false</animPaused>
+            <animTime dataType="Float">0</animTime>
             <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
               <B dataType="Byte">255</B>
               <G dataType="Byte">255</G>
               <R dataType="Byte">255</R>
             </colorTint>
+            <customFrameSequence />
             <customMat />
             <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
             <gameobj dataType="ObjectRef">1569834522</gameobj>
@@ -48,7 +55,7 @@
             </rect>
             <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
             <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-              <contentPath dataType="String">Data\Spritesheet\player.Material.res</contentPath>
+              <contentPath dataType="String">Data\Spritesheet\spritesheet.Material.res</contentPath>
             </sharedMat>
             <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
           </item>
@@ -87,19 +94,19 @@
         <body>
           <keys dataType="Array" type="System.Object[]" id="3886306766">
             <item dataType="Type" id="2782640592" value="Duality.Components.Transform" />
-            <item dataType="Type" id="2267836014" value="Duality.Components.Renderers.SpriteRenderer" />
-            <item dataType="Type" id="989606316" value="LowResRoguelike.PlayerMovement" />
-            <item dataType="Type" id="231734802" value="LowResRoguelike.DiscreteTransform" />
-            <item dataType="Type" id="275985288" value="LowResRoguelike.CombatStats" />
-            <item dataType="Type" id="4018006886" value="LowResRoguelike.ItemSystem.PlayerStats" />
+            <item dataType="Type" id="2267836014" value="LowResRoguelike.PlayerMovement" />
+            <item dataType="Type" id="989606316" value="LowResRoguelike.DiscreteTransform" />
+            <item dataType="Type" id="231734802" value="LowResRoguelike.CombatStats" />
+            <item dataType="Type" id="275985288" value="LowResRoguelike.ItemSystem.PlayerStats" />
+            <item dataType="Type" id="4018006886" value="Duality.Components.Renderers.AnimSpriteRenderer" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="329231690">
             <item dataType="ObjectRef">3930149454</item>
-            <item dataType="ObjectRef">3212001090</item>
             <item dataType="ObjectRef">2210990147</item>
             <item dataType="ObjectRef">2847693510</item>
             <item dataType="ObjectRef">3258715132</item>
             <item dataType="ObjectRef">2158168919</item>
+            <item dataType="ObjectRef">1277269903</item>
           </values>
         </body>
       </compMap>
@@ -362,7 +369,7 @@
               <body>
                 <keys dataType="Array" type="System.Object[]" id="2981333284">
                   <item dataType="ObjectRef">2782640592</item>
-                  <item dataType="ObjectRef">2267836014</item>
+                  <item dataType="Type" id="806622916" value="Duality.Components.Renderers.SpriteRenderer" />
                 </keys>
                 <values dataType="Array" type="System.Object[]" id="3793663254">
                   <item dataType="ObjectRef">3383040726</item>
@@ -458,9 +465,9 @@
           <item dataType="Struct" type="LowResRoguelike.UiRenderer" id="3713685027">
             <_x003C_ArmorTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
-              <B dataType="Byte">255</B>
-              <G dataType="Byte">255</G>
-              <R dataType="Byte">255</R>
+              <B dataType="Byte">199</B>
+              <G dataType="Byte">195</G>
+              <R dataType="Byte">194</R>
             </_x003C_ArmorTextColor_x003E_k__BackingField>
             <_x003C_AttackTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
