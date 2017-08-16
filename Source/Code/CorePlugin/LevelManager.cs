@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Duality;
 using Duality.Resources;
@@ -28,19 +29,22 @@ namespace LowResRoguelike
 			var generator = GameObj.GetComponent<MapGenerator> ();
 			generator.GenerateMap (MapWidth, MapHeight);
 
+			var emptyTiles = GameObj.ParentScene.FindComponent<MapGenerator> ().GeneratedMap.TilesOfType (TileType.Empty).ToList ();
+
 			var playerStartPos = generator.GeneratedMap.TilesOfType (TileType.Empty).First ();
+			emptyTiles.Remove (playerStartPos);
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (playerStartPos);
 
-			AddEnemies ();
+			AddEnemies (emptyTiles);
 		}
 
-		private void AddEnemies ()
+		private void AddEnemies (List<Point2> emptyTiles)
 		{
-			var emptyTiles = GameObj.ParentScene.FindComponent<MapGenerator> ().GeneratedMap.TilesOfType (TileType.Empty).ToList ();
 
 			for (var i = 0; i < EnemyCount; i++) {
 				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
 				var pos = emptyTiles[tileIndex];
+				emptyTiles.RemoveAt (tileIndex);
 				var enemyObj = EnemyPrefab.Res.Instantiate ();
 				enemyObj.Parent = GameObj;
 				enemyObj.GetComponent<DiscreteTransform> ().Position = pos;

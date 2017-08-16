@@ -1,5 +1,4 @@
-﻿using System;
-using Duality;
+﻿using Duality;
 using Duality.Drawing;
 using Duality.Resources;
 
@@ -109,7 +108,7 @@ namespace LowResRoguelike
 			SetTextureRect (canvas, 3);
 			//canvas.FillRect (49, 59, 5, 5);
 			canvas.FillRect (2, 0, 5, 5);
-			var maxHealthText = $"{stats.MaxHealth:D2}";
+			var maxHealthText = $"{stats.CurrentHealth}/{stats.MaxHealth}";
 			//canvas.DrawText (maxHealthText, 55, 59);
 			canvas.DrawText (maxHealthText, 8, 0);
 		}

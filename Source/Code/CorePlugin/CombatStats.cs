@@ -1,9 +1,11 @@
 ﻿using System;
 using Duality;
 using Duality.Resources;
+using LowResRoguelike.ItemSystem;
 
 namespace LowResRoguelike
 {
+	[ExecutionOrder(ExecutionRelation.After, typeof(PlayerStats))]
 	public class CombatStats : Component, ICmpInitializable
 	{
 		public event Action Death;
