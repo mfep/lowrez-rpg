@@ -13,8 +13,8 @@ namespace LowResRoguelike.ItemSystem
 
 	public enum Material
 	{
-		None     = 0,
-		Wood     = 1,
+		No       = 0,
+		Wooden   = 1,
 		Bronze   = 2,
 		Iron     = 3,
 		Steel    = 4,

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Duality;
 
 namespace LowResRoguelike.ItemSystem
@@ -11,6 +12,7 @@ namespace LowResRoguelike.ItemSystem
 		public int BaseMaxHealth { get; set; }
 
 		[DontSerialize] private ItemInstance[] items;
+		public IEnumerable<ItemInstance> Items => items;
 
 		public void OnInit (InitContext context)
 		{
@@ -35,10 +37,10 @@ namespace LowResRoguelike.ItemSystem
 		private void AddDefaultItems ()
 		{
 			items = new ItemInstance[(int)ItemSlot.Last + 1];
-			items[(int)ItemSlot.Weapon] = new ItemInstance (ItemSlot.Weapon, Material.Wood, WeaponType.Axe);
-			items[(int)ItemSlot.Shield] = new ItemInstance (ItemSlot.Shield, Material.None);
-			items[(int)ItemSlot.Armor] = new ItemInstance (ItemSlot.Armor, Material.None);
-			items[(int)ItemSlot.Helmet] = new ItemInstance (ItemSlot.Helmet, Material.None);
+			items[(int)ItemSlot.Weapon] = new ItemInstance (ItemSlot.Weapon, Material.Wooden, WeaponType.Axe);
+			items[(int)ItemSlot.Shield] = new ItemInstance (ItemSlot.Shield, Material.No);
+			items[(int)ItemSlot.Armor] = new ItemInstance (ItemSlot.Armor, Material.No);
+			items[(int)ItemSlot.Helmet] = new ItemInstance (ItemSlot.Helmet, Material.No);
 		}
 
 		private void UpdateCombatStats ()

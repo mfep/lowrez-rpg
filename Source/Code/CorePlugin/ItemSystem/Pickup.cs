@@ -88,7 +88,7 @@ namespace LowResRoguelike.ItemSystem
 		protected override void PickupAction (GameObject playerObject)
 		{
 			Item = playerObject.GetComponent<PlayerStats> ().EquipItem (Item);
-			if (Item.Material == Material.None) {
+			if (Item.Material == Material.No) {
 				DestroyPickup ();
 			}
 		}
@@ -101,8 +101,16 @@ namespace LowResRoguelike.ItemSystem
 
 	public class ExitPickup : Pickup
 	{
-		public override string DisplayText => "Next";
-		public override string DisplayText2 => "Level";
+		public override string DisplayText => "Next Floor";
+
+		public override string DisplayText2
+		{
+			get
+			{
+				var levelManager = GameObj.ParentScene.FindComponent<LevelManager> ();
+				return $"{levelManager.LevelIndex}/{levelManager.LevelCount}";
+			}
+		}
 
 		protected override void PickupAction (GameObject playerObject)
 		{

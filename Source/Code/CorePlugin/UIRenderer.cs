@@ -1,5 +1,6 @@
 ﻿using Duality;
 using Duality.Drawing;
+using Duality.Input;
 using Duality.Resources;
 using LowResRoguelike.ItemSystem;
 using Material = Duality.Resources.Material;
@@ -46,6 +47,8 @@ namespace LowResRoguelike
 			}
 			if (pickupToShow != null) {
 				DrawPickup (canvas);
+			} else if (DualityApp.Keyboard[Key.I]) {
+				DrawInventory (canvas);
 			}
 		}
 
@@ -189,14 +192,26 @@ namespace LowResRoguelike
 
 		private void DrawPickup (Canvas canvas)
 		{
+			if (pickupToShow.GameObj.Disposed) {
+				pickupToShow = null;
+				return;
+			}
 			canvas.State.ColorTint = pickupToShow.DisplayColor;
 			canvas.DrawText (pickupToShow.DisplayText, 32 - StringWidth (pickupToShow.DisplayText) / 2, 14);
 			var line2 = pickupToShow.DisplayText2;
 			if (line2 != null) {
 				canvas.DrawText (line2, 32 - StringWidth(line2) / 2, 20);
 			}
-			if (pickupToShow.GameObj.Disposed) {
-				pickupToShow = null;
+		}
+
+		private void DrawInventory (Canvas canvas)
+		{
+			canvas.State.ColorTint = ColorRgba.White;
+			var y = 15;
+
+			foreach (var item in GameObj.ParentScene.FindComponent<PlayerStats>().Items) {
+				canvas.DrawText(item.ToString(), 5, y);
+				y += 6;
 			}
 		}
 

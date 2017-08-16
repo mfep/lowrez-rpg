@@ -45,11 +45,17 @@ namespace LowResRoguelike
 			}
 		}
 
+		public void RefillHealth ()
+		{
+			currentHealth = MaxHealth;
+		}
+
 		private static void CombatTurn (CombatStats attacker, CombatStats defender)
 		{
 			const int critMargin = 10;
+			const int attackDiceSides = 16;
 
-			var attackScore = attacker.Attack + MathF.Rnd.Next (1, 11);
+			var attackScore = attacker.Attack + MathF.Rnd.Next (1, attackDiceSides + 1);
 			var result = AttackResult.Defended;
 			var damage = 0;
 			if (attackScore > defender.Defense) {

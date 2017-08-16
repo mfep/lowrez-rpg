@@ -50,6 +50,7 @@ namespace LowResRoguelike.GamePrefs
 			combatStats.DamageReduction = DamageReduction;
 			combatStats.MaxHealth = MaxHealth;
 			combatStats.Damage = Damage;
+			combatStats.RefillHealth ();
 		}
 	}
 

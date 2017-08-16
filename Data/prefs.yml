@@ -12,7 +12,7 @@ enemies:
 
     # skeleton
     - sprite:           2
-      attack:           5
+      attack:           4
       defense:          8
       damageReduction:  0
       maxHealth:        8
@@ -22,7 +22,7 @@ enemies:
 
     # big skeleton
     - sprite:           6
-      attack:           10
+      attack:           9
       defense:          15
       damageReduction:  1
       maxHealth:        15
@@ -37,42 +37,43 @@ enemies:
       damageReduction:  0
       maxHealth:        30
       damage:
-          diceCount:    1
-          additional:   5
+          diceCount:    2
+          additional:   2
 
 levels:
+    # blobs
     - width:            28
       height:           28
       minMaterial:      1
       maxMaterial:      3
-      potionCount:      3
+      potionCount:      4
       itemCount:        2
       enemies:
           - index:      0
             count:      6
-
+    # blobs + skeletons
     - width:            28
       height:           28
       minMaterial:      1
       maxMaterial:      3
-      potionCount:      3
+      potionCount:      4
       itemCount:        2
       enemies:
           - index:      0
             count:      4
           - index:      1
             count:      3
-
+    # 3 big skeletons
     - width:            28
       height:           28
       minMaterial:      2
       maxMaterial:      3
-      potionCount:      5
-      itemCount:        2
+      potionCount:      8
+      itemCount:        4
       enemies:
           - index:      2
             count:      3
-
+    # ogre + skeletons
     - width:            28
       height:           28
       minMaterial:      2
