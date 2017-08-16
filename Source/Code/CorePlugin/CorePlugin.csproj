@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AttackResult.cs" />
     <Compile Include="CameraMovement.cs" />
+    <Compile Include="ItemSystem\ItemSystem.cs" />
     <Compile Include="CombatUiData.cs" />
     <Compile Include="CorePlugin.cs" />
     <Compile Include="Decision.cs" />
