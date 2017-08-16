@@ -53,6 +53,7 @@ namespace LowResRoguelike
 		public void MoveBy (Point2 delta)
 		{
 			Position += delta;
+			UpdateFacing (delta);
 			isAttacking = false;
 		}
 
@@ -138,7 +139,19 @@ namespace LowResRoguelike
 			return MapExtensions.IsVisible (currentPos, playerPos);
 		}
 
-		public void ControlVisibility ()
+		public void UpdateFacing (Point2 delta)
+		{
+			if (delta.X == 0) {
+				return;
+			}
+			var spriteRenderer = GameObj.GetComponent<SpriteRenderer> ();
+			spriteRenderer.Flip = delta.X > 0 ? SpriteRenderer.FlipMode.None : SpriteRenderer.FlipMode.Horizontal;
+			var rect = spriteRenderer.Rect;
+			rect.X = delta.X > 0 ? 0f : -4f;
+			spriteRenderer.Rect = rect;
+		}
+
+		private void ControlVisibility ()
 		{
 			GameObj.GetComponent<SpriteRenderer> ().Active = IsPlayerVisible (256, out int _, out int _);
 		}

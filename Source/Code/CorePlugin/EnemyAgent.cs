@@ -24,7 +24,10 @@ namespace LowResRoguelike
 			if (GameObj.GetComponent<DiscreteTransform>().IsPlayerVisible (WatchDistanceSqr, out int dx, out int dy)) {
 				if (pos.Manhattan (playerPos) == 1) {
 					GameObj.GetComponent<CombatStats> ().FightWith (playerObject.GetComponent<CombatStats> ());
-					GameObj.GetComponent<DiscreteTransform> ().AttackCurve (new Point2 (dx, dy));
+					var dir = new Point2 (dx, dy);
+					var discreteTransform = GameObj.GetComponent<DiscreteTransform> ();
+					discreteTransform.AttackCurve (dir);
+					discreteTransform.UpdateFacing (dir);
 					return Decision.Fight;
 				}
 				if (dx != 0 && dy != 0) {
