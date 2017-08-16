@@ -27,8 +27,8 @@ enemies:
 
     - &bigSkeleton
       sprite:           6
-      attack:           9
-      defense:          15
+      attack:           8
+      defense:          12
       damageReduction:  1
       maxHealth:        15
       damage:
@@ -37,14 +37,33 @@ enemies:
 
     - &ogre
       sprite:           7
-      attack:           8
-      defense:          0
-      damageReduction:  0
+      attack:           12
+      defense:          5
+      damageReduction:  4
       maxHealth:        30
       damage:
           diceCount:    2
-          additional:   2
+          additional:   4
 
+    - &biggerSkeleton
+      sprite:           9
+      attack:           15
+      defense:          15
+      damageReduction:  4
+      maxHealth:        25
+      damage:
+          diceCount:    2
+          additional:   3
+
+    - &boss
+      sprite:           8
+      attack:           20
+      defense:          20
+      damageReduction:  4
+      maxHealth:        40
+      damage:
+          diceCount:    3
+          additional:   5
 levels:
     # blobs
     - map: *defaultMap
@@ -57,10 +76,10 @@ levels:
             count:      6
     # blobs + skeletons
     - map: *defaultMap
-      minMaterial:      1
+      minMaterial:      2
       maxMaterial:      3
       potionCount:      4
-      itemCount:        2
+      itemCount:        3
       enemies:
           - enemy:      *blob
             count:      4
@@ -85,4 +104,40 @@ levels:
           - enemy:      *skeleton
             count:      5
           - enemy:      *ogre
+            count:      1
+    # ogres
+    #- map: *defaultMap
+    #  minMaterial:      3
+    #  maxMaterial:      5
+    #  potionCount:      5
+    #  itemCount:        3
+    #  enemies:
+    #      - enemy:      *ogre
+    #        count:      5
+    # lot of skeletons
+    - map: *defaultMap
+      minMaterial:      3
+      maxMaterial:      5
+      potionCount:      10
+      itemCount:        3
+      enemies:
+          - enemy:      *bigSkeleton
+            count:      6
+          - enemy:      *biggerSkeleton
+            count:      3
+    # empty
+    - map: *defaultMap
+      minMaterial:      5
+      maxMaterial:      6
+      potionCount:      10
+      itemCount:        3
+      enemies:
+    # boss
+    - map: *defaultMap
+      minMaterial:      3
+      maxMaterial:      5
+      potionCount:      0
+      itemCount:        0
+      enemies:
+          - enemy:      *boss
             count:      1

@@ -24,6 +24,7 @@ namespace LowResRoguelike
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
 				PrefLoader.LoadYamlDocument ();
+				AudioPlayer.PlayMusic ();
 				NextLevel ();
 				GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ().Death += OnPlayerDied;
 			}
@@ -78,6 +79,9 @@ namespace LowResRoguelike
 			InstantiateGameObjects (emptyTiles, ItemPrefab, prefs.ItemCount);
 			InstantiateGameObjects (emptyTiles, ExitPrefab, 1);
 
+			if (prefs.Enemies == null) {
+				return;
+			}
 			foreach (var enemyRef in prefs.Enemies) {
 				foreach (var enemyObject in InstantiateGameObjects(emptyTiles, EnemyPrefab, enemyRef.Count)) {
 					enemyRef.Enemy.Apply (enemyObject);
