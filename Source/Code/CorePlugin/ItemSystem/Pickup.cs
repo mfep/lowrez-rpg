@@ -98,4 +98,15 @@ namespace LowResRoguelike.ItemSystem
 			Item = GameObj.ParentScene.FindComponent<LevelManager> ().GenerateItem ();
 		}
 	}
+
+	public class ExitPickup : Pickup
+	{
+		public override string DisplayText => "Next";
+		public override string DisplayText2 => "Level";
+
+		protected override void PickupAction (GameObject playerObject)
+		{
+			LevelManager.NextLevel ();
+		}
+	}
 }

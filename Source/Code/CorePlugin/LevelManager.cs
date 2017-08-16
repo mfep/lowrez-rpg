@@ -20,6 +20,8 @@ namespace LowResRoguelike
 		public int MinMaterialLevel { get; set; }
 		public int MaxMaterialLevel { get; set; }
 
+		[DontSerialize] private static int levelIndex = 0;
+
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
@@ -37,9 +39,19 @@ namespace LowResRoguelike
 			return ItemGenerator.Generate (MinMaterialLevel, MaxMaterialLevel);
 		}
 
+		public static void NextLevel ()
+		{
+			var scenePath = $"DATA//Scenes//Level{++levelIndex}.Scene.res";
+			var scene = ContentProvider.RequestContent<Scene> (scenePath);
+			if (scene.Res == null) {
+				return;
+			}
+			Scene.SwitchTo (scene);
+		}
+
 		private void LoadGameScene ()
 		{
-			var gameScene = ContentProvider.RequestContent<Scene> (@"DATA\GameScene.Scene.res");
+			var gameScene = ContentProvider.RequestContent<Scene> (@"DATA\Scenes\GameScene.Scene.res");
 			Scene.Current.Consume (gameScene);
 		}
 
