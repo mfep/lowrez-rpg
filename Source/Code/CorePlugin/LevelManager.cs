@@ -2,17 +2,24 @@ using System.Collections.Generic;
 using System.Linq;
 using Duality;
 using Duality.Resources;
+using LowResRoguelike.ItemSystem;
 
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(MapGenerator))]
 	public class LevelManager : Component, ICmpInitializable
 	{
+		public class PrefabCount
+		{
+			public ContentRef<Prefab> Prefab { get; set; }
+			public int Count { get; set; }
+		}
+
 		public int MapWidth { get; set; }
 		public int MapHeight { get; set; }
-		public int EnemyCount { get; set; }
-		public ContentRef<Prefab> EnemyPrefab { get; set; }
-		public ContentRef<Prefab> HealthPotionPrefab { get; set; }
+		public PrefabCount[] PrefabCounts { get; set; }
+		public int MinMaterialLevel { get; set; }
+		public int MaxMaterialLevel { get; set; }
 
 		public void OnInit (InitContext context)
 		{
@@ -23,6 +30,11 @@ namespace LowResRoguelike
 
 		public void OnShutdown (ShutdownContext context)
 		{
+		}
+
+		public ItemInstance GenerateItem ()
+		{
+			return ItemGenerator.Generate (MinMaterialLevel, MaxMaterialLevel);
 		}
 
 		private void StartLevel ()
@@ -36,31 +48,25 @@ namespace LowResRoguelike
 			emptyTiles.Remove (playerStartPos);
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (playerStartPos);
 
-			AddEnemies (emptyTiles);
-			AddHealthPotions (emptyTiles);
+			InstantiatePrefabs (emptyTiles);
 		}
 
-		private void AddEnemies (List<Point2> emptyTiles)
+		private void InstantiatePrefabs (List<Point2> emptyTiles)
 		{
-			for (var i = 0; i < EnemyCount; i++) {
-				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
-				var pos = emptyTiles[tileIndex];
-				emptyTiles.RemoveAt (tileIndex);
-				var enemyObj = EnemyPrefab.Res.Instantiate ();
-				enemyObj.Parent = GameObj;
-				enemyObj.GetComponent<DiscreteTransform> ().Position = pos;
+			foreach (var prefabCount in PrefabCounts) {
+				InstantiateGameObjects (emptyTiles, prefabCount.Prefab, prefabCount.Count);
 			}
 		}
 
-		private void AddHealthPotions (List<Point2> emptyTiles)
+		private void InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
 		{
-			for (int i = 0; i < 10; i++) {
+			for (var i = 0; i < count; i++) {
 				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
 				var pos = emptyTiles[tileIndex];
 				emptyTiles.RemoveAt (tileIndex);
-				var obj = HealthPotionPrefab.Res.Instantiate();
-				obj.Parent = GameObj;
-				obj.GetComponent<DiscreteTransform> ().Position = pos;
+				var gameObject = prefab.Res.Instantiate ();
+				gameObject.Parent = GameObj;
+				gameObject.GetComponent<DiscreteTransform> ().Position = pos;
 			}
 		}
 	}

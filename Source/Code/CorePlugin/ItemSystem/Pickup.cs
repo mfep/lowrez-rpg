@@ -14,14 +14,15 @@ namespace LowResRoguelike.ItemSystem
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
 				TurnActionManager.PlayerMoved += OnPlayerMoved;
-				DualityApp.Keyboard.KeyUp += OnKeyUp;
+				DualityApp.Keyboard.KeyDown += OnKeyDown;
+				Init ();
 			}
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
 			TurnActionManager.PlayerMoved -= OnPlayerMoved;
-			DualityApp.Keyboard.KeyUp -= OnKeyUp;
+			DualityApp.Keyboard.KeyDown -= OnKeyDown;
 		}
 
 		private void OnPlayerMoved ()
@@ -36,21 +37,32 @@ namespace LowResRoguelike.ItemSystem
 			}
 		}
 
-		private void OnKeyUp (object sender, KeyboardKeyEventArgs e)
+		private void OnKeyDown (object sender, KeyboardKeyEventArgs e)
 		{
-			if (e.Key == PickupKey && onPlayer) {
-				PickupAction (GameObj.ParentScene.FindGameObject<PlayerMovement> ());
-				GameObj.DisposeLater ();
-				var uiRenderer = GameObj.ParentScene.FindComponent<UiRenderer> ();
-				if (uiRenderer.PickupToShow == this) {
-					uiRenderer.PickupToShow = null;
-				}
+			if (e.Key == PickupKey && onPlayer)
+			{
+				PickupAction(GameObj.ParentScene.FindGameObject<PlayerMovement>());
+			}
+		}
+
+		protected void DestroyPickup ()
+		{
+			GameObj.DisposeLater();
+			var uiRenderer = GameObj.ParentScene.FindComponent<UiRenderer>();
+			if (uiRenderer.PickupToShow == this)
+			{
+				uiRenderer.PickupToShow = null;
 			}
 		}
 
 		public ColorRgba DisplayColor { get; set; }
 		public abstract string DisplayText { get; }
+		public virtual string DisplayText2 { get; } = null;
 		protected abstract void PickupAction (GameObject playerObject);
+
+		protected virtual void Init ()
+		{
+		}
 	}
 
 	public class HealthPotionPickup : Pickup
@@ -62,6 +74,7 @@ namespace LowResRoguelike.ItemSystem
 		protected override void PickupAction (GameObject playerObject)
 		{
 			playerObject.GetComponent<CombatStats> ().ChangeHealth (HealthRestored);
+			DestroyPickup ();
 		}
 	}
 
@@ -69,11 +82,20 @@ namespace LowResRoguelike.ItemSystem
 	{
 		public ItemInstance Item { get; set; }
 
-		public override string DisplayText => Item.ToString ();
+		public override string DisplayText => Item.Material.ToString();
+		public override string DisplayText2 => Item.TypeName ();
 
 		protected override void PickupAction (GameObject playerObject)
 		{
-			playerObject.GetComponent<PlayerStats> ().EquipItem (Item);
+			Item = playerObject.GetComponent<PlayerStats> ().EquipItem (Item);
+			if (Item.Material == Material.None) {
+				DestroyPickup ();
+			}
+		}
+
+		protected override void Init ()
+		{
+			Item = GameObj.ParentScene.FindComponent<LevelManager> ().GenerateItem ();
 		}
 	}
 }

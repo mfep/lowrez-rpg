@@ -1,5 +1,4 @@
 ﻿using System;
-using Duality;
 
 namespace LowResRoguelike.ItemSystem
 {
@@ -64,10 +63,15 @@ namespace LowResRoguelike.ItemSystem
 
 		public override string ToString ()
 		{
+			return $"{Material} {TypeName ()}";
+		}
+
+		public string TypeName ()
+		{
 			if (ItemSlot != ItemSlot.Weapon) {
-				return $"{Material} {ItemSlot}";
+				return ItemSlot.ToString ();
 			}
-			return $"{Material} {WeaponType}";
+			return WeaponType.ToString ();
 		}
 
 		private int CalculateAttackModifier ()
@@ -175,20 +179,6 @@ namespace LowResRoguelike.ItemSystem
 				return 0;
 			}
 			return  2 * (int)Material;
-		}
-	}
-
-	public static class ItemGenerator
-	{
-		public static ItemInstance Generate (int lowestMaterial, int highestMaterial)
-		{
-			var slot = (ItemSlot)MathF.Rnd.Next (0, (int)ItemSlot.Last + 1);
-			WeaponType weaponType = 0;
-			if (slot == ItemSlot.Weapon) {
-				weaponType = (WeaponType)MathF.Rnd.Next (0, (int)WeaponType.Last + 1);
-			}
-			var material = (Material)MathF.Rnd.Next (lowestMaterial, highestMaterial + 1);
-			return new ItemInstance(slot, material, weaponType);
 		}
 	}
 }

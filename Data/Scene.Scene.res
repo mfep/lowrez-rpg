@@ -431,15 +431,30 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.LevelManager" id="742727207">
-            <_x003C_EnemyCount_x003E_k__BackingField dataType="Int">5</_x003C_EnemyCount_x003E_k__BackingField>
-            <_x003C_EnemyPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\EnemyAgent.Prefab.res</contentPath>
-            </_x003C_EnemyPrefab_x003E_k__BackingField>
-            <_x003C_HealthPotionPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
-              <contentPath dataType="String">Data\Prefabs\HealthPotionPickup.Prefab.res</contentPath>
-            </_x003C_HealthPotionPrefab_x003E_k__BackingField>
             <_x003C_MapHeight_x003E_k__BackingField dataType="Int">28</_x003C_MapHeight_x003E_k__BackingField>
             <_x003C_MapWidth_x003E_k__BackingField dataType="Int">28</_x003C_MapWidth_x003E_k__BackingField>
+            <_x003C_MaxMaterialLevel_x003E_k__BackingField dataType="Int">6</_x003C_MaxMaterialLevel_x003E_k__BackingField>
+            <_x003C_MinMaterialLevel_x003E_k__BackingField dataType="Int">1</_x003C_MinMaterialLevel_x003E_k__BackingField>
+            <_x003C_PrefabCounts_x003E_k__BackingField dataType="Array" type="LowResRoguelike.LevelManager+PrefabCount[]" id="790275367">
+              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="1236567502">
+                <_x003C_Count_x003E_k__BackingField dataType="Int">5</_x003C_Count_x003E_k__BackingField>
+                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+                  <contentPath dataType="String">Data\Prefabs\EnemyAgent.Prefab.res</contentPath>
+                </_x003C_Prefab_x003E_k__BackingField>
+              </item>
+              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="1131670858">
+                <_x003C_Count_x003E_k__BackingField dataType="Int">5</_x003C_Count_x003E_k__BackingField>
+                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+                  <contentPath dataType="String">Data\Prefabs\HealthPotionPickup.Prefab.res</contentPath>
+                </_x003C_Prefab_x003E_k__BackingField>
+              </item>
+              <item dataType="Struct" type="LowResRoguelike.LevelManager+PrefabCount" id="3172095358">
+                <_x003C_Count_x003E_k__BackingField dataType="Int">3</_x003C_Count_x003E_k__BackingField>
+                <_x003C_Prefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+                  <contentPath dataType="String">Data\Prefabs\ItemPickup.Prefab.res</contentPath>
+                </_x003C_Prefab_x003E_k__BackingField>
+              </item>
+            </_x003C_PrefabCounts_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>

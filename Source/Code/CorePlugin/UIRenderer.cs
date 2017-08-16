@@ -191,6 +191,10 @@ namespace LowResRoguelike
 		{
 			canvas.State.ColorTint = pickupToShow.DisplayColor;
 			canvas.DrawText (pickupToShow.DisplayText, 32 - StringWidth (pickupToShow.DisplayText) / 2, 14);
+			var line2 = pickupToShow.DisplayText2;
+			if (line2 != null) {
+				canvas.DrawText (line2, 32 - StringWidth(line2) / 2, 20);
+			}
 		}
 
 		private int StringWidth (string str)

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AttackResult.cs" />
     <Compile Include="CameraMovement.cs" />
+    <Compile Include="ItemSystem\ItemGenerator.cs" />
     <Compile Include="ItemSystem\Pickup.cs" />
     <Compile Include="ItemSystem\ItemSystem.cs" />
     <Compile Include="CombatUiData.cs" />

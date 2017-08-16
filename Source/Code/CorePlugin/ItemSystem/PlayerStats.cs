@@ -24,10 +24,12 @@ namespace LowResRoguelike.ItemSystem
 		{
 		}
 
-		public void EquipItem (ItemInstance item)
+		public ItemInstance EquipItem (ItemInstance item)
 		{
+			var originalItem = items[(int)item.ItemSlot];
 			items[(int)item.ItemSlot] = item;
 			UpdateCombatStats ();
+			return originalItem;
 		}
 
 		private void AddDefaultItems ()
