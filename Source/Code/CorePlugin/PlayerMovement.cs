@@ -39,7 +39,6 @@ namespace LowResRoguelike
 				}
 				return Decision.NotDecided;
 			}
-
 			return decision;
 		}
 	}

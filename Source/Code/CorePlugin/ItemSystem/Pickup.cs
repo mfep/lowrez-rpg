@@ -39,8 +39,8 @@ namespace LowResRoguelike.ItemSystem
 
 		private void OnKeyDown (object sender, KeyboardKeyEventArgs e)
 		{
-			if (e.Key == PickupKey && onPlayer)
-			{
+			if (e.Key == PickupKey && onPlayer) {
+				AudioPlayer.PlaySfx (Sfx.Pickup);
 				PickupAction(GameObj.ParentScene.FindGameObject<PlayerMovement>());
 			}
 		}

@@ -67,8 +67,27 @@ namespace LowResRoguelike
 				}
 			}
 			defender.ChangeHealth (-damage);
-			Log.Game.Write($"{attacker.GameObj.Name} (score: {attackScore}) attacks {defender.GameObj.Name} (score: {defender.Defense}) and damages {damage}");
-			Scene.Current.FindComponent<UiRenderer>().RequestCombatUi(new CombatUiData(attacker.GameObj.GetComponent<PlayerMovement>() != null, attackScore, defender.Defense, damage, defender.MaxHealth, defender.currentHealth, result));
+			//Log.Game.Write($"{attacker.GameObj.Name} (score: {attackScore}) attacks {defender.GameObj.Name} (score: {defender.Defense}) and damages {damage}");
+			var isPlayerAttack = attacker.GameObj.GetComponent<PlayerMovement>() != null;
+			Scene.Current.FindComponent<UiRenderer>().RequestCombatUi(new CombatUiData(isPlayerAttack, attackScore, defender.Defense, damage, defender.MaxHealth, defender.currentHealth, result));
+			switch (result) {
+				case AttackResult.Defended:
+					AudioPlayer.PlaySfx (Sfx.Blocked);
+					break;
+				case AttackResult.Hit:
+				case AttackResult.CriticalHit:
+					if (defender.currentHealth == 0) {
+						AudioPlayer.PlaySfx (Sfx.Kill);
+					} else {
+						AudioPlayer.PlaySfx (Sfx.Hit);
+					}
+					break;
+				case AttackResult.ArmorZeroed:
+					AudioPlayer.PlaySfx (Sfx.ArmorBlocked);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException ();
+			}
 		}
 	}
 }
