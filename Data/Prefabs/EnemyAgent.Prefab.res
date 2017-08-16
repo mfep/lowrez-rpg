@@ -61,11 +61,15 @@
         </item>
         <item dataType="Struct" type="LowResRoguelike.CombatStats" id="2002491185">
           <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
-          <_x003C_Damage_x003E_k__BackingField dataType="Int">1</_x003C_Damage_x003E_k__BackingField>
-          <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">2</_x003C_DamageReduction_x003E_k__BackingField>
-          <_x003C_Defense_x003E_k__BackingField dataType="Int">7</_x003C_Defense_x003E_k__BackingField>
-          <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_MaxHealth_x003E_k__BackingField>
+          <_x003C_Damage_x003E_k__BackingField dataType="Struct" type="LowResRoguelike.WeaponDamage" id="3674159885">
+            <_x003C_AdditionalDamage_x003E_k__BackingField dataType="Int">2</_x003C_AdditionalDamage_x003E_k__BackingField>
+            <_x003C_NumDices_x003E_k__BackingField dataType="Int">2</_x003C_NumDices_x003E_k__BackingField>
+          </_x003C_Damage_x003E_k__BackingField>
+          <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">1</_x003C_DamageReduction_x003E_k__BackingField>
+          <_x003C_Defense_x003E_k__BackingField dataType="Int">3</_x003C_Defense_x003E_k__BackingField>
+          <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">6</_x003C_MaxHealth_x003E_k__BackingField>
           <active dataType="Bool">true</active>
+          <Death />
           <gameobj dataType="ObjectRef">313610575</gameobj>
         </item>
         <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="1591469563">

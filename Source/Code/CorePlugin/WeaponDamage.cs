@@ -4,6 +4,10 @@ namespace LowResRoguelike
 {
 	public class WeaponDamage
 	{
+		public WeaponDamage ()
+		{
+		}
+
 		public WeaponDamage (int numDices, int additionalDamage)
 		{
 			NumDices = numDices;
@@ -11,8 +15,8 @@ namespace LowResRoguelike
 		}
 
 		public const int DiceSides = 4;
-		public int NumDices { get; }
-		public int AdditionalDamage { get; }
+		public int NumDices { get; set; }
+		public int AdditionalDamage { get; set; }
 
 		public int Roll ()
 		{
@@ -22,6 +26,18 @@ namespace LowResRoguelike
 			}
 			damage += AdditionalDamage;
 			return damage;
+		}
+
+		public override string ToString ()
+		{
+			if (NumDices == 0) {
+				return "0";
+			}
+			var str = $"{NumDices}d{DiceSides}";
+			if (AdditionalDamage != 0) {
+				str = $"{str}+{AdditionalDamage}";
+			}
+			return str;
 		}
 	}
 }

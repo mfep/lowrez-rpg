@@ -8,8 +8,6 @@ namespace LowResRoguelike.ItemSystem
 	{
 		public int BaseAttack { get; set; }
 		public int BaseDefense { get; set; }
-		public int BaseDamage { get; set; }
-		public int BaseDamageReduction { get; set; }
 		public int BaseMaxHealth { get; set; }
 
 		[DontSerialize] private ItemInstance[] items;
@@ -47,7 +45,7 @@ namespace LowResRoguelike.ItemSystem
 			combatStats.Attack = BaseAttack + items.Sum (item => item.AttackModifier);
 			combatStats.Defense = BaseDefense + items.Sum (item => item.DefenseModifier);
 			combatStats.Damage = items[(int)ItemSlot.Weapon].Damage;
-			combatStats.DamageReduction = BaseDamageReduction + items.Sum (item => item.DamageReductionModifier);
+			combatStats.DamageReduction = items.Sum (item => item.DamageReductionModifier);
 			combatStats.MaxHealth = BaseMaxHealth + items.Sum (item => item.MaxHealthModifier);
 		}
 	}

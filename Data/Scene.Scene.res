@@ -54,7 +54,7 @@
           </item>
           <item dataType="Struct" type="LowResRoguelike.CombatStats" id="3258715132">
             <_x003C_Attack_x003E_k__BackingField dataType="Int">0</_x003C_Attack_x003E_k__BackingField>
-            <_x003C_Damage_x003E_k__BackingField dataType="Int">0</_x003C_Damage_x003E_k__BackingField>
+            <_x003C_Damage_x003E_k__BackingField />
             <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_DamageReduction_x003E_k__BackingField>
             <_x003C_Defense_x003E_k__BackingField dataType="Int">0</_x003C_Defense_x003E_k__BackingField>
             <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">0</_x003C_MaxHealth_x003E_k__BackingField>
@@ -72,11 +72,9 @@
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
           <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
-            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">0</_x003C_BaseAttack_x003E_k__BackingField>
-            <_x003C_BaseDamage_x003E_k__BackingField dataType="Int">0</_x003C_BaseDamage_x003E_k__BackingField>
-            <_x003C_BaseDamageReduction_x003E_k__BackingField dataType="Int">0</_x003C_BaseDamageReduction_x003E_k__BackingField>
-            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">0</_x003C_BaseDefense_x003E_k__BackingField>
-            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">0</_x003C_BaseMaxHealth_x003E_k__BackingField>
+            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">5</_x003C_BaseAttack_x003E_k__BackingField>
+            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">5</_x003C_BaseDefense_x003E_k__BackingField>
+            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_BaseMaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
@@ -456,9 +454,9 @@
           <item dataType="Struct" type="LowResRoguelike.UiRenderer" id="3713685027">
             <_x003C_ArmorTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>
-              <B dataType="Byte">199</B>
-              <G dataType="Byte">195</G>
-              <R dataType="Byte">194</R>
+              <B dataType="Byte">255</B>
+              <G dataType="Byte">255</G>
+              <R dataType="Byte">255</R>
             </_x003C_ArmorTextColor_x003E_k__BackingField>
             <_x003C_AttackTextColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
               <A dataType="Byte">255</A>

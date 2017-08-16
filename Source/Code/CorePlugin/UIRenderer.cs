@@ -53,10 +53,10 @@ namespace LowResRoguelike
 			}
 
 			// horizontal bar
-			var batchInfo = new BatchInfo (DrawTechnique.Alpha, UiBackgroundColor, null);
-			canvas.State.SetMaterial (batchInfo);
-			canvas.State.ColorTint = UiBackgroundColor;
-			canvas.FillRect (0, 59, 64, 5);
+			//var batchInfo = new BatchInfo (DrawTechnique.Alpha, UiBackgroundColor, null);
+			//canvas.State.SetMaterial (batchInfo);
+			//canvas.State.ColorTint = UiBackgroundColor;
+			//canvas.FillRect (0, 59, 64, 5);
 
 			// player health bar
 			canvas.State.SetMaterial (null as BatchInfo);
@@ -81,31 +81,37 @@ namespace LowResRoguelike
 
 			// damage
 			canvas.State.ColorTint = DamageTextColor;
-			SetTextureRect (canvas, 4);
-			canvas.FillRect (15, 59, 5, 5);
-			var damageText = $"{stats.Damage:D1}";
-			canvas.DrawText (damageText, 21, 59);
+			SetTextureRect(canvas, 4);
+			canvas.FillRect (29, 59, 5, 5);
+			var damageText = $"{stats.Damage}";
+			canvas.DrawText(damageText, 35, 59);
 
 			// defense
 			canvas.State.ColorTint = DefenseTextColor;
 			SetTextureRect (canvas, 1);
-			canvas.FillRect (25, 59, 5, 5);
+			//canvas.FillRect (25, 59, 5, 5);
+			canvas.FillRect (15, 59, 5, 5);
 			var defenseText = $"{stats.Defense:D2}";
-			canvas.DrawText (defenseText, 31, 59);
+			//canvas.DrawText (defenseText, 31, 59);
+			canvas.DrawText (defenseText, 21, 59);
 
 			// armor
 			canvas.State.ColorTint = ArmorTextColor;
 			SetTextureRect (canvas, 2);
-			canvas.FillRect (39, 59, 5, 5);
+			//canvas.FillRect (39, 59, 5, 5);
+			canvas.FillRect (2, 6, 5, 5);
 			var armorText = $"{stats.DamageReduction:D1}";
-			canvas.DrawText (armorText, 45, 59);
+			//canvas.DrawText (armorText, 45, 59);
+			canvas.DrawText (armorText, 8, 6);
 
 			// maxHealth
 			canvas.State.ColorTint = MaxHealthTextColor;
 			SetTextureRect (canvas, 3);
-			canvas.FillRect (49, 59, 5, 5);
+			//canvas.FillRect (49, 59, 5, 5);
+			canvas.FillRect (2, 0, 5, 5);
 			var maxHealthText = $"{stats.MaxHealth:D2}";
-			canvas.DrawText (maxHealthText, 55, 59);
+			//canvas.DrawText (maxHealthText, 55, 59);
+			canvas.DrawText (maxHealthText, 8, 0);
 		}
 
 		private void DrawCombatUi (Canvas canvas)
