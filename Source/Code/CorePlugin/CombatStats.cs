@@ -10,7 +10,7 @@ namespace LowResRoguelike
 
 		public int Attack { get; set; }
 		public int Defense { get; set; }
-		public int Damage { get; set; }
+		public WeaponDamage Damage { get; set; }
 		public int DamageReduction { get; set; }
 		public int MaxHealth { get; set; }
 		public int CurrentHealth => currentHealth;
@@ -53,10 +53,7 @@ namespace LowResRoguelike
 				var isCrit = attackScore - defender.Defense > critMargin;
 				result = AttackResult.Hit;
 
-				const int DiceSides = 6;
-				for (int i = 0; i < attacker.Damage; i++) {
-					damage += MathF.Rnd.Next (1, DiceSides + 1);
-				}
+				damage = attacker.Damage.Roll ();
 				if (isCrit) {
 					damage *= 2;
 					result = AttackResult.CriticalHit;

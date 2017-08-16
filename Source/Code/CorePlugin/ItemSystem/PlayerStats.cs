@@ -46,7 +46,7 @@ namespace LowResRoguelike.ItemSystem
 			var combatStats = GameObj.GetComponent<CombatStats> ();
 			combatStats.Attack = BaseAttack + items.Sum (item => item.AttackModifier);
 			combatStats.Defense = BaseDefense + items.Sum (item => item.DefenseModifier);
-			combatStats.Damage = BaseDamage + items.Sum (item => item.DamageModifier);
+			combatStats.Damage = items[(int)ItemSlot.Weapon].Damage;
 			combatStats.DamageReduction = BaseDamageReduction + items.Sum (item => item.DamageReductionModifier);
 			combatStats.MaxHealth = BaseMaxHealth + items.Sum (item => item.MaxHealthModifier);
 		}

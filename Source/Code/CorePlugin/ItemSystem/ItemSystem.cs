@@ -58,7 +58,7 @@ namespace LowResRoguelike.ItemSystem
 
 		public int AttackModifier => CalculateAttackModifier ();
 		public int DefenseModifier => CalculateDefenseModifier ();
-		public int DamageModifier => CalculateDamageModifier ();
+		public WeaponDamage Damage => GetDamage ();
 		public int DamageReductionModifier => CalculateDamageReductionModifier ();
 		public int MaxHealthModifier => CalculateMaxHealthModifier ();
 
@@ -133,32 +133,32 @@ namespace LowResRoguelike.ItemSystem
 			return defenseBase * (int)Material;
 		}
 
-		private int CalculateDamageModifier ()
+		private WeaponDamage GetDamage ()
 		{
 			if (ItemSlot != ItemSlot.Weapon) {
-				return 0;
+				return new WeaponDamage (0, 0);
 			}
-			int damageBase;
+			int numDices;
 			switch (WeaponType) {
 				case WeaponType.ShortSword:
-					damageBase = 2;
+					numDices = 2;
 					break;
 				case WeaponType.LongSword:
-					damageBase = 2;
+					numDices = 2;
 					break;
 				case WeaponType.Axe:
-					damageBase = 3;
+					numDices = 3;
 					break;
 				case WeaponType.Mace:
-					damageBase = 4;
+					numDices = 4;
 					break;
 				case WeaponType.BattleStaff:
-					damageBase = 1;
+					numDices = 1;
 					break;
 				default:
 					throw new ArgumentOutOfRangeException ();
 			}
-			return damageBase * (int)Material;
+			return new WeaponDamage(numDices, (int)Material);
 		}
 
 		private int CalculateDamageReductionModifier ()
