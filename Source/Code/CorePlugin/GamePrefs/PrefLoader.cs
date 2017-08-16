@@ -27,6 +27,7 @@ namespace LowResRoguelike.GamePrefs
 
 	internal class GamePrefs
 	{
+		public List<MapPrefs> Maps { get; set; }
 		public List<EnemyPref> Enemies { get; set; }
 		public List<LevelPref> Levels { get; set; }
 	}
@@ -56,8 +57,7 @@ namespace LowResRoguelike.GamePrefs
 
 	internal class LevelPref
 	{
-		public int Width { get; set; }
-		public int Height { get; set; }
+		public MapPrefs Map { get; set; }
 		public int MinMaterial { get;set; }
 		public int MaxMaterial { get; set; }
 		public int PotionCount { get; set; }
@@ -65,9 +65,15 @@ namespace LowResRoguelike.GamePrefs
 		public List<EnemyRef> Enemies { get; set; }
 	}
 
-	internal class EnemyRef
+	internal struct MapPrefs
 	{
-		public int Index { get; set; }
+		public int Width { get; set; }
+		public int Height { get; set; }
+	}
+
+	internal struct EnemyRef
+	{
+		public EnemyPref Enemy { get; set; }
 		public int Count { get; set; }
 	}
 }

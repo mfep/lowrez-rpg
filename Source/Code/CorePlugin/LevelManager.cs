@@ -52,7 +52,7 @@ namespace LowResRoguelike
 		{
 			GameObj.ParentScene.FindComponent<MapRenderer> ().Clear ();
 			var generator = GameObj.ParentScene.FindComponent<MapGenerator> ();
-			generator.GenerateMap (prefs.Width, prefs.Height);
+			generator.GenerateMap (prefs.Map.Width, prefs.Map.Height);
 
 			var emptyTiles = generator.GeneratedMap.TilesOfType (TileType.Empty).ToList ();
 
@@ -72,7 +72,7 @@ namespace LowResRoguelike
 
 			foreach (var enemyRef in prefs.Enemies) {
 				foreach (var enemyObject in InstantiateGameObjects(emptyTiles, EnemyPrefab, enemyRef.Count)) {
-					PrefLoader.Enemies[enemyRef.Index].Apply (enemyObject);
+					enemyRef.Enemy.Apply (enemyObject);
 				}
 			}
 		}
