@@ -38,7 +38,7 @@
             <customMat />
             <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
             <gameobj dataType="ObjectRef">1569834522</gameobj>
-            <offset dataType="Int">-1</offset>
+            <offset dataType="Int">-2</offset>
             <pixelGrid dataType="Bool">false</pixelGrid>
             <rect dataType="Struct" type="Duality.Rect">
               <H dataType="Float">4</H>
@@ -52,6 +52,19 @@
             </sharedMat>
             <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
           </item>
+          <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
+            <_x003C_Blocker_x003E_k__BackingField dataType="Bool">true</_x003C_Blocker_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1569834522</gameobj>
+            <position dataType="Struct" type="Duality.Point2" />
+          </item>
+          <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
+            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">5</_x003C_BaseAttack_x003E_k__BackingField>
+            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">5</_x003C_BaseDefense_x003E_k__BackingField>
+            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_BaseMaxHealth_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">1569834522</gameobj>
+          </item>
           <item dataType="Struct" type="LowResRoguelike.CombatStats" id="3258715132">
             <_x003C_Attack_x003E_k__BackingField dataType="Int">0</_x003C_Attack_x003E_k__BackingField>
             <_x003C_Damage_x003E_k__BackingField />
@@ -62,19 +75,7 @@
             <Death />
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
-          <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1569834522</gameobj>
-            <position dataType="Struct" type="Duality.Point2" />
-          </item>
           <item dataType="Struct" type="LowResRoguelike.PlayerMovement" id="2210990147">
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">1569834522</gameobj>
-          </item>
-          <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
-            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">5</_x003C_BaseAttack_x003E_k__BackingField>
-            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">5</_x003C_BaseDefense_x003E_k__BackingField>
-            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">10</_x003C_BaseMaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
@@ -427,6 +428,9 @@
             <_x003C_EnemyPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
               <contentPath dataType="String">Data\Prefabs\EnemyAgent.Prefab.res</contentPath>
             </_x003C_EnemyPrefab_x003E_k__BackingField>
+            <_x003C_HealthPotionPrefab_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+              <contentPath dataType="String">Data\Prefabs\HealthPotionPickup.Prefab.res</contentPath>
+            </_x003C_HealthPotionPrefab_x003E_k__BackingField>
             <_x003C_MapHeight_x003E_k__BackingField dataType="Int">28</_x003C_MapHeight_x003E_k__BackingField>
             <_x003C_MapWidth_x003E_k__BackingField dataType="Int">28</_x003C_MapWidth_x003E_k__BackingField>
             <active dataType="Bool">true</active>

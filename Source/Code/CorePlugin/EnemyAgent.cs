@@ -21,7 +21,7 @@ namespace LowResRoguelike
 			var playerObject = GameObj.ParentScene.FindGameObject<PlayerMovement> ();
 			var playerPos = playerObject.GetComponent<DiscreteTransform> ().Position;
 
-			if (IsPlayerVisible (out int dx, out int dy)) {
+			if (GameObj.GetComponent<DiscreteTransform>().IsPlayerVisible (WatchDistanceSqr, out int dx, out int dy)) {
 				if (pos.Manhattan (playerPos) == 1) {
 					GameObj.GetComponent<CombatStats> ().FightWith (playerObject.GetComponent<CombatStats> ());
 					GameObj.GetComponent<DiscreteTransform> ().AttackCurve (new Point2 (dx, dy));
@@ -54,28 +54,9 @@ namespace LowResRoguelike
 			return Decision.NoMove;
 		}
 
-		private bool IsPlayerVisible (out int dx, out int dy)
-		{
-			if (GameObj.Disposed) {
-				dx = 0;
-				dy = 0;
-				return false;
-			}
-			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
-			var currentPos = GameObj.GetComponent<DiscreteTransform> ().Position;
-			dx = playerPos.X - currentPos.X;
-			dy = playerPos.Y - currentPos.Y;
-			var dstSqr = dx * dx + dy * dy;
-			if (dstSqr > WatchDistanceSqr) {
-				return false;
-			}
-			return MapExtensions.IsVisible (currentPos, playerPos);
-		}
-
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				TurnActionManager.PlayerMoved += PlayerMovedCallback;
 				GameObj.GetComponent<CombatStats> ().Death += OnDeath;
 			}
 		}
@@ -85,13 +66,9 @@ namespace LowResRoguelike
 			GameObj.Dispose ();
 		}
 
-		private void PlayerMovedCallback ()
-		{
-			GameObj.GetComponent<SpriteRenderer> ().Active = IsPlayerVisible (out int _, out int _);
-		}
-
 		public void OnShutdown (ShutdownContext context)
 		{
+			GameObj.GetComponent<CombatStats> ().Death -= OnDeath;
 		}
 	}
 }

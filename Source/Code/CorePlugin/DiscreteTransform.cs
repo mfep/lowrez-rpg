@@ -1,14 +1,17 @@
-using System;
 using System.Linq;
 using Duality;
 using Duality.Components;
+using Duality.Components.Renderers;
 using Duality.Resources;
 
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(Transform))]
+	[RequiredComponent(typeof(SpriteRenderer))]
 	public class DiscreteTransform : Component, ICmpInitializable, ICmpUpdatable
 	{
+		public bool Blocker { get; set; }
+
 		public const float Grid = 4.0f;
 		private const float AttackTime = 0.3f;
 
@@ -31,10 +34,14 @@ namespace LowResRoguelike
 		public void OnInit (InitContext context)
 		{
 			UpdatePosition ();
+			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
+				TurnActionManager.PlayerMoved += ControlVisibility;
+			}
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
+			TurnActionManager.PlayerMoved -= ControlVisibility;
 		}
 
 		public void MoveTo (Point2 pos)
@@ -103,11 +110,37 @@ namespace LowResRoguelike
 			GameObject go = null;
 			var result = Scene.Current.FindComponents<DiscreteTransform> ().Any (discreteTransform =>
 			{
+				if (!discreteTransform.Blocker) {
+					return false;
+				}
 				go = discreteTransform.GameObj;
 				return discreteTransform.position == coord;
 			});
 			blockerObject = go;
 			return result;
+		}
+
+		public bool IsPlayerVisible (int watchDistSqr, out int dx, out int dy)
+		{
+			if (GameObj.Disposed) {
+				dx = 0;
+				dy = 0;
+				return false;
+			}
+			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
+			var currentPos = GameObj.GetComponent<DiscreteTransform> ().Position;
+			dx = playerPos.X - currentPos.X;
+			dy = playerPos.Y - currentPos.Y;
+			var dstSqr = dx * dx + dy * dy;
+			if (dstSqr > watchDistSqr) {
+				return false;
+			}
+			return MapExtensions.IsVisible (currentPos, playerPos);
+		}
+
+		public void ControlVisibility ()
+		{
+			GameObj.GetComponent<SpriteRenderer> ().Active = IsPlayerVisible (256, out int _, out int _);
 		}
 	}
 }

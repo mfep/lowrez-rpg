@@ -35,10 +35,11 @@ namespace LowResRoguelike
 			CombatTurn (this, other);
 		}
 
-		private void ChangeHealth (int amount)
+		public void ChangeHealth (int amount)
 		{
 			currentHealth += amount;
 			currentHealth = Math.Max (0, currentHealth);
+			currentHealth = MathF.Min (currentHealth, MaxHealth);
 			if (currentHealth == 0) {
 				Death?.Invoke ();
 			}

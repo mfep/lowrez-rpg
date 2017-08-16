@@ -1,6 +1,8 @@
 ﻿using Duality;
 using Duality.Drawing;
 using Duality.Resources;
+using LowResRoguelike.ItemSystem;
+using Material = Duality.Resources.Material;
 
 namespace LowResRoguelike
 {
@@ -19,8 +21,15 @@ namespace LowResRoguelike
 		public ColorRgba EnemyHealthColor { get; set; }
 		public ColorRgba EnemyHealthBackgroundColor { get; set; }
 
+		public Pickup PickupToShow
+		{
+			get => pickupToShow;
+			set => pickupToShow = value;
+		}
+
 		[DontSerialize] private readonly CanvasBuffer buffer = new CanvasBuffer ();
 		[DontSerialize] private CombatUiData combatUiData;
+		[DontSerialize] private Pickup pickupToShow;
 
 		public bool IsVisible (IDrawDevice device)
 		{
@@ -34,6 +43,9 @@ namespace LowResRoguelike
 			DrawStatsUi (canvas);
 			if (GameObj.ParentScene.FindComponent<TurnActionManager> ().IsInCombat) {
 				DrawCombatUi (canvas);
+			}
+			if (pickupToShow != null) {
+				DrawPickup (canvas);
 			}
 		}
 
@@ -173,6 +185,17 @@ namespace LowResRoguelike
 				x = playerAttacks ? 48 : 2;
 				canvas.DrawText ("CRIT", x, 45);
 			}
+		}
+
+		private void DrawPickup (Canvas canvas)
+		{
+			canvas.State.ColorTint = pickupToShow.DisplayColor;
+			canvas.DrawText (pickupToShow.DisplayText, 32 - StringWidth (pickupToShow.DisplayText) / 2, 14);
+		}
+
+		private int StringWidth (string str)
+		{
+			return str.Length * 4;
 		}
 
 		private void SetTextureRect (Canvas canvas, int index)

@@ -12,6 +12,7 @@ namespace LowResRoguelike
 		public int MapHeight { get; set; }
 		public int EnemyCount { get; set; }
 		public ContentRef<Prefab> EnemyPrefab { get; set; }
+		public ContentRef<Prefab> HealthPotionPrefab { get; set; }
 
 		public void OnInit (InitContext context)
 		{
@@ -36,11 +37,11 @@ namespace LowResRoguelike
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (playerStartPos);
 
 			AddEnemies (emptyTiles);
+			AddHealthPotions (emptyTiles);
 		}
 
 		private void AddEnemies (List<Point2> emptyTiles)
 		{
-
 			for (var i = 0; i < EnemyCount; i++) {
 				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
 				var pos = emptyTiles[tileIndex];
@@ -48,6 +49,18 @@ namespace LowResRoguelike
 				var enemyObj = EnemyPrefab.Res.Instantiate ();
 				enemyObj.Parent = GameObj;
 				enemyObj.GetComponent<DiscreteTransform> ().Position = pos;
+			}
+		}
+
+		private void AddHealthPotions (List<Point2> emptyTiles)
+		{
+			for (int i = 0; i < 10; i++) {
+				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
+				var pos = emptyTiles[tileIndex];
+				emptyTiles.RemoveAt (tileIndex);
+				var obj = HealthPotionPrefab.Res.Instantiate();
+				obj.Parent = GameObj;
+				obj.GetComponent<DiscreteTransform> ().Position = pos;
 			}
 		}
 	}

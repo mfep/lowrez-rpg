@@ -45,7 +45,7 @@
           <customMat />
           <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
           <gameobj dataType="ObjectRef">313610575</gameobj>
-          <offset dataType="Int">-1</offset>
+          <offset dataType="Int">-2</offset>
           <pixelGrid dataType="Bool">false</pixelGrid>
           <rect dataType="Struct" type="Duality.Rect">
             <H dataType="Float">4</H>
@@ -59,6 +59,15 @@
           </sharedMat>
           <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
         </item>
+        <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="1591469563">
+          <_x003C_Blocker_x003E_k__BackingField dataType="Bool">true</_x003C_Blocker_x003E_k__BackingField>
+          <active dataType="Bool">true</active>
+          <gameobj dataType="ObjectRef">313610575</gameobj>
+          <position dataType="Struct" type="Duality.Point2">
+            <X dataType="Int">1</X>
+            <Y dataType="Int">0</Y>
+          </position>
+        </item>
         <item dataType="Struct" type="LowResRoguelike.CombatStats" id="2002491185">
           <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
           <_x003C_Damage_x003E_k__BackingField dataType="Struct" type="LowResRoguelike.WeaponDamage" id="3674159885">
@@ -71,14 +80,6 @@
           <active dataType="Bool">true</active>
           <Death />
           <gameobj dataType="ObjectRef">313610575</gameobj>
-        </item>
-        <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="1591469563">
-          <active dataType="Bool">true</active>
-          <gameobj dataType="ObjectRef">313610575</gameobj>
-          <position dataType="Struct" type="Duality.Point2">
-            <X dataType="Int">1</X>
-            <Y dataType="Int">0</Y>
-          </position>
         </item>
         <item dataType="Struct" type="LowResRoguelike.EnemyAgent" id="1083998481">
           <_x003C_Damage_x003E_k__BackingField dataType="Int">0</_x003C_Damage_x003E_k__BackingField>
