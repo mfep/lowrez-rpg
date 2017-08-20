@@ -12,6 +12,7 @@ namespace LowResRoguelike.GamePrefs
 	{
 		public static IReadOnlyList<LevelPref> Levels => prefs.Levels;
 		public static IReadOnlyList<EnemyPref> Enemies => prefs.Enemies;
+		public static PlayerPrefs PlayerPrefs => prefs.Player;
 
 		private static GamePrefs prefs;
 
@@ -27,6 +28,7 @@ namespace LowResRoguelike.GamePrefs
 
 	internal class GamePrefs
 	{
+		public PlayerPrefs Player { get; set; }
 		public List<MapPrefs> Maps { get; set; }
 		public List<EnemyPref> Enemies { get; set; }
 		public List<LevelPref> Levels { get; set; }
@@ -75,5 +77,12 @@ namespace LowResRoguelike.GamePrefs
 	{
 		public EnemyPref Enemy { get; set; }
 		public int Count { get; set; }
+	}
+
+	internal struct PlayerPrefs
+	{
+		public int BaseAttack { get; set; }
+		public int BaseDefense { get; set; }
+		public int BaseMaxHealth { get; set; }
 	}
 }

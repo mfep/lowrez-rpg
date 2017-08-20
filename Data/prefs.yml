@@ -1,4 +1,9 @@
 ---
+player:
+    baseAttack:         0
+    baseDefense:        7
+    baseMaxHealth:      20
+
 maps:
     - &defaultMap
       width: 28

@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Duality;
+using LowResRoguelike.GamePrefs;
 
 namespace LowResRoguelike.ItemSystem
 {
 	[RequiredComponent(typeof(CombatStats))]
 	public class PlayerStats : Component, ICmpInitializable
 	{
-		public int BaseAttack { get; set; }
-		public int BaseDefense { get; set; }
-		public int BaseMaxHealth { get; set; }
+		[DontSerialize] private int baseAttack;
+		[DontSerialize] private int baseDefense;
+		[DontSerialize] private int baseMaxHealth;
 
 		[DontSerialize] private ItemInstance[] items;
 		public IEnumerable<ItemInstance> Items => items;
@@ -17,6 +18,7 @@ namespace LowResRoguelike.ItemSystem
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
+				LoadPrefs ();
 				AddDefaultItems ();
 				UpdateCombatStats ();
 			}
@@ -34,6 +36,14 @@ namespace LowResRoguelike.ItemSystem
 			return originalItem;
 		}
 
+		private void LoadPrefs ()
+		{
+			var prefs = PrefLoader.PlayerPrefs;
+			baseAttack = prefs.BaseAttack;
+			baseDefense = prefs.BaseDefense;
+			baseMaxHealth = prefs.BaseMaxHealth;
+		}
+
 		private void AddDefaultItems ()
 		{
 			items = new ItemInstance[(int)ItemSlot.Last + 1];
@@ -46,11 +56,11 @@ namespace LowResRoguelike.ItemSystem
 		private void UpdateCombatStats ()
 		{
 			var combatStats = GameObj.GetComponent<CombatStats> ();
-			combatStats.Attack = BaseAttack + items.Sum (item => item.AttackModifier);
-			combatStats.Defense = BaseDefense + items.Sum (item => item.DefenseModifier);
+			combatStats.Attack = baseAttack + items.Sum (item => item.AttackModifier);
+			combatStats.Defense = baseDefense + items.Sum (item => item.DefenseModifier);
 			combatStats.Damage = items[(int)ItemSlot.Weapon].Damage;
 			combatStats.DamageReduction = items.Sum (item => item.DamageReductionModifier);
-			combatStats.MaxHealth = BaseMaxHealth + items.Sum (item => item.MaxHealthModifier);
+			combatStats.MaxHealth = baseMaxHealth + items.Sum (item => item.MaxHealthModifier);
 		}
 	}
 }
