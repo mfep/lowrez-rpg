@@ -6,40 +6,47 @@ namespace LowResRoguelike
 {
 	public class MapGenerator : Component
 	{
-		[DontSerialize] private Grid<TileType> generatedMap;
-
-		public int MinRoomSize { get; set; }
-		public int MaxRoomSize { get; set; }
-		public int MinCorrdidorLength { get; set; }
-		public int MaxCorrdidorLength { get; set; }
-		public int RequiredNumberOfFeatures { get; set; }
-		public int MaxInterations { get; set; }
+		public class GenerationPrefs
+		{
+			public int Width { get; set; }
+			public int Height { get; set; }
+			public int MinRoomSize { get; set; }
+			public int MaxRoomSize { get; set; }
+			public int MinCorridorLength { get; set; }
+			public int MaxCorridorLength { get; set; }
+			public int FeatureNum { get; set; }
+			public int MaxIterations { get; set; }
+		}
 
 		public IReadOnlyGrid<TileType> GeneratedMap => generatedMap;
 
-		public void GenerateMap (int width, int height)
+		[DontSerialize] private Grid<TileType> generatedMap;
+		[DontSerialize] private GenerationPrefs prefs;
+
+		public void GenerateMap (GenerationPrefs generationPrefs)
 		{
-			var map = new Grid<TileType> (width - 2, height - 2);
+			prefs = generationPrefs;
+			var map = new Grid<TileType> (prefs.Width - 2, prefs.Height - 2);
 			map.Fill (TileType.Solid, 0, 0, map.Width, map.Height);
 
 			CreateCenterRoom (map);
 
 			var numberOfFeaturesAdded = 0;
 			var iterations = 0;
-			while (numberOfFeaturesAdded < RequiredNumberOfFeatures && iterations <= MaxInterations) {
+			while (numberOfFeaturesAdded < prefs.FeatureNum && iterations <= prefs.MaxIterations) {
 				if (TryAddFeature (map)) {
 					numberOfFeaturesAdded++;
 				}
 				iterations++;
 			}
-			map.AssumeRect (-1, -1, width, height);
+			map.AssumeRect (-1, -1, prefs.Width, prefs.Height);
 			generatedMap = map;
 		}
 
 		private void CreateCenterRoom (Grid<TileType> map)
 		{
-			var roomWidth = MathF.Rnd.Next (MinRoomSize, MaxRoomSize);
-			var roomHeight = MathF.Rnd.Next (MinRoomSize, MaxRoomSize);
+			var roomWidth = MathF.Rnd.Next (prefs.MinRoomSize, prefs.MaxRoomSize);
+			var roomHeight = MathF.Rnd.Next (prefs.MinRoomSize, prefs.MaxRoomSize);
 
 			var left = MathF.Rnd.Next (1, map.Width - roomWidth - 1);
 			var top = MathF.Rnd.Next (1, map.Height - roomHeight - 1);
@@ -67,9 +74,9 @@ namespace LowResRoguelike
 			var roomDir1 = GetDirection (map, wallBase);
 			var roomDir2 = new Point2 (roomDir1.X == 1 ? 0 : 1, roomDir1.Y == 1 ? 0 : 1);
 
-			var room2 = MathF.Rnd.Next (MinRoomSize, MaxRoomSize);
+			var room2 = MathF.Rnd.Next (prefs.MinRoomSize, prefs.MaxRoomSize);
 			var roomOffset = MathF.Rnd.Next (room2);
-			var room1 = MathF.Rnd.Next (MinRoomSize, MaxRoomSize);
+			var room1 = MathF.Rnd.Next (prefs.MinRoomSize, prefs.MaxRoomSize);
 			var solidToEmpty = new List<Point2> ();
 
 			for (var c1 = 0; c1 < room1; c1++) {
@@ -94,7 +101,7 @@ namespace LowResRoguelike
 			var corridorDir = GetDirection (map, wallBase);
 			var solidToEmpty = new List<Point2> ();
 
-			var corridorLength = MathF.Rnd.Next (MinCorrdidorLength, MaxCorrdidorLength);
+			var corridorLength = MathF.Rnd.Next (prefs.MinCorridorLength, prefs.MaxCorridorLength);
 			for (var corridorIndex = 0; corridorIndex < corridorLength; ++corridorIndex) {
 				var corridorPos = wallBase + corridorDir * corridorIndex;
 				if (IsInvalidPos (map, corridorIndex, corridorPos)) {

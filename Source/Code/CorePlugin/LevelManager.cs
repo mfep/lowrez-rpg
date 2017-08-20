@@ -14,7 +14,7 @@ namespace LowResRoguelike
 
 		public ContentRef<Prefab> EnemyPrefab { get; set; }
 		public ContentRef<Prefab> ItemPrefab { get; set; }
-		public ContentRef<Prefab> PotionPrefab { get;set; }
+		public ContentRef<Prefab> PotionPrefab { get; set; }
 		public ContentRef<Prefab> ExitPrefab { get; set; }
 		public ContentRef<Scene> GameOverScene { get; set; }
 
@@ -35,11 +35,6 @@ namespace LowResRoguelike
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ().Death -= OnPlayerDied;
 		}
 
-		private void OnPlayerDied ()
-		{
-			Scene.SwitchTo (GameOverScene);
-		}
-
 		public ItemInstance GenerateItem ()
 		{
 			return ItemGenerator.Generate (prefs.MinMaterial, prefs.MaxMaterial);
@@ -57,11 +52,16 @@ namespace LowResRoguelike
 			StartLevel ();
 		}
 
+		private void OnPlayerDied ()
+		{
+			Scene.SwitchTo (GameOverScene);
+		}
+
 		private void StartLevel ()
 		{
 			GameObj.ParentScene.FindComponent<MapRenderer> ().Clear ();
 			var generator = GameObj.ParentScene.FindComponent<MapGenerator> ();
-			generator.GenerateMap (prefs.Map.Width, prefs.Map.Height);
+			generator.GenerateMap (prefs.Map);
 
 			var emptyTiles = generator.GeneratedMap.TilesOfType (TileType.Empty).ToList ();
 
@@ -83,7 +83,7 @@ namespace LowResRoguelike
 				return;
 			}
 			foreach (var enemyRef in prefs.Enemies) {
-				foreach (var enemyObject in InstantiateGameObjects(emptyTiles, EnemyPrefab, enemyRef.Count)) {
+				foreach (var enemyObject in InstantiateGameObjects (emptyTiles, EnemyPrefab, enemyRef.Count)) {
 					enemyRef.Enemy.Apply (enemyObject);
 				}
 			}
@@ -91,7 +91,7 @@ namespace LowResRoguelike
 
 		private List<GameObject> InstantiateGameObjects (List<Point2> emptyTiles, ContentRef<Prefab> prefab, int count)
 		{
-			List<GameObject> objects = new List <GameObject> (count);
+			var objects = new List<GameObject> (count);
 			for (var i = 0; i < count; i++) {
 				var tileIndex = MathF.Rnd.Next (emptyTiles.Count);
 				var pos = emptyTiles[tileIndex];

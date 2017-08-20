@@ -6,8 +6,14 @@ player:
 
 maps:
     - &defaultMap
-      width: 28
-      height: 28
+      width:            28
+      height:           28
+      minRoomSize:      3
+      maxRoomSize:      6
+      minCorridorLength: 3
+      maxCorridorLength: 8
+      featureNum:       30
+      maxIterations:    1000
 
 enemies:
     - &blob
