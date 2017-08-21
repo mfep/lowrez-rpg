@@ -82,13 +82,13 @@ namespace LowResRoguelike.ItemSystem
 	{
 		public ItemInstance Item { get; set; }
 
-		public override string DisplayText => Item.Material.ToString();
-		public override string DisplayText2 => Item.TypeName ();
+		public override string DisplayText => Item.Material.Name;
+		public override string DisplayText2 => Item.ItemClass.Name;
 
 		protected override void PickupAction (GameObject playerObject)
 		{
 			Item = playerObject.GetComponent<PlayerStats> ().EquipItem (Item);
-			if (Item.Material == Material.No) {
+			if (Item.Material.Value == 0) {
 				DestroyPickup ();
 			}
 		}

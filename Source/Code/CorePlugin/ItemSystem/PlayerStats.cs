@@ -30,8 +30,8 @@ namespace LowResRoguelike.ItemSystem
 
 		public ItemInstance EquipItem (ItemInstance item)
 		{
-			var originalItem = items[(int)item.ItemSlot];
-			items[(int)item.ItemSlot] = item;
+			var originalItem = items[(int)item.ItemClass.Slot];
+			items[(int)item.ItemClass.Slot] = item;
 			UpdateCombatStats ();
 			return originalItem;
 		}
@@ -46,21 +46,17 @@ namespace LowResRoguelike.ItemSystem
 
 		private void AddDefaultItems ()
 		{
-			items = new ItemInstance[(int)ItemSlot.Last + 1];
-			items[(int)ItemSlot.Weapon] = new ItemInstance (ItemSlot.Weapon, Material.Wooden, WeaponType.Axe);
-			items[(int)ItemSlot.Shield] = new ItemInstance (ItemSlot.Shield, Material.No);
-			items[(int)ItemSlot.Armor] = new ItemInstance (ItemSlot.Armor, Material.No);
-			items[(int)ItemSlot.Helmet] = new ItemInstance (ItemSlot.Helmet, Material.No);
+			items = ItemGenerator.GetPlayerDefaultItems ();
 		}
 
 		private void UpdateCombatStats ()
 		{
 			var combatStats = GameObj.GetComponent<CombatStats> ();
-			combatStats.Attack = baseAttack + items.Sum (item => item.AttackModifier);
-			combatStats.Defense = baseDefense + items.Sum (item => item.DefenseModifier);
-			combatStats.Damage = items[(int)ItemSlot.Weapon].Damage;
-			combatStats.DamageReduction = items.Sum (item => item.DamageReductionModifier);
-			combatStats.MaxHealth = baseMaxHealth + items.Sum (item => item.MaxHealthModifier);
+			combatStats.Attack = baseAttack + items.Sum (item => item.AttackMod);
+			combatStats.Defense = baseDefense + items.Sum (item => item.DefenseMod);
+			combatStats.Damage = items[(int)ItemSlot.WeaponHand].Damage;
+			combatStats.DamageReduction = items.Sum (item => item.DamageReductionMod);
+			combatStats.MaxHealth = baseMaxHealth + items.Sum (item => item.MaxHealthMod);
 		}
 	}
 }

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Duality;
+using LowResRoguelike.GamePrefs;
 
 namespace LowResRoguelike.ItemSystem
 {
@@ -7,12 +9,33 @@ namespace LowResRoguelike.ItemSystem
 		public static ItemInstance Generate (int lowestMaterial, int highestMaterial)
 		{
 			var slot = (ItemSlot)MathF.Rnd.Next (0, (int)ItemSlot.Last + 1);
-			WeaponType weaponType = 0;
-			if (slot == ItemSlot.Weapon) {
-				weaponType = (WeaponType)MathF.Rnd.Next (0, (int)WeaponType.Last + 1);
+			var material = GetRandomFromList (PrefLoader.Materials);
+
+			if (slot == ItemSlot.WeaponHand) {
+				var weaponClass = GetRandomFromList (PrefLoader.Weapons);
+				return new ItemInstance
+				{
+					ItemClass = weaponClass,
+					Material = material
+				};
 			}
-			var material = (Material)MathF.Rnd.Next (lowestMaterial, highestMaterial + 1);
-			return new ItemInstance(slot, material, weaponType);
+			var itemClass = GetRandomFromList (PrefLoader.Items);
+			return new ItemInstance
+			{
+				ItemClass = itemClass,
+				Material = material
+			};
+		}
+
+		public static ItemInstance[] GetPlayerDefaultItems ()
+		{
+			return PrefLoader.PlayerStartingItems;
+		}
+
+		private static T GetRandomFromList<T> (IReadOnlyList<T> list)
+		{
+			var idx = MathF.Rnd.Next (list.Count);
+			return list[idx];
 		}
 	}
 }

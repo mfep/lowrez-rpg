@@ -1,154 +1,233 @@
 ---
 player:
-    baseAttack:         0
-    baseDefense:        7
-    baseMaxHealth:      20
+    baseAttack:             0
+    baseDefense:            7
+    baseMaxHealth:          20
+
+materials:
+    - &nomat
+      name:                 No
+      value:                0
+    - &wooden
+      name:                 Wooden
+      value:                1
+    - name:                 Bronze
+      value:                2
+    - name:                 Iron
+      value:                3
+    - name:                 Steel
+      value:                4
+    - name:                 Mithril
+      value:                5
+    - name:                 Red Steel
+      value:                6
+
+items:
+    - &helmet
+      name:                 Helmet
+      slot:                 Head
+      stats:
+          maxHealth:        4
+    - &armor
+      name:                 Armor
+      slot:                 Torso
+      stats:
+          damageReduction:  1
+    - &shield
+      name:                 Shield
+      slot:                 ShieldHand
+      stats:
+          defense:          3
+
+weapons:
+    - name:                 Shortsword
+      slot:                 WeaponHand
+      stats:
+          attack:           3
+          defense:          1
+      diceCount:            1
+    - name:                 Longsword
+      slot:                 WeaponHand
+      stats:
+          attack:           2
+          defense:          2
+      diceCount:            1
+    - &axe
+      name:                 Axe
+      slot:                 WeaponHand
+      stats:
+          attack:           3
+          defense:          0
+      diceCount:            2
+    - name:                 Mace
+      slot:                 WeaponHand
+      stats:
+          attack:           2
+          defense:          0
+      diceCount:            3
+    - name:                 Staff
+      slot:                 WeaponHand
+      stats:
+          attack:           1
+          defense:          3
+      diceCount:            1
+
+# playerStartingItems order is important!
+playerStartingItems:
+    - material:             *nomat
+      itemClass:            *helmet
+    - material:             *nomat
+      itemClass:            *armor
+    - material:             *wooden
+      itemClass:            *axe
+    - material:             *nomat
+      itemClass:            *shield
 
 maps:
     - &defaultMap
-      width:            28
-      height:           28
-      minRoomSize:      3
-      maxRoomSize:      6
-      minCorridorLength: 3
-      maxCorridorLength: 8
-      featureNum:       30
-      maxIterations:    1000
+      width:                28
+      height:               28
+      minRoomSize:          3
+      maxRoomSize:          6
+      minCorridorLength:    3
+      maxCorridorLength:    8
+      featureNum:           30
+      maxIterations:        1000
 
 enemies:
     - &blob
-      sprite:           5
-      attack:           0
-      defense:          5
-      damageReduction:  0
-      maxHealth:        5
+      sprite:               5
+      attack:               0
+      defense:              5
+      damageReduction:      0
+      maxHealth:            5
       damage:
-          diceCount:    1
-          additional:   0
+          diceCount:        1
+          additional:       0
 
     - &skeleton
-      sprite:           2
-      attack:           4
-      defense:          8
-      damageReduction:  0
-      maxHealth:        8
+      sprite:               2
+      attack:               4
+      defense:              8
+      damageReduction:      0
+      maxHealth:            8
       damage:
-          diceCount:    1
-          additional:   1
+          diceCount:        1
+          additional:       1
 
     - &bigSkeleton
-      sprite:           6
-      attack:           8
-      defense:          12
-      damageReduction:  1
-      maxHealth:        15
+      sprite:               6
+      attack:               8
+      defense:              12
+      damageReduction:      1
+      maxHealth:            15
       damage:
-          diceCount:    2
-          additional:   0
+          diceCount:        2
+          additional:       0
 
     - &ogre
-      sprite:           7
-      attack:           12
-      defense:          5
-      damageReduction:  4
-      maxHealth:        30
+      sprite:               7
+      attack:               12
+      defense:              5
+      damageReduction:      4
+      maxHealth:            30
       damage:
-          diceCount:    2
-          additional:   4
+          diceCount:        2
+          additional:       4
 
     - &biggerSkeleton
-      sprite:           9
-      attack:           15
-      defense:          15
-      damageReduction:  4
-      maxHealth:        25
+      sprite:               9
+      attack:               15
+      defense:              15
+      damageReduction:      4
+      maxHealth:            25
       damage:
-          diceCount:    2
-          additional:   3
+          diceCount:        2
+          additional:       3
 
     - &boss
-      sprite:           8
-      attack:           20
-      defense:          20
-      damageReduction:  4
-      maxHealth:        40
+      sprite:               8
+      attack:               20
+      defense:              20
+      damageReduction:      4
+      maxHealth:            40
       damage:
-          diceCount:    3
-          additional:   5
+          diceCount:        3
+          additional:       5
 levels:
     # blobs
     - map: *defaultMap
-      minMaterial:      1
-      maxMaterial:      3
-      potionCount:      4
-      itemCount:        2
+      minMaterial:          1
+      maxMaterial:          3
+      potionCount:          4
+      itemCount:            2
       enemies:
-          - enemy:      *blob
-            count:      6
+          - enemy:          *blob
+            count:          6
     # blobs + skeletons
     - map: *defaultMap
-      minMaterial:      2
-      maxMaterial:      3
-      potionCount:      4
-      itemCount:        3
+      minMaterial:          2
+      maxMaterial:          3
+      potionCount:          4
+      itemCount:            3
       enemies:
-          - enemy:      *blob
-            count:      4
-          - enemy:      *skeleton
-            count:      3
+          - enemy:          *blob
+            count:          4
+          - enemy:          *skeleton
+            count:          3
     # 3 big skeletons
     - map: *defaultMap
-      minMaterial:      2
-      maxMaterial:      3
-      potionCount:      8
-      itemCount:        4
+      minMaterial:          2
+      maxMaterial:          3
+      potionCount:          8
+      itemCount:            4
       enemies:
-          - enemy:      *bigSkeleton
-            count:      3
+          - enemy:          *bigSkeleton
+            count:          3
     # ogre + skeletons
     - map: *defaultMap
-      minMaterial:      2
-      maxMaterial:      4
-      potionCount:      5
-      itemCount:        3
+      minMaterial:          2
+      maxMaterial:          4
+      potionCount:          5
+      itemCount:            3
       enemies:
-          - enemy:      *skeleton
-            count:      5
-          - enemy:      *ogre
-            count:      1
+          - enemy:          *skeleton
+            count:          5
+          - enemy:          *ogre
+            count:          1
     # ogres
     #- map: *defaultMap
-    #  minMaterial:      3
-    #  maxMaterial:      5
-    #  potionCount:      5
-    #  itemCount:        3
+    #  minMaterial:          3
+    #  maxMaterial:          5
+    #  potionCount:          5
+    #  itemCount:            3
     #  enemies:
-    #      - enemy:      *ogre
-    #        count:      5
+    #      - enemy:          *ogre
+    #        count:          5
     # lot of skeletons
     - map: *defaultMap
-      minMaterial:      3
-      maxMaterial:      5
-      potionCount:      10
-      itemCount:        3
+      minMaterial:          3
+      maxMaterial:          5
+      potionCount:          10
+      itemCount:            3
       enemies:
-          - enemy:      *bigSkeleton
-            count:      6
-          - enemy:      *biggerSkeleton
-            count:      3
+          - enemy:          *bigSkeleton
+            count:          6
+          - enemy:          *biggerSkeleton
+            count:          3
     # empty
     - map: *defaultMap
-      minMaterial:      5
-      maxMaterial:      6
-      potionCount:      10
-      itemCount:        3
+      minMaterial:          5
+      maxMaterial:          6
+      potionCount:          10
+      itemCount:            3
       enemies:
     # boss
     - map: *defaultMap
-      minMaterial:      3
-      maxMaterial:      5
-      potionCount:      0
-      itemCount:        0
+      minMaterial:          3
+      maxMaterial:          5
+      potionCount:          0
+      itemCount:            0
       enemies:
-          - enemy:      *boss
-            count:      1
+          - enemy:          *boss
+            count:          1

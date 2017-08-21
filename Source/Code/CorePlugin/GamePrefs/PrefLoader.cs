@@ -3,6 +3,7 @@ using System.IO;
 using Duality;
 using Duality.Components.Renderers;
 using Duality.IO;
+using LowResRoguelike.ItemSystem;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -12,6 +13,10 @@ namespace LowResRoguelike.GamePrefs
 	{
 		public static IReadOnlyList<LevelPref> Levels => prefs.Levels;
 		public static IReadOnlyList<EnemyPref> Enemies => prefs.Enemies;
+		public static IReadOnlyList<Material> Materials => prefs.Materials;
+		public static IReadOnlyList<ItemClass> Items => prefs.Items;
+		public static IReadOnlyList<WeaponItemClass> Weapons => prefs.Weapons;
+		public static ItemInstance[] PlayerStartingItems => prefs.PlayerStartingItems;
 		public static PlayerPrefs PlayerPrefs => prefs.Player;
 
 		private static GamePrefs prefs;
@@ -29,6 +34,10 @@ namespace LowResRoguelike.GamePrefs
 	internal class GamePrefs
 	{
 		public PlayerPrefs Player { get; set; }
+		public List<Material> Materials { get; set; }
+		public List<ItemClass> Items { get; set; }
+		public List<WeaponItemClass> Weapons { get; set; }
+		public ItemInstance[] PlayerStartingItems { get; set; }
 		public List<MapGenerator.GenerationPrefs> Maps { get; set; }
 		public List<EnemyPref> Enemies { get; set; }
 		public List<LevelPref> Levels { get; set; }
