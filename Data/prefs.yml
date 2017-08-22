@@ -93,6 +93,15 @@ maps:
       maxCorridorLength:    8
       featureNum:           30
       maxIterations:        1000
+    - &oneRoom
+      width:                14
+      height:               14
+      minRoomSize:          7
+      maxRoomSize:          7
+      minCorridorLength:    0
+      maxCorridorLength:    0
+      featureNum:           1
+      maxIterations:        1
 
 enemies:
     - &blob
@@ -216,12 +225,11 @@ levels:
           - enemy:          *biggerSkeleton
             count:          3
     # empty
-    - map: *defaultMap
+    - map: *oneRoom
       minMaterial:          5
       maxMaterial:          6
       potionCount:          10
       itemCount:            3
-      enemies:
     # boss
     - map: *defaultMap
       minMaterial:          3
