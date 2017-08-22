@@ -23,8 +23,6 @@ namespace LowResRoguelike
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				PrefLoader.LoadYamlDocument ();
-				AudioPlayer.PlayMusic ();
 				NextLevel ();
 				GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<CombatStats> ().Death += OnPlayerDied;
 			}
