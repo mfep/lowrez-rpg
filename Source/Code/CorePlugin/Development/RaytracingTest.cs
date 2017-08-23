@@ -1,9 +1,8 @@
-﻿using System.Diagnostics;
-using Duality;
+﻿using Duality;
 using Duality.Drawing;
 using Duality.Input;
 
-namespace LowResRoguelike.Test
+namespace LowResRoguelike.Development
 {
 	public class RaytracingTest : Component, ICmpUpdatable, ICmpRenderer
 	{

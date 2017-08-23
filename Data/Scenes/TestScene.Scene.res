@@ -70,6 +70,7 @@
               <_size dataType="Int">2</_size>
             </passes>
             <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Parallax" value="1" />
+            <priority dataType="Int">0</priority>
             <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="All" value="4294967295" />
           </item>
         </_items>
@@ -105,7 +106,7 @@
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="675331251">
         <_items dataType="Array" type="Duality.Component[]" id="3353765926" length="4">
-          <item dataType="Struct" type="LowResRoguelike.Test.RaytracingTest" id="1974419314">
+          <item dataType="Struct" type="LowResRoguelike.Development.RaytracingTest" id="1331119121">
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">2573734737</gameobj>
           </item>
@@ -116,10 +117,10 @@
         <header />
         <body>
           <keys dataType="Array" type="System.Object[]" id="406834905">
-            <item dataType="Type" id="2211771854" value="LowResRoguelike.Test.RaytracingTest" />
+            <item dataType="Type" id="2211771854" value="LowResRoguelike.Development.RaytracingTest" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="3581470208">
-            <item dataType="ObjectRef">1974419314</item>
+            <item dataType="ObjectRef">1331119121</item>
           </values>
         </body>
       </compMap>
