@@ -9,7 +9,7 @@ namespace LowResRoguelike
 {
 	public class LevelManager : Component, ICmpInitializable
 	{
-		public int LevelIndex { get; private set; }
+		public int LevelIndex { get; set; }
 		public int LevelCount => PrefLoader.Levels?.Count ?? 0;
 
 		public ContentRef<Prefab> EnemyPrefab { get; set; }

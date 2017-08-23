@@ -63,6 +63,7 @@
     <Compile Include="AttackResult.cs" />
     <Compile Include="AudioPlayer.cs" />
     <Compile Include="CameraMovement.cs" />
+    <Compile Include="Development\DeveloperMode.cs" />
     <Compile Include="GamePrefs\PrefLoader.cs" />
     <Compile Include="ItemSystem\ItemGenerator.cs" />
     <Compile Include="ItemSystem\Pickup.cs" />

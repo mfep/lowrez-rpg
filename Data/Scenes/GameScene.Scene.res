@@ -67,9 +67,6 @@
             <position dataType="Struct" type="Duality.Point2" />
           </item>
           <item dataType="Struct" type="LowResRoguelike.ItemSystem.PlayerStats" id="2158168919">
-            <_x003C_BaseAttack_x003E_k__BackingField dataType="Int">0</_x003C_BaseAttack_x003E_k__BackingField>
-            <_x003C_BaseDefense_x003E_k__BackingField dataType="Int">7</_x003C_BaseDefense_x003E_k__BackingField>
-            <_x003C_BaseMaxHealth_x003E_k__BackingField dataType="Int">20</_x003C_BaseMaxHealth_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
           </item>
@@ -194,6 +191,7 @@
                     <_size dataType="Int">2</_size>
                   </passes>
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
+                  <priority dataType="Int">0</priority>
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, AllFlags" value="3221225471" />
                 </item>
                 <item dataType="Struct" type="LowResRoguelike.CameraMovement" id="3577894245">
@@ -285,6 +283,7 @@
                     <_size dataType="Int">1</_size>
                   </passes>
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
+                  <priority dataType="Int">0</priority>
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
                 </item>
               </_items>
@@ -421,13 +420,12 @@
       <children />
       <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="3871237299">
         <_items dataType="Array" type="Duality.Component[]" id="3652507686" length="8">
+          <item dataType="Struct" type="LowResRoguelike.Development.DeveloperMode" id="1842836750">
+            <_x003C_DeveloperModeEnabled_x003E_k__BackingField dataType="Bool">true</_x003C_DeveloperModeEnabled_x003E_k__BackingField>
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3838638929</gameobj>
+          </item>
           <item dataType="Struct" type="LowResRoguelike.MapGenerator" id="568466665">
-            <_x003C_MaxCorrdidorLength_x003E_k__BackingField dataType="Int">8</_x003C_MaxCorrdidorLength_x003E_k__BackingField>
-            <_x003C_MaxInterations_x003E_k__BackingField dataType="Int">1000</_x003C_MaxInterations_x003E_k__BackingField>
-            <_x003C_MaxRoomSize_x003E_k__BackingField dataType="Int">6</_x003C_MaxRoomSize_x003E_k__BackingField>
-            <_x003C_MinCorrdidorLength_x003E_k__BackingField dataType="Int">3</_x003C_MinCorrdidorLength_x003E_k__BackingField>
-            <_x003C_MinRoomSize_x003E_k__BackingField dataType="Int">3</_x003C_MinRoomSize_x003E_k__BackingField>
-            <_x003C_RequiredNumberOfFeatures_x003E_k__BackingField dataType="Int">30</_x003C_RequiredNumberOfFeatures_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
@@ -521,7 +519,7 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">4</_size>
+        <_size dataType="Int">5</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1756076728" surrogate="true">
         <header />
@@ -531,12 +529,14 @@
             <item dataType="Type" id="1531620682" value="LowResRoguelike.MapGenerator" />
             <item dataType="Type" id="2379130238" value="LowResRoguelike.MapRenderer" />
             <item dataType="Type" id="4237188954" value="LowResRoguelike.UiRenderer" />
+            <item dataType="Type" id="3059329198" value="LowResRoguelike.Development.DeveloperMode" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="4119922176">
             <item dataType="ObjectRef">618444706</item>
             <item dataType="ObjectRef">568466665</item>
             <item dataType="ObjectRef">1717016093</item>
             <item dataType="ObjectRef">3713685027</item>
+            <item dataType="ObjectRef">1842836750</item>
           </values>
         </body>
       </compMap>
