@@ -76,6 +76,7 @@
                     <_size dataType="Int">2</_size>
                   </passes>
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
+                  <priority dataType="Int">0</priority>
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, AllFlags" value="3221225471" />
                 </item>
               </_items>
@@ -157,6 +158,7 @@
                     <_size dataType="Int">1</_size>
                   </passes>
                   <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
+                  <priority dataType="Int">0</priority>
                   <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
                 </item>
               </_items>

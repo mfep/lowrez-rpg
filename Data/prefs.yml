@@ -93,6 +93,15 @@ maps:
       maxCorridorLength:    8
       featureNum:           30
       maxIterations:        1000
+    - &smallRoom
+      width:                20
+      height:               20
+      minRoomSize:          5
+      maxRoomSize:          7
+      minCorridorLength:    1
+      maxCorridorLength:    3
+      featureNum:           8
+      maxIterations:        500
     - &oneRoom
       width:                14
       height:               14
@@ -231,7 +240,7 @@ levels:
       potionCount:          10
       itemCount:            3
     # boss
-    - map: *defaultMap
+    - map: *smallRoom
       minMaterial:          3
       maxMaterial:          5
       potionCount:          0
