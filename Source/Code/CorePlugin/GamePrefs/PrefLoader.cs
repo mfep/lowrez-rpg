@@ -16,7 +16,7 @@ namespace LowResRoguelike.GamePrefs
 		public static IReadOnlyList<Material> Materials => prefs.Materials;
 		public static IReadOnlyList<ItemClass> Items => prefs.Items;
 		public static IReadOnlyList<WeaponItemClass> Weapons => prefs.Weapons;
-		public static ItemInstance[] PlayerStartingItems => prefs.PlayerStartingItems;
+		public static IReadOnlyList<ItemInstance> PlayerStartingItems => prefs.PlayerStartingItems;
 		public static PlayerPrefs PlayerPrefs => prefs.Player;
 
 		private static GamePrefs prefs;

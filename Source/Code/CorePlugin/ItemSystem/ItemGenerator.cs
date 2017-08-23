@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Duality;
 using LowResRoguelike.GamePrefs;
 
@@ -30,7 +31,7 @@ namespace LowResRoguelike.ItemSystem
 
 		public static ItemInstance[] GetPlayerDefaultItems ()
 		{
-			return PrefLoader.PlayerStartingItems;
+			return PrefLoader.PlayerStartingItems.ToArray ();
 		}
 
 		private static T GetRandomFromList<T> (IReadOnlyList<T> list, int min = 0, int max = int.MaxValue - 1)
