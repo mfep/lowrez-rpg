@@ -8,7 +8,7 @@
     <active dataType="Bool">true</active>
     <children />
     <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="1272326534">
-      <_items dataType="Array" type="Duality.Component[]" id="2741655424">
+      <_items dataType="Array" type="Duality.Component[]" id="2741655424" length="8">
         <item dataType="Struct" type="Duality.Components.Transform" id="4077477145">
           <active dataType="Bool">true</active>
           <angle dataType="Float">0</angle>
@@ -60,7 +60,6 @@
         </item>
         <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2995021201">
           <_x003C_Blocker_x003E_k__BackingField dataType="Bool">false</_x003C_Blocker_x003E_k__BackingField>
-          <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">true</_x003C_RemainsSeen_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1717162213</gameobj>
           <position dataType="Struct" type="Duality.Point2" />
@@ -76,8 +75,13 @@
           <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">1717162213</gameobj>
         </item>
+        <item dataType="Struct" type="LowResRoguelike.VisibilityController" id="3834725784">
+          <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">true</_x003C_RemainsSeen_x003E_k__BackingField>
+          <active dataType="Bool">true</active>
+          <gameobj dataType="ObjectRef">1717162213</gameobj>
+        </item>
       </_items>
-      <_size dataType="Int">4</_size>
+      <_size dataType="Int">5</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="85694266" surrogate="true">
       <header />
@@ -87,12 +91,14 @@
           <item dataType="Type" id="3894043414" value="LowResRoguelike.DiscreteTransform" />
           <item dataType="Type" id="3860970400" value="LowResRoguelike.ItemSystem.ExitPickup" />
           <item dataType="Type" id="3130546786" value="Duality.Components.Renderers.AnimSpriteRenderer" />
+          <item dataType="Type" id="1669744892" value="LowResRoguelike.VisibilityController" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="702118646">
           <item dataType="ObjectRef">4077477145</item>
           <item dataType="ObjectRef">2995021201</item>
           <item dataType="ObjectRef">2681977800</item>
           <item dataType="ObjectRef">1424597594</item>
+          <item dataType="ObjectRef">3834725784</item>
         </values>
       </body>
     </compMap>

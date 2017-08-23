@@ -97,6 +97,7 @@ namespace LowResRoguelike
 				var gameObject = prefab.Res.Instantiate ();
 				gameObject.Parent = GameObj;
 				gameObject.GetComponent<DiscreteTransform> ().Position = pos;
+				gameObject.GetComponent<VisibilityController> ()?.UpdateVisibility ();
 				objects.Add (gameObject);
 			}
 			return objects;

@@ -1,9 +1,9 @@
 using Duality;
-using Duality.Components.Renderers;
 
 namespace LowResRoguelike
 {
 	[RequiredComponent(typeof(DiscreteTransform))]
+	[RequiredComponent(typeof(VisibilityController))]
 	[RequiredComponent(typeof(CombatStats))]
 	public class EnemyAgent : Component, ICmpTurnAction, ICmpInitializable
 	{
@@ -21,7 +21,7 @@ namespace LowResRoguelike
 			var playerObject = GameObj.ParentScene.FindGameObject<PlayerMovement> ();
 			var playerPos = playerObject.GetComponent<DiscreteTransform> ().Position;
 
-			if (GameObj.GetComponent<DiscreteTransform>().IsPlayerVisible (WatchDistanceSqr, out int dx, out int dy)) {
+			if (GameObj.GetComponent<VisibilityController> ().IsPlayerVisible (WatchDistanceSqr, out int dx, out int dy)) {
 				if (pos.Manhattan (playerPos) == 1) {
 					GameObj.GetComponent<CombatStats> ().FightWith (playerObject.GetComponent<CombatStats> ());
 					var dir = new Point2 (dx, dy);

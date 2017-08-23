@@ -61,7 +61,6 @@
           </item>
           <item dataType="Struct" type="LowResRoguelike.DiscreteTransform" id="2847693510">
             <_x003C_Blocker_x003E_k__BackingField dataType="Bool">true</_x003C_Blocker_x003E_k__BackingField>
-            <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">false</_x003C_RemainsSeen_x003E_k__BackingField>
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">1569834522</gameobj>
             <position dataType="Struct" type="Duality.Point2" />

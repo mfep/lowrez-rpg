@@ -20,13 +20,13 @@
           <ignoreParent dataType="Bool">false</ignoreParent>
           <parentTransform />
           <pos dataType="Struct" type="Duality.Vector3">
-            <X dataType="Float">4</X>
-            <Y dataType="Float">0</Y>
+            <X dataType="Float">20</X>
+            <Y dataType="Float">-138</Y>
             <Z dataType="Float">0</Z>
           </pos>
           <posAbs dataType="Struct" type="Duality.Vector3">
-            <X dataType="Float">4</X>
-            <Y dataType="Float">0</Y>
+            <X dataType="Float">20</X>
+            <Y dataType="Float">-138</Y>
             <Z dataType="Float">0</Z>
           </posAbs>
           <scale dataType="Float">1</scale>
@@ -78,14 +78,19 @@
         <item dataType="Struct" type="LowResRoguelike.CombatStats" id="2300443002">
           <_x003C_Attack_x003E_k__BackingField dataType="Int">5</_x003C_Attack_x003E_k__BackingField>
           <_x003C_Damage_x003E_k__BackingField dataType="Struct" type="LowResRoguelike.WeaponDamage" id="3664968862">
-            <_x003C_AdditionalDamage_x003E_k__BackingField dataType="Int">2</_x003C_AdditionalDamage_x003E_k__BackingField>
-            <_x003C_NumDices_x003E_k__BackingField dataType="Int">2</_x003C_NumDices_x003E_k__BackingField>
+            <_x003C_Additional_x003E_k__BackingField dataType="Int">0</_x003C_Additional_x003E_k__BackingField>
+            <_x003C_DiceCount_x003E_k__BackingField dataType="Int">0</_x003C_DiceCount_x003E_k__BackingField>
           </_x003C_Damage_x003E_k__BackingField>
           <_x003C_DamageReduction_x003E_k__BackingField dataType="Int">1</_x003C_DamageReduction_x003E_k__BackingField>
           <_x003C_Defense_x003E_k__BackingField dataType="Int">3</_x003C_Defense_x003E_k__BackingField>
           <_x003C_MaxHealth_x003E_k__BackingField dataType="Int">6</_x003C_MaxHealth_x003E_k__BackingField>
           <active dataType="Bool">true</active>
           <Death />
+          <gameobj dataType="ObjectRef">611562392</gameobj>
+        </item>
+        <item dataType="Struct" type="LowResRoguelike.VisibilityController" id="2729125963">
+          <_x003C_RemainsSeen_x003E_k__BackingField dataType="Bool">false</_x003C_RemainsSeen_x003E_k__BackingField>
+          <active dataType="Bool">true</active>
           <gameobj dataType="ObjectRef">611562392</gameobj>
         </item>
         <item dataType="Struct" type="LowResRoguelike.EnemyAgent" id="1381950298">
@@ -95,7 +100,7 @@
           <gameobj dataType="ObjectRef">611562392</gameobj>
         </item>
       </_items>
-      <_size dataType="Int">5</_size>
+      <_size dataType="Int">6</_size>
     </compList>
     <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1973870304" surrogate="true">
       <header />
@@ -106,6 +111,7 @@
           <item dataType="Type" id="1229847862" value="LowResRoguelike.EnemyAgent" />
           <item dataType="Type" id="1591291386" value="LowResRoguelike.CombatStats" />
           <item dataType="Type" id="223514582" value="Duality.Components.Renderers.AnimSpriteRenderer" />
+          <item dataType="Type" id="3134115610" value="LowResRoguelike.VisibilityController" />
         </keys>
         <values dataType="Array" type="System.Object[]" id="2906702696">
           <item dataType="ObjectRef">2971877324</item>
@@ -113,6 +119,7 @@
           <item dataType="ObjectRef">1381950298</item>
           <item dataType="ObjectRef">2300443002</item>
           <item dataType="ObjectRef">318997773</item>
+          <item dataType="ObjectRef">2729125963</item>
         </values>
       </body>
     </compMap>

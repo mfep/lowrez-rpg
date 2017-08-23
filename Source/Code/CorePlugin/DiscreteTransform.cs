@@ -11,7 +11,6 @@ namespace LowResRoguelike
 	public class DiscreteTransform : Component, ICmpInitializable, ICmpUpdatable
 	{
 		public bool Blocker { get; set; }
-		public bool RemainsSeen { get; set; }
 
 		public const float Grid = 4.0f;
 		private const float AttackTime = 0.3f;
@@ -35,14 +34,10 @@ namespace LowResRoguelike
 		public void OnInit (InitContext context)
 		{
 			UpdatePosition ();
-			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				TurnActionManager.PlayerMoved += ControlVisibility;
-			}
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
-			TurnActionManager.PlayerMoved -= ControlVisibility;
 		}
 
 		public void MoveTo (Point2 pos)
@@ -122,24 +117,6 @@ namespace LowResRoguelike
 			return result;
 		}
 
-		public bool IsPlayerVisible (int watchDistSqr, out int dx, out int dy)
-		{
-			if (GameObj.Disposed) {
-				dx = 0;
-				dy = 0;
-				return false;
-			}
-			var playerPos = GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().Position;
-			var currentPos = GameObj.GetComponent<DiscreteTransform> ().Position;
-			dx = playerPos.X - currentPos.X;
-			dy = playerPos.Y - currentPos.Y;
-			var dstSqr = dx * dx + dy * dy;
-			if (dstSqr > watchDistSqr) {
-				return false;
-			}
-			return MapExtensions.IsVisible (currentPos, playerPos);
-		}
-
 		public void UpdateFacing (Point2 delta)
 		{
 			if (delta.X == 0) {
@@ -150,15 +127,6 @@ namespace LowResRoguelike
 			var rect = spriteRenderer.Rect;
 			rect.X = delta.X > 0 ? 0f : -4f;
 			spriteRenderer.Rect = rect;
-		}
-
-		private void ControlVisibility ()
-		{
-			var spriteRenderer = GameObj.GetComponent<SpriteRenderer> ();
-			if (RemainsSeen && spriteRenderer.Active) {
-				return;
-			}
-			spriteRenderer.Active = IsPlayerVisible (256, out int _, out int _);
 		}
 	}
 }
