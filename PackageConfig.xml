@@ -19,5 +19,7 @@
     <Package id="AdamsLair.Duality.Editor" version="2.10.0.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.CamView" version="2.6.0.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.ObjectInspector" version="2.1.0.0" />
+    <Package id="AdamsLair.Duality.Plugins.Tilemaps" version="1.1.13.0" />
+    <Package id="AdamsLair.Duality.Editor.Plugins.Tilemaps" version="1.1.18.0" />
   </Packages>
 </PackageConfig>
