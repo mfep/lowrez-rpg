@@ -37,7 +37,7 @@ namespace LowResRoguelike
 			if (dstSqr > watchDistSqr) {
 				return false;
 			}
-			return MapExtensions.IsVisible (currentPos, playerPos);
+			return MapExtensions.IsVisible (playerPos, currentPos);
 		}
 
 		public void UpdateVisibility ()
