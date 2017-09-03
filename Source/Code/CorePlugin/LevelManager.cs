@@ -57,7 +57,6 @@ namespace LowResRoguelike
 
 		private void StartLevel ()
 		{
-			GameObj.ParentScene.FindComponent<MapRenderer> ().Clear ();
 			var generator = GameObj.ParentScene.FindComponent<MapGenerator> ();
 			generator.GenerateMap (prefs.Map);
 
@@ -66,7 +65,7 @@ namespace LowResRoguelike
 			var playerStartPos = generator.GeneratedMap.TilesOfType (TileType.Empty).First ();
 			emptyTiles.Remove (playerStartPos);
 			GameObj.ParentScene.FindGameObject<PlayerMovement> ().GetComponent<DiscreteTransform> ().MoveTo (playerStartPos);
-			GameObj.ParentScene.FindComponent<MapRenderer> ().UpdateMapVisibility ();
+			SceneCache.Get<TilemapController> ().SetupTilemap (prefs.Map);
 
 			InstantiatePrefabs (emptyTiles);
 		}

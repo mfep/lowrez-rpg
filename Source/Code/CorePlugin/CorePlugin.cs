@@ -7,8 +7,14 @@ namespace LowResRoguelike
 	{
 		protected override void OnGameStarting ()
 		{
+			SceneCache.AttachToSceneEntered ();
 			PrefLoader.LoadYamlDocument ();
 			AudioPlayer.PlayMusic ();
+		}
+
+		protected override void OnGameEnded ()
+		{
+			SceneCache.DetachFromSceneEntered ();
 		}
 	}
 }

@@ -5,27 +5,29 @@ using Duality.Resources;
 
 namespace LowResRoguelike
 {
-	public class SceneLoader : Component, ICmpInitializable
+	public class SceneLoader : Component, ICmpInitializable, ICmpUpdatable
 	{
 		public float SwitchTime { get; set; }
 		public ContentRef<Scene> SceneAfter { get; set; }
 
+		[DontSerialize] private TimeSpan switchTime;
+
 		public void OnInit (InitContext context)
 		{
 			if (context == InitContext.Activate && DualityApp.ExecContext == DualityApp.ExecutionContext.Game) {
-				SwitchScene ();
+				switchTime = Time.GameTimer + TimeSpan.FromSeconds (SwitchTime);
 			}
-		}
-
-		private async void SwitchScene ()
-		{
-			await Task.Delay (TimeSpan.FromSeconds (SwitchTime));
-			SceneAfter.Res.Dispose ();
-			Scene.SwitchTo (SceneAfter);
 		}
 
 		public void OnShutdown (ShutdownContext context)
 		{
+		}
+
+		public void OnUpdate ()
+		{
+			if (Time.GameTimer > switchTime) {
+				Scene.SwitchTo (SceneAfter);
+			}
 		}
 	}
 }

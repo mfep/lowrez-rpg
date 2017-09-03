@@ -7,6 +7,8 @@ namespace LowResRoguelike
 {
 	internal static class MapExtensions
 	{
+		public const int MaxVisibilityDst = 8;
+
 		public static IEnumerable<Point2> NeighboursOfType (this IReadOnlyGrid<TileType> map, Point2 middle, TileType type, bool cornersIncluded = false)
 		{
 			for (var y = -1; y <= 1; y++) {
@@ -107,11 +109,12 @@ namespace LowResRoguelike
 
 		public static bool IsVisible (this IReadOnlyGrid<TileType> map, Point2 p1, Point2 p2)
 		{
-			const int MaxVisSqr = 81;
+			const int maxVisSqr = MaxVisibilityDst * MaxVisibilityDst;
+
 			var deltaX = p2.X - p1.X;
 			var deltaY = p2.Y - p1.Y;
 			var dst = deltaX * deltaX + deltaY * deltaY;
-			if (dst > MaxVisSqr) {
+			if (dst > maxVisSqr) {
 				return false;
 			}
 			if (dst <= 2) {

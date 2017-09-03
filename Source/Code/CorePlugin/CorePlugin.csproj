@@ -55,6 +55,9 @@
     <Reference Include="DualityPrimitives">
       <HintPath>..\..\..\DualityPrimitives.dll</HintPath>
     </Reference>
+    <Reference Include="Tilemaps.core">
+      <HintPath>..\..\..\Plugins\Tilemaps.core.dll</HintPath>
+    </Reference>
     <Reference Include="YamlDotNet, Version=4.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\YamlDotNet.4.2.1\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\YamlDotNet.dll</HintPath>
     </Reference>
@@ -79,11 +82,11 @@
     <Compile Include="LevelManager.cs" />
     <Compile Include="MapExtensions.cs" />
     <Compile Include="MapGenerator.cs" />
-    <Compile Include="MapRenderer.cs" />
     <Compile Include="PlayerMovement.cs" />
     <Compile Include="SceneCache.cs" />
     <Compile Include="SceneLoader.cs" />
     <Compile Include="Development\RaytracingTest.cs" />
+    <Compile Include="TilemapController.cs" />
     <Compile Include="TileType.cs" />
     <Compile Include="TurnActionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

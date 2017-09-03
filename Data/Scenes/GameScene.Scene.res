@@ -302,19 +302,6 @@
             <active dataType="Bool">true</active>
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
-          <item dataType="Struct" type="LowResRoguelike.MapRenderer" id="1717016093">
-            <_x003C_GroundColor_x003E_k__BackingField dataType="Struct" type="Duality.Drawing.ColorRgba">
-              <A dataType="Byte">255</A>
-              <B dataType="Byte">83</B>
-              <G dataType="Byte">43</G>
-              <R dataType="Byte">29</R>
-            </_x003C_GroundColor_x003E_k__BackingField>
-            <_x003C_WallMaterial_x003E_k__BackingField dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-              <contentPath dataType="String">Data\Spritesheet\tileBG.Material.res</contentPath>
-            </_x003C_WallMaterial_x003E_k__BackingField>
-            <active dataType="Bool">true</active>
-            <gameobj dataType="ObjectRef">3838638929</gameobj>
-          </item>
           <item dataType="Struct" type="LowResRoguelike.TurnActionManager" id="618444706">
             <_x003C_FightWaitTime_x003E_k__BackingField dataType="Float">0.7</_x003C_FightWaitTime_x003E_k__BackingField>
             <_x003C_IsInCombat_x003E_k__BackingField dataType="Bool">false</_x003C_IsInCombat_x003E_k__BackingField>
@@ -392,7 +379,7 @@
             <gameobj dataType="ObjectRef">3838638929</gameobj>
           </item>
         </_items>
-        <_size dataType="Int">5</_size>
+        <_size dataType="Int">4</_size>
       </compList>
       <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1756076728" surrogate="true">
         <header />
@@ -400,14 +387,12 @@
           <keys dataType="Array" type="System.Object[]" id="3893692121">
             <item dataType="Type" id="4073166286" value="LowResRoguelike.TurnActionManager" />
             <item dataType="Type" id="1531620682" value="LowResRoguelike.MapGenerator" />
-            <item dataType="Type" id="2379130238" value="LowResRoguelike.MapRenderer" />
-            <item dataType="Type" id="4237188954" value="LowResRoguelike.UiRenderer" />
-            <item dataType="Type" id="3059329198" value="LowResRoguelike.Development.DeveloperMode" />
+            <item dataType="Type" id="2379130238" value="LowResRoguelike.UiRenderer" />
+            <item dataType="Type" id="4237188954" value="LowResRoguelike.Development.DeveloperMode" />
           </keys>
           <values dataType="Array" type="System.Object[]" id="4119922176">
             <item dataType="ObjectRef">618444706</item>
             <item dataType="ObjectRef">568466665</item>
-            <item dataType="ObjectRef">1717016093</item>
             <item dataType="ObjectRef">3713685027</item>
             <item dataType="ObjectRef">1842836750</item>
           </values>
@@ -473,6 +458,94 @@
       </identifier>
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">LevelManager</name>
+      <parent />
+      <prefabLink />
+    </item>
+    <item dataType="Struct" type="Duality.GameObject" id="3405594303">
+      <active dataType="Bool">true</active>
+      <children />
+      <compList dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Component]]" id="921057341">
+        <_items dataType="Array" type="Duality.Component[]" id="1663569958">
+          <item dataType="Struct" type="Duality.Components.Transform" id="1470941939">
+            <active dataType="Bool">true</active>
+            <angle dataType="Float">0</angle>
+            <angleAbs dataType="Float">0</angleAbs>
+            <angleVel dataType="Float">0</angleVel>
+            <angleVelAbs dataType="Float">0</angleVelAbs>
+            <deriveAngle dataType="Bool">true</deriveAngle>
+            <gameobj dataType="ObjectRef">3405594303</gameobj>
+            <ignoreParent dataType="Bool">false</ignoreParent>
+            <parentTransform />
+            <pos dataType="Struct" type="Duality.Vector3" />
+            <posAbs dataType="Struct" type="Duality.Vector3" />
+            <scale dataType="Float">1</scale>
+            <scaleAbs dataType="Float">1</scaleAbs>
+            <vel dataType="Struct" type="Duality.Vector3" />
+            <velAbs dataType="Struct" type="Duality.Vector3" />
+          </item>
+          <item dataType="Struct" type="Duality.Plugins.Tilemaps.Tilemap" id="1112479024">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3405594303</gameobj>
+            <tileData dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapData" id="1013101772" custom="true">
+              <body>
+                <version dataType="Int">3</version>
+                <data dataType="Array" type="System.Byte[]" id="2753222820">H4sIAAAAAAAEAO3BMQEAAAjAoIUwgP1TmsIP2GoCAAAA4NsBd4sGdogRAAA=</data>
+              </body>
+            </tileData>
+            <tileset dataType="Struct" type="Duality.ContentRef`1[[Duality.Plugins.Tilemaps.Tileset]]">
+              <contentPath dataType="String">Data\Tileset\tileset.Tileset.res</contentPath>
+            </tileset>
+          </item>
+          <item dataType="Struct" type="LowResRoguelike.TilemapController" id="3677016560">
+            <active dataType="Bool">true</active>
+            <gameobj dataType="ObjectRef">3405594303</gameobj>
+          </item>
+          <item dataType="Struct" type="Duality.Plugins.Tilemaps.TilemapRenderer" id="2103702455">
+            <active dataType="Bool">true</active>
+            <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
+              <A dataType="Byte">255</A>
+              <B dataType="Byte">255</B>
+              <G dataType="Byte">255</G>
+              <R dataType="Byte">255</R>
+            </colorTint>
+            <externalTilemap />
+            <gameobj dataType="ObjectRef">3405594303</gameobj>
+            <offset dataType="Float">0</offset>
+            <origin dataType="Enum" type="Duality.Alignment" name="TopLeft" value="5" />
+            <tileDepthMode dataType="Enum" type="Duality.Plugins.Tilemaps.TileDepthOffsetMode" name="Flat" value="0" />
+            <tileDepthOffset dataType="Int">0</tileDepthOffset>
+            <tileDepthScale dataType="Float">0.01</tileDepthScale>
+            <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0" value="1" />
+          </item>
+        </_items>
+        <_size dataType="Int">4</_size>
+      </compList>
+      <compMap dataType="Struct" type="System.Collections.Generic.Dictionary`2[[System.Type],[Duality.Component]]" id="1695068856" surrogate="true">
+        <header />
+        <body>
+          <keys dataType="Array" type="System.Object[]" id="1652657495">
+            <item dataType="ObjectRef">2782640592</item>
+            <item dataType="Type" id="2624553998" value="Duality.Plugins.Tilemaps.TilemapRenderer" />
+            <item dataType="Type" id="3096044362" value="Duality.Plugins.Tilemaps.Tilemap" />
+            <item dataType="Type" id="1686921022" value="LowResRoguelike.TilemapController" />
+          </keys>
+          <values dataType="Array" type="System.Object[]" id="2996552128">
+            <item dataType="ObjectRef">1470941939</item>
+            <item dataType="ObjectRef">2103702455</item>
+            <item dataType="ObjectRef">1112479024</item>
+            <item dataType="ObjectRef">3677016560</item>
+          </values>
+        </body>
+      </compMap>
+      <compTransform dataType="ObjectRef">1470941939</compTransform>
+      <identifier dataType="Struct" type="System.Guid" surrogate="true">
+        <header>
+          <data dataType="Array" type="System.Byte[]" id="34802549">kXGMuHGAC0+7g/I1+CMgJQ==</data>
+        </header>
+        <body />
+      </identifier>
+      <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
+      <name dataType="String">TilemapRenderer</name>
       <parent />
       <prefabLink />
     </item>
