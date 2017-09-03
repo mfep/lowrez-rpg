@@ -19,65 +19,11 @@
               <_items dataType="Array" type="Duality.Component[]" id="590600424" length="4">
                 <item dataType="Struct" type="Duality.Components.Transform" id="1776106114">
                   <active dataType="Bool">true</active>
-                  <angle dataType="Float">0</angle>
-                  <angleAbs dataType="Float">0</angleAbs>
-                  <angleVel dataType="Float">0</angleVel>
-                  <angleVelAbs dataType="Float">0</angleVelAbs>
-                  <deriveAngle dataType="Bool">true</deriveAngle>
                   <gameobj dataType="ObjectRef">3710758478</gameobj>
-                  <ignoreParent dataType="Bool">false</ignoreParent>
-                  <parentTransform />
-                  <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">32</X>
-                    <Y dataType="Float">32</Y>
-                    <Z dataType="Float">-500</Z>
-                  </pos>
-                  <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">32</X>
-                    <Y dataType="Float">32</Y>
-                    <Z dataType="Float">-500</Z>
-                  </posAbs>
-                  <scale dataType="Float">1</scale>
-                  <scaleAbs dataType="Float">1</scaleAbs>
-                  <vel dataType="Struct" type="Duality.Vector3" />
-                  <velAbs dataType="Struct" type="Duality.Vector3" />
                 </item>
                 <item dataType="Struct" type="Duality.Components.Camera" id="4248034285">
                   <active dataType="Bool">true</active>
-                  <farZ dataType="Float">10000</farZ>
-                  <focusDist dataType="Float">500</focusDist>
                   <gameobj dataType="ObjectRef">3710758478</gameobj>
-                  <nearZ dataType="Float">0</nearZ>
-                  <passes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Camera+Pass]]" id="3130363721">
-                    <_items dataType="Array" type="Duality.Components.Camera+Pass[]" id="1808581518" length="4">
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="1710699728">
-                        <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
-                        <clearDepth dataType="Float">1</clearDepth>
-                        <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="All" value="3" />
-                        <input />
-                        <matrixMode dataType="Enum" type="Duality.Drawing.RenderMatrix" name="PerspectiveWorld" value="0" />
-                        <output dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]">
-                          <contentPath dataType="String">Data\Rendering\GameRenderTarget.RenderTarget.res</contentPath>
-                        </output>
-                        <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="AllGroups" value="2147483647" />
-                      </item>
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="935334510">
-                        <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
-                        <clearDepth dataType="Float">1</clearDepth>
-                        <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="None" value="0" />
-                        <input />
-                        <matrixMode dataType="Enum" type="Duality.Drawing.RenderMatrix" name="OrthoScreen" value="1" />
-                        <output dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]">
-                          <contentPath dataType="String">Data\Rendering\GameRenderTarget.RenderTarget.res</contentPath>
-                        </output>
-                        <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="All" value="4294967295" />
-                      </item>
-                    </_items>
-                    <_size dataType="Int">2</_size>
-                  </passes>
-                  <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
-                  <priority dataType="Int">0</priority>
-                  <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, AllFlags" value="3221225471" />
                 </item>
               </_items>
               <_size dataType="Int">2</_size>
@@ -114,52 +60,11 @@
               <_items dataType="Array" type="Duality.Component[]" id="143582358" length="4">
                 <item dataType="Struct" type="Duality.Components.Transform" id="787636831">
                   <active dataType="Bool">true</active>
-                  <angle dataType="Float">0</angle>
-                  <angleAbs dataType="Float">0</angleAbs>
-                  <angleVel dataType="Float">0</angleVel>
-                  <angleVelAbs dataType="Float">0</angleVelAbs>
-                  <deriveAngle dataType="Bool">true</deriveAngle>
                   <gameobj dataType="ObjectRef">2722289195</gameobj>
-                  <ignoreParent dataType="Bool">false</ignoreParent>
-                  <parentTransform />
-                  <pos dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">320</X>
-                    <Y dataType="Float">320</Y>
-                    <Z dataType="Float">-500</Z>
-                  </pos>
-                  <posAbs dataType="Struct" type="Duality.Vector3">
-                    <X dataType="Float">320</X>
-                    <Y dataType="Float">320</Y>
-                    <Z dataType="Float">-500</Z>
-                  </posAbs>
-                  <scale dataType="Float">1</scale>
-                  <scaleAbs dataType="Float">1</scaleAbs>
-                  <vel dataType="Struct" type="Duality.Vector3" />
-                  <velAbs dataType="Struct" type="Duality.Vector3" />
                 </item>
                 <item dataType="Struct" type="Duality.Components.Camera" id="3259565002">
                   <active dataType="Bool">true</active>
-                  <farZ dataType="Float">10000</farZ>
-                  <focusDist dataType="Float">500</focusDist>
                   <gameobj dataType="ObjectRef">2722289195</gameobj>
-                  <nearZ dataType="Float">0</nearZ>
-                  <passes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Components.Camera+Pass]]" id="3715777086">
-                    <_items dataType="Array" type="Duality.Components.Camera+Pass[]" id="2787457552" length="4">
-                      <item dataType="Struct" type="Duality.Components.Camera+Pass" id="2847396668">
-                        <clearColor dataType="Struct" type="Duality.Drawing.ColorRgba" />
-                        <clearDepth dataType="Float">1</clearDepth>
-                        <clearFlags dataType="Enum" type="Duality.Drawing.ClearFlag" name="All" value="3" />
-                        <input />
-                        <matrixMode dataType="Enum" type="Duality.Drawing.RenderMatrix" name="PerspectiveWorld" value="0" />
-                        <output dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.RenderTarget]]" />
-                        <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="AllGroups" value="2147483647" />
-                      </item>
-                    </_items>
-                    <_size dataType="Int">1</_size>
-                  </passes>
-                  <perspective dataType="Enum" type="Duality.Drawing.PerspectiveMode" name="Flat" value="0" />
-                  <priority dataType="Int">0</priority>
-                  <visibilityMask dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
                 </item>
               </_items>
               <_size dataType="Int">2</_size>
@@ -196,45 +101,11 @@
               <_items dataType="Array" type="Duality.Component[]" id="1363979808" length="4">
                 <item dataType="Struct" type="Duality.Components.Transform" id="3383040726">
                   <active dataType="Bool">true</active>
-                  <angle dataType="Float">0</angle>
-                  <angleAbs dataType="Float">0</angleAbs>
-                  <angleVel dataType="Float">0</angleVel>
-                  <angleVelAbs dataType="Float">0</angleVelAbs>
-                  <deriveAngle dataType="Bool">true</deriveAngle>
                   <gameobj dataType="ObjectRef">1022725794</gameobj>
-                  <ignoreParent dataType="Bool">false</ignoreParent>
-                  <parentTransform />
-                  <pos dataType="Struct" type="Duality.Vector3" />
-                  <posAbs dataType="Struct" type="Duality.Vector3" />
-                  <scale dataType="Float">1</scale>
-                  <scaleAbs dataType="Float">1</scaleAbs>
-                  <vel dataType="Struct" type="Duality.Vector3" />
-                  <velAbs dataType="Struct" type="Duality.Vector3" />
                 </item>
                 <item dataType="Struct" type="Duality.Components.Renderers.SpriteRenderer" id="2664892362">
                   <active dataType="Bool">true</active>
-                  <colorTint dataType="Struct" type="Duality.Drawing.ColorRgba">
-                    <A dataType="Byte">255</A>
-                    <B dataType="Byte">255</B>
-                    <G dataType="Byte">255</G>
-                    <R dataType="Byte">255</R>
-                  </colorTint>
-                  <customMat />
-                  <flipMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+FlipMode" name="None" value="0" />
                   <gameobj dataType="ObjectRef">1022725794</gameobj>
-                  <offset dataType="Int">0</offset>
-                  <pixelGrid dataType="Bool">false</pixelGrid>
-                  <rect dataType="Struct" type="Duality.Rect">
-                    <H dataType="Float">640</H>
-                    <W dataType="Float">640</W>
-                    <X dataType="Float">0</X>
-                    <Y dataType="Float">0</Y>
-                  </rect>
-                  <rectMode dataType="Enum" type="Duality.Components.Renderers.SpriteRenderer+UVMode" name="Stretch" value="0" />
-                  <sharedMat dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Material]]">
-                    <contentPath dataType="String">Data\Rendering\GameRenderMaterial.Material.res</contentPath>
-                  </sharedMat>
-                  <visibilityGroup dataType="Enum" type="Duality.Drawing.VisibilityFlag" name="Group30" value="1073741824" />
                 </item>
               </_items>
               <_size dataType="Int">2</_size>
@@ -288,7 +159,26 @@
       <initState dataType="Enum" type="Duality.InitState" name="Initialized" value="1" />
       <name dataType="String">RENDERING</name>
       <parent />
-      <prefabLink />
+      <prefabLink dataType="Struct" type="Duality.Resources.PrefabLink" id="752268374">
+        <changes dataType="Struct" type="System.Collections.Generic.List`1[[Duality.Resources.PrefabLink+VarMod]]" id="1527881567">
+          <_items dataType="Array" type="Duality.Resources.PrefabLink+VarMod[]" id="2722994286" length="4">
+            <item dataType="Struct" type="Duality.Resources.PrefabLink+VarMod">
+              <childIndex dataType="Struct" type="System.Collections.Generic.List`1[[System.Int32]]" id="430620684">
+                <_items dataType="Array" type="System.Int32[]" id="3227958436">2, 0, 0, 0</_items>
+                <_size dataType="Int">1</_size>
+              </childIndex>
+              <componentType dataType="ObjectRef">806622916</componentType>
+              <prop dataType="MemberInfo" id="3078925046" value="P:Duality.Components.Renderers.SpriteRenderer:AlignToPixelGrid" />
+              <val dataType="Bool">true</val>
+            </item>
+          </_items>
+          <_size dataType="Int">1</_size>
+        </changes>
+        <obj dataType="ObjectRef">1591489129</obj>
+        <prefab dataType="Struct" type="Duality.ContentRef`1[[Duality.Resources.Prefab]]">
+          <contentPath dataType="String">Data\Prefabs\RENDERING.Prefab.res</contentPath>
+        </prefab>
+      </prefabLink>
     </item>
     <item dataType="Struct" type="Duality.GameObject" id="664818535">
       <active dataType="Bool">true</active>

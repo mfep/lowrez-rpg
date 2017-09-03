@@ -15,11 +15,11 @@
     <Package id="AdamsLair.Duality.Editor.Plugins.PackageManagerFrontend" version="2.1.1.0" />
     <Package id="AdamsLair.Duality.Editor.Backend.DefaultOpenTK" version="2.0.5.0" />
     <Package id="YamlDotNet" version="4.2.1.0" />
-    <Package id="AdamsLair.Duality" version="2.13.0.0" />
     <Package id="AdamsLair.Duality.Editor" version="2.10.0.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.CamView" version="2.6.0.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.ObjectInspector" version="2.1.0.0" />
     <Package id="AdamsLair.Duality.Plugins.Tilemaps" version="1.1.13.0" />
     <Package id="AdamsLair.Duality.Editor.Plugins.Tilemaps" version="1.1.18.0" />
+    <Package id="AdamsLair.Duality" version="2.13.3.0" />
   </Packages>
 </PackageConfig>
