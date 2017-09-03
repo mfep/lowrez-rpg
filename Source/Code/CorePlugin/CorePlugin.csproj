@@ -81,6 +81,7 @@
     <Compile Include="MapGenerator.cs" />
     <Compile Include="MapRenderer.cs" />
     <Compile Include="PlayerMovement.cs" />
+    <Compile Include="SceneCache.cs" />
     <Compile Include="SceneLoader.cs" />
     <Compile Include="Development\RaytracingTest.cs" />
     <Compile Include="TileType.cs" />
