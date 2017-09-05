@@ -52,6 +52,7 @@ namespace LowResRoguelike
 
 		private void OnPlayerDied ()
 		{
+			LevelIndex = 0;
 			Scene.SwitchTo (GameOverScene);
 		}
 

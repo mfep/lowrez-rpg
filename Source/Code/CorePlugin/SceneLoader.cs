@@ -26,6 +26,7 @@ namespace LowResRoguelike
 		public void OnUpdate ()
 		{
 			if (Time.GameTimer > switchTime) {
+				GameObj.ParentScene.DisposeLater ();
 				Scene.SwitchTo (SceneAfter);
 			}
 		}
